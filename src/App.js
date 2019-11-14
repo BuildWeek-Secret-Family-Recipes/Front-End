@@ -7,7 +7,7 @@ import Nav from './components/layout/Nav';
 import Login from './components/user/Login';
 import Register from './components/user/Register';
 import Signout from './components/user/Signout';
-import UserRecipes from './components/recipe/UserRecipes';
+import UserRecipes from './components/user/UserRecipes';
 
 import './App.css';
 
