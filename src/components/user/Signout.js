@@ -3,5 +3,5 @@ import { Redirect } from "react-router-dom"
 
 export default function Signout(props) {
 	localStorage.removeItem('token')
-	return <Redirect to="/login" />
+	return <Redirect to='/login' />
 }
