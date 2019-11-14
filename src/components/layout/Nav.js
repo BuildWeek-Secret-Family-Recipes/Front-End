@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import { Link } from "react-router-dom";
 import Search from '../layout/Search';
 
 const Nav = () => {
     return (
-        <div className="nav">
+        <Fragment>
+            <Link to='/'>Home</Link>
+            <Link to='/login'>Log In</Link>
+            <Link to='/register'>Sign Up</Link>
             <Search />
-        </div>
+        </Fragment>
     )
 }
 
