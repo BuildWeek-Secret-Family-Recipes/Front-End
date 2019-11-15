@@ -29,7 +29,7 @@ border: none;
 div {
   width: 2rem;
   height: 0.25rem;
-  background: ${({ open }) => open ? '#654F3B' : '#654F3B'};
+  background:  ${({ open }) => open ? '#654F3B' : '#654F3B' };
   border-radius: 10px;
   transition: all 0.3s linear;
   position: relative;

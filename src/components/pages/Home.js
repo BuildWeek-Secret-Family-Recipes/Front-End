@@ -5,6 +5,8 @@ import Search from '../layout/Search';
 
     const Header = styled.header`
     font-size: 2.8rem;
+    font-color: #654F3B
+    text-shadow: 2px 2px #654F3B;
 
     `
     const Body = styled.div`
@@ -23,6 +25,7 @@ import Search from '../layout/Search';
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-around;
+    align-content: space-evenly;
     margin: 0 auto;
     margin-left: 5rem;
     `

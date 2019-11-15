@@ -13,6 +13,7 @@ const StyledMenu = styled.nav`
   align-content: space-between;
   background: #9C976A;
   transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(-100%)'};
+//   opacity: ${({open}) => open ? '90%' : '100%'};
   height: 100vh;
   text-align: left;
   margin: 0 auto;
@@ -40,6 +41,7 @@ const StyledMenu = styled.nav`
     background-color: #654F3B;
     text-decoration: none;
     transition: color 0.3s linear;
+    text-shadow: 1px 1px gold;
 
     @media (max-width: 576px) {
       font-size: 1.5rem;
