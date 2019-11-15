@@ -9,13 +9,14 @@ left: 2rem;
 display: flex;
 flex-direction: column;
 justify-content: space-around;
-width: 2rem;
-height: 2rem;
-background: black;
-border: none;
+margin-bottom: 1rem;
+width: 2.3rem;
+height: 2.5rem;
+background: transparent;
 cursor: pointer;
 padding: 0;
 z-index: 10;
+border: none;
 
 
 
@@ -28,7 +29,7 @@ z-index: 10;
 div {
   width: 2rem;
   height: 0.25rem;
-  background: ${({ open }) => open ? '#0D0C1D' : '#EFFFFA'};
+  background: ${({ open }) => open ? '#654F3B' : '#654F3B'};
   border-radius: 10px;
   transition: all 0.3s linear;
   position: relative;
@@ -40,7 +41,7 @@ div {
 
   :nth-child(2) {
     opacity: ${({ open }) => open ? '0' : '1'};
-    transform: ${({ open }) => open ? 'translateX(20px)' : 'translateX(0)'};
+    transform: ${({ open }) => open ? 'translateX(30px)' : 'translateX(0)'};
   }
 
   :nth-child(3) {

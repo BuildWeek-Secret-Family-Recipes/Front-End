@@ -9,13 +9,13 @@ import styled from 'styled-components';
 const StyledMenu = styled.nav`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-content: space-around;
+  justify-content: space-around;
+  align-content: space-between;
   background: #9C976A;
   transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(-100%)'};
   height: 100vh;
   text-align: left;
-  padding: 2rem;
+  margin: 0 auto;
   position: absolute;
   top: 0;
   left: 0;
@@ -29,10 +29,10 @@ const StyledMenu = styled.nav`
     font-size: 1.7rem;
     // text-transform: uppercase;
     padding: 1rem 0;
-    padding-left: 1.2rem;
     text-align: center;
     width: 260px;
-    margin-bottom: 10rem;
+    height: 50px;
+    margin-top: 5rem;
     border-radius: 4px;
     font-weight: bold;
     letter-spacing: 0.5rem;
@@ -47,12 +47,16 @@ const StyledMenu = styled.nav`
     }
 
     &:hover {
-      color: #C4C4C4;
+      color: #EDDFB0;
     }
   }
 `
 
-
+const Searchbox = styled.div`
+    display: flex;
+    justify-content: center;
+    
+    `
 
 
 
@@ -62,15 +66,13 @@ const Nav = ({ open }) => {
 
     return (
         <StyledMenu open={open}>
-       
             <Link to='/'>Home</Link>
             {logged && <Link to='/myrecipes'>My Recipes</Link>}
             {!logged && <Link to='/api/login'>Log In</Link>}
             {logged && <Link to='/logout'>Logout</Link>}
             <Link to='/register'>Sign Up</Link>
-            <Search />
+            <Searchbox><Search /></Searchbox>
             </StyledMenu>
-
     )
 }
 
