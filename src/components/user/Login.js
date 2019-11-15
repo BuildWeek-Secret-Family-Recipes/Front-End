@@ -1,7 +1,10 @@
 import React, { Fragment, useState } from 'react'
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { authUser } from '../../actions/auth';
 import api from '../../utils/api';
 
-export default function Login(props) {
+function Login(props) {
 
     const [error, setError] = useState()
     const [userData, setUserData] = useState({
@@ -22,6 +25,7 @@ export default function Login(props) {
         api()
 			.post('/login', userData)
 			.then(res => {
+                authUser();
 				localStorage.setItem('token', res.data.payload)
 				props.history.push('/myrecipes')
 			})
@@ -52,6 +56,21 @@ export default function Login(props) {
             
                 <button type='submit'>Sign In</button>
             </form>
+
+            <div className="reg">
+                <p>Don't have an account?</p>
+                <Link to='/register'>Sign Up</Link>
+            </div>
         </Fragment>
     )
 }
+
+function mapStateToProps(state) {
+    return {
+        username: state.username,
+        password: state.password,
+        error: state.errorMsg
+    }
+}
+
+export default connect(mapStateToProps, { authUser })(Login);
