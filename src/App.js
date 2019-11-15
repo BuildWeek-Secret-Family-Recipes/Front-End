@@ -4,6 +4,7 @@ import PrivateRoute from './utils/PrivateRoute';
 
 import Home from './components/pages/Home';
 import Nav from './components/layout/Nav';
+import Burger from './components/layout/Burgerbutton';
 import Login from './components/user/Login';
 import Register from './components/user/Register';
 import Signout from './components/user/Signout';
@@ -12,16 +13,22 @@ import UserRecipes from './components/user/UserRecipes';
 import './App.css';
 
 function App() {
+  const [open, setOpen] = React.useState(false);
+  const node = React.useRef();
   return (
     <div className="App">
       <div className="nav">
-        <Nav />
+      <div ref={node}>
+        <Burger open={open} setOpen={setOpen} />
+        <Nav open={open} setOpen={setOpen} />
+      </div>
 
         <Route exact path='/' component={Home} />
         <Route exact path='/api/login' component={Login} />
         <Route exact path='/register' component={Register} />
         <PrivateRoute exact path='/myrecipes' component={UserRecipes} />
 			  <PrivateRoute exact path="/logout" component={Signout} />
+      
       </div>
     </div>
   );
