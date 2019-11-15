@@ -55,4 +55,3 @@ export default function Login(props) {
         </Fragment>
     )
 }
-}

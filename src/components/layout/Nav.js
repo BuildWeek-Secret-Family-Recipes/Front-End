@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
 import Burger from '../layout/Burgerbutton';
-import React, { Fragment } from 'react';
 import { Link } from "react-router-dom";
 import { getToken } from '../../utils/api';
 import Search from '../layout/Search';
@@ -69,12 +68,6 @@ const Nav = ({ open }) => {
 
     return (
         <StyledMenu open={open}>
-const Nav = () => {
-
-    const logged = getToken();
-
-    return (
-        <Fragment>
             <Link to='/'>Home</Link>
             {logged && <Link to='/myrecipes'>My Recipes</Link>}
             {!logged && <Link to='/api/login'>Log In</Link>}
@@ -82,8 +75,6 @@ const Nav = () => {
             <Link to='/register'>Sign Up</Link>
             <Searchbox><Search /></Searchbox>
             </StyledMenu>
-            <Search />
-        </Fragment>
     )
 }
 
