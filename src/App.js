@@ -22,6 +22,7 @@ function App() {
         <Burger open={open} setOpen={setOpen} />
         <Nav open={open} setOpen={setOpen} />
       </div>
+        <Nav />
 
         <Route exact path='/' component={Home} />
         <Route exact path='/api/login' component={Login} />

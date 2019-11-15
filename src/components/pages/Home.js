@@ -43,6 +43,7 @@ const Home = () => {
             <Search />
             </Searchbox>
             <Header>Secret Family Cookbook</Header>
+        <div>
             <img src={Dining} alt='Family Dining' />
             <p>Coming soon!</p>
             <CardHolder>
@@ -55,6 +56,7 @@ const Home = () => {
             {/* <Card>Public Recipe Preview</Card>
             <Card>Public Recipe Preview</Card> */}
             </CardHolder>
+            </div>
         </Body>
     )
 }
