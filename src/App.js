@@ -30,7 +30,7 @@ function App() {
         <PrivateRoute exact path='/myrecipes' component={UserRecipes} />
 			  <PrivateRoute exact path="/logout" component={Signout} />
       
-      </div>
+    </div>
   );
 }
 
