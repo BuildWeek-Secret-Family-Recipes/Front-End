@@ -1,6 +1,5 @@
 import React from 'react';
 import Dining from '../../assets/img/dining.png';
-import Footer from './Footer'
 import styled from 'styled-components';
 import Search from '../layout/Search';
 
@@ -60,8 +59,8 @@ const Home = () => {
                     <Card>Public Recipe Preview</Card>
                     <Card>Public Recipe Preview</Card>
                     <Card>Public Recipe Preview</Card>
-                    {/* <Card>Public Recipe Preview</Card>
-                    <Card>Public Recipe Preview</Card> */}
+                    <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card>
                 </CardHolder>
             </div>
          
