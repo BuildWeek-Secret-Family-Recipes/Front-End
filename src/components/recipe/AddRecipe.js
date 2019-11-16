@@ -3,11 +3,14 @@ import api from '../../utils/api'
 import styled from 'styled-components'
 
 const FormDiv = styled.form`
-
+    margin: 3rem auto;
+    border: 1px solid black;
+    padding: 1rem;
+    width: 85%;
 `
 const RowWrapper = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-flow: wrap row;
     justify-content: center;
     margin-top: 3rem;
 `
@@ -21,7 +24,16 @@ const Title = styled.input`
 
 `
 const Source = styled.input`
-
+    margin-left: 2rem;
+`
+const Category = styled.input`
+    margin-left: 2rem;
+`
+const Private = styled.button`
+    margin-left: 2rem;
+`
+const Span = styled.span`
+    ${({ selected }) => selected === true ? `color: black;` : `color: lightgray;`};    
 `
 const Ingredients = styled.div`
     display: flex;
@@ -49,11 +61,21 @@ const Instruction = styled.input`
     margin-top: .5rem;
 `
 const SubmitButton = styled.button`
-
+    margin-top: 2rem;
+    :hover {
+        cursor: pointer;
+        background: black;
+        color: white
+    }
 `
 const AddButton = styled.button`
     float: right;
     width: 2rem;
+    :hover {
+        cursor: pointer;
+        background: black;
+        color: white
+    }
 `
  
 const AddRecipe = (props) => {
@@ -65,7 +87,7 @@ const AddRecipe = (props) => {
         ingredients: [{ type: '', amount: '' }],
         instructions: [''],
         category: '',
-        private: null
+        private: false
     })
 
     const handleChange = e => {
@@ -73,6 +95,13 @@ const AddRecipe = (props) => {
             ...recipe,
             [e.target.name]: e.target.value
 
+        })
+    }
+
+    const toggle = e => {
+        setRecipe({
+            ...recipe,
+            private: !recipe.private
         })
     }
     
@@ -113,11 +142,18 @@ const AddRecipe = (props) => {
         setInstructions(newInstructions)
     }
 
+    const handleSubmit = e => {
+        e.preventDefault()
+        setRecipe({ ...recipe, instructions, ingredients })
+    }
+
     return (
-        <FormDiv>
+        <FormDiv onSubmit={handleSubmit}>
             <RowWrapper>
                 <Title type='text' name='title' placeholder='Title' value={recipe.title} onChange={handleChange} />
                 <Source type='text' name='source' placeholder='source' value={recipe.source} onChange={handleChange} />
+                <Category type='text' name='category' placeholder='category' value={recipe.category} onChange={handleChange} />
+                <Private type='radio' name='private' onClick={toggle} /><Span selected={recipe.private}>Private</Span>
             </RowWrapper>
             <RowWrapper>
                 <Ingredients>
