@@ -8,6 +8,7 @@ import Login from './components/user/Login';
 import Register from './components/user/Register';
 import Signout from './components/user/Signout';
 import UserRecipes from './components/user/UserRecipes';
+import AddRecipe from './components/recipe/AddRecipe'
 
 import './App.css';
 
@@ -20,6 +21,7 @@ function App() {
         <Route exact path='/' component={Home} />
         <Route exact path='/api/login' component={Login} />
         <Route exact path='/register' component={Register} />
+        <Route exact path='/addrecipe' component={AddRecipe} />
         <PrivateRoute exact path='/myrecipes' component={UserRecipes} />
 			  <PrivateRoute exact path="/logout" component={Signout} />
       </div>
