@@ -5,11 +5,17 @@ import styled from 'styled-components'
 const FormDiv = styled.form`
 
 `
-const Wrapper = styled.div`
+const RowWrapper = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
     margin-top: 3rem;
+`
+const ColumnWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
 `
 const Title = styled.input`
 
@@ -39,7 +45,8 @@ const Instructions = styled.div`
     padding: 1.5rem;
 `
 const Instruction = styled.input`
-
+    width: 70%;
+    margin-top: .5rem;
 `
 const SubmitButton = styled.button`
 
@@ -51,7 +58,7 @@ const AddButton = styled.button`
  
 const AddRecipe = (props) => {
     const [ingredients, setIngredients] = useState([{ id: 0, type: '', amount: ''}])
-    const [instructions, setInstructions] = useState([''])
+    const [instructions, setInstructions] = useState([{ id: 0, task: ''}])
     const [recipe, setRecipe] = useState({
         title: '',
         source: '',
@@ -68,13 +75,7 @@ const AddRecipe = (props) => {
 
         })
     }
-
-    const handleIngredients = e => {
-        let newIngredients = ingredients.map(ingredient => Number(e.target.id) === ingredient.id ? { ...ingredient, [e.target.name]: e.target.value } : ingredient)
-        setIngredients(newIngredients)
-        console.log(ingredients)
-    }
-
+    
     const addIndgredient = e => {
         e.preventDefault()
         setIngredients([
@@ -86,19 +87,39 @@ const AddRecipe = (props) => {
             }
         ])
     }
+    
+    const handleIngredients = e => {
+        let newIngredients = ingredients.map(ingredient => {
+            return Number(e.target.id) === ingredient.id ? { ...ingredient, [e.target.name]: e.target.value } : ingredient
+        })
+        setIngredients(newIngredients)
+    }
 
     const addInstruction = e => {
         e.preventDefault()
-        setInstructions([...instructions])
+        setInstructions([
+            ...instructions,
+            {
+                id: instructions.length,
+                task: ''
+            }
+        ])
+    }
+
+    const handleInstructions = e => {
+        let newInstructions = instructions.map(instruction => {
+            return Number(e.target.id) === instruction.id ? { ...instruction, [e.target.name]: e.target.value } : instruction
+        })
+        setInstructions(newInstructions)
     }
 
     return (
         <FormDiv>
-            <Wrapper>
+            <RowWrapper>
                 <Title type='text' name='title' placeholder='Title' value={recipe.title} onChange={handleChange} />
                 <Source type='text' name='source' placeholder='source' value={recipe.source} onChange={handleChange} />
-            </Wrapper>
-            <Wrapper>
+            </RowWrapper>
+            <RowWrapper>
                 <Ingredients>
                     <h3>Ingredients</h3>
                     {ingredients &&
@@ -114,14 +135,17 @@ const AddRecipe = (props) => {
                     <AddButton onClick={addIndgredient}>+</AddButton>
                 </Ingredients>
                 <Instructions>
-                    {instructions &&
-                        instructions.map((instruction, indx) => {
-                            return <Instruction key={indx} type='text' name='type' placeholder='Type' value={instruction} onChange={handleChange} />     
-                        })
-                    }
+                    <h3>Instructions</h3>
+                    <ColumnWrapper>
+                        {instructions &&
+                            instructions.map((instruction, indx) => {
+                                return <Instruction key={indx} id={instruction.id} type='text' name='task' placeholder='Task' onChange={handleInstructions} />     
+                            })
+                        }
+                    </ColumnWrapper>
                     <AddButton onClick={addInstruction}>+</AddButton> 
                 </Instructions>
-            </Wrapper>
+            </RowWrapper>
             <SubmitButton type='submit'>Add Recipe</SubmitButton>
         </FormDiv>
     )
