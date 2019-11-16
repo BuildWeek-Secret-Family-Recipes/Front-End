@@ -18,6 +18,7 @@ height: 300px;
 width: 250px;
 background-color: #C4C4C4;
 margin-bottom: 2rem;
+
 `
 
 const CardHolder = styled.section`
@@ -27,8 +28,9 @@ flex-direction: row;
 justify-content: space-around;
 align-content: space-evenly;
 margin: 0 auto;
-margin-left: 6rem;
-margin-right: 6rem;
+margin-left: 20%;
+margin-right: 20%;
+flex-grow: 1;
 `
 
 const Searchbox = styled.div`
@@ -56,11 +58,12 @@ const Home = () => {
                     <Card>Public Recipe Preview</Card>
                     <Card>Public Recipe Preview</Card>
                     <Card>Public Recipe Preview</Card>
+                    {/* <div className = "break"></div> */}
                     <Card>Public Recipe Preview</Card>
                     <Card>Public Recipe Preview</Card>
                     <Card>Public Recipe Preview</Card>
-                    <Card>Public Recipe Preview</Card>
-                    <Card>Public Recipe Preview</Card>
+                    {/* <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card> */}
                 </CardHolder>
             </div>
          
