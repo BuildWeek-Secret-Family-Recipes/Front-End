@@ -1,9 +1,9 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment } from 'react';
 import { Link } from "react-router-dom";
 import { getToken } from '../../utils/api';
 import Search from '../layout/Search';
 import styled from 'styled-components';
-
+import {slide as Menu} from 'react-burger-menu';
 
 const StyledMenu = styled.nav`
   display: flex;
@@ -62,42 +62,25 @@ const Searchbox = styled.div`
 
 
 
-const Nav = ({ open }) => {
+const Nav = props => {
 
     const logged = getToken();
 
     return (
         <Fragment>
-            <StyledMenu open={open}>
+            <Menu>
                 <Link to='/'>Home</Link>
                 {logged && <Link to='/myrecipes'>My Recipes</Link>}
                 {!logged && <Link to='/api/login'>Log In</Link>}
                 {logged && <Link to='/logout'>Logout</Link>}
                 {!logged && <Link to='/api/register'>Sign Up</Link>}
                 <Searchbox><Search /></Searchbox>
-            </StyledMenu>
+            </Menu>
         </Fragment>
     )
 }
 
 
-const useOnClickOutside = (ref, handler) => {
-    useEffect(() => {
-      const listener = event => {
-        if (!ref.current || ref.current.contains(event.target)) {
-          return;
-        }
-        handler(event);
-      };
-      document.addEventListener('mousedown', listener);
-  
-      return () => {
-        document.removeEventListener('mousedown', listener);
-      };
-    },
-    [ref, handler],
-    );
-  };
 
 
 
