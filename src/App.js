@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import Home from './components/pages/Home';
 import Footer from './components/pages/Footer';
 import Nav from './components/layout/Nav';
-import Burger from './components/layout/Burgerbutton';
 import Login from './components/user/Login';
 import Register from './components/user/Register';
 import Signout from './components/user/Signout';

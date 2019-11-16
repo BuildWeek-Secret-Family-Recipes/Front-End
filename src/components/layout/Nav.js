@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment } from 'react';
 import { Link } from "react-router-dom";
 import { getToken } from '../../utils/api';
 import Search from '../layout/Search';

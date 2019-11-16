@@ -57,8 +57,8 @@ const Home = () => {
                     <Card>Public Recipe Preview</Card>
                     <Card>Public Recipe Preview</Card>
                     <Card>Public Recipe Preview</Card>
-                    {/* <Card>Public Recipe Preview</Card>
-                    <Card>Public Recipe Preview</Card> */}
+                    <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card>
                 </CardHolder>
             </div>
 
