@@ -12,6 +12,8 @@ import Search from '../layout/Search';
     `
     const Body = styled.div`
     background-color: #EDDFB0;
+    height: 100%;
+   
 
     `
     const Card = styled.div`
@@ -37,11 +39,18 @@ import Search from '../layout/Search';
     
     `
 
+    const Footerblock = styled.div`
+   height: 0;
+   padding-top: -50px;
+   margin-top: -15px;
+    `
+
 const Home = () => {
     return (
         <Body>
+            
             <Searchbox>
-                <Search />
+            <Search />
             </Searchbox>
 
             <Header>Secret Family Cookbook</Header>
@@ -60,8 +69,10 @@ const Home = () => {
                     <Card>Public Recipe Preview</Card> */}
                 </CardHolder>
             </div>
-
+          <Footerblock>
           <Footer />
+          </Footerblock>
+          
         </Body>
     )
 }
