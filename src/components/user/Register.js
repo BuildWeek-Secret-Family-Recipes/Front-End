@@ -1,11 +1,64 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { registerUser } from '../../actions/auth';
 
-function Register() {
+function Register(props) {
+    const [newUser, setNewUser] = useState({
+        id: '',
+        username: '',
+        password: ''
+    })
+    
+    const handleChange = e => {
+        setNewUser({
+            ...newUser,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault()
+        registerUser();
+    }
+
     return (
         <Fragment>
-            <h1>Register Component</h1>
+            <form onSubmit={handleSubmit}>
+                <input 
+                    type='text'
+                    className='input' 
+                    name='username' 
+                    placeholder='Username'
+                    value={newUser.username}
+                    onChange={handleChange} 
+                />
+                <input 
+                    type='password' 
+                    className='input'
+                    name='password' 
+                    placeholder='Password'
+                    value={newUser.password}
+                    onChange={handleChange} 
+                />
+            
+                <button type='submit'>Sign Up</button>
+            </form>
+
+            <div className="reg">
+                <p>Already have an account?</p>
+                <Link to='/api/login'>Sign In</Link>
+            </div>
         </Fragment>
     )
 }
 
-export default Register
+function mapStateToProps(state) {
+    return {
+        username: state.username,
+        password: state.password,
+        error: state.errorMsg
+    }
+}
+
+export default connect(mapStateToProps, { registerUser })(Register);

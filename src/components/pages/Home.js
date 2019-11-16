@@ -1,5 +1,6 @@
 import React from 'react';
 import Dining from '../../assets/img/dining.png';
+import Footer from './Footer'
 import styled from 'styled-components';
 import Search from '../layout/Search';
 
@@ -40,23 +41,27 @@ const Home = () => {
     return (
         <Body>
             <Searchbox>
-            <Search />
+                <Search />
             </Searchbox>
+
             <Header>Secret Family Cookbook</Header>
-        <div>
-            <img src={Dining} alt='Family Dining' />
-            <p>Coming soon!</p>
-            <CardHolder>
-            <Card>Public Recipe Preview</Card>
-            <Card>Public Recipe Preview</Card>
-            <Card>Public Recipe Preview</Card>
-            <Card>Public Recipe Preview</Card>
-            <Card>Public Recipe Preview</Card>
-            <Card>Public Recipe Preview</Card>
-            {/* <Card>Public Recipe Preview</Card>
-            <Card>Public Recipe Preview</Card> */}
-            </CardHolder>
+            
+            <div>
+                <img src={Dining} alt='Family Dining' />
+                <p>Coming soon!</p>
+                <CardHolder>
+                    <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card>
+                    {/* <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card> */}
+                </CardHolder>
             </div>
+
+          <Footer />
         </Body>
     )
 }
