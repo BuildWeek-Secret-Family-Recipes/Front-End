@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect } from 'react';
-import Burger from '../layout/Burgerbutton';
 import { Link } from "react-router-dom";
 import { getToken } from '../../utils/api';
 import Search from '../layout/Search';
@@ -14,7 +13,7 @@ const StyledMenu = styled.nav`
   background: #9C976A;
   transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(-100%)'};
 //   opacity: ${({open}) => open ? '90%' : '100%'};
-  height: 100vh;
+  height: 100%;
   text-align: left;
   margin: 0 auto;
   position: absolute;
@@ -67,20 +66,22 @@ const Nav = ({ open }) => {
     const logged = getToken();
 
     return (
-        <StyledMenu open={open}>
-            <Link to='/'>Home</Link>
-            {logged && <Link to='/myrecipes'>My Recipes</Link>}
-            {!logged && <Link to='/api/login'>Log In</Link>}
-            {logged && <Link to='/logout'>Logout</Link>}
-            <Link to='/register'>Sign Up</Link>
-            <Searchbox><Search /></Searchbox>
+        <Fragment>
+            <StyledMenu open={open}>
+                <Link to='/'>Home</Link>
+                {logged && <Link to='/myrecipes'>My Recipes</Link>}
+                {!logged && <Link to='/api/login'>Log In</Link>}
+                {logged && <Link to='/logout'>Logout</Link>}
+                {!logged && <Link to='/api/register'>Sign Up</Link>}
+                <Searchbox><Search /></Searchbox>
             </StyledMenu>
+        </Fragment>
     )
 }
 
 
 const useOnClickOutside = (ref, handler) => {
-    React.useEffect(() => {
+    useEffect(() => {
       const listener = event => {
         if (!ref.current || ref.current.contains(event.target)) {
           return;
