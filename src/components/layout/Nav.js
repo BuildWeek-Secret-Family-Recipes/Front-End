@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 import { getToken } from '../../utils/api';
 import Search from '../layout/Search';
 import styled from 'styled-components';
+import { slide as Menu } from 'react-burger-menu';
 
-
-const StyledMenu = styled.nav`
+const StyledMenu = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-content: space-between;
   background: #9C976A;
   transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(-100%)'};
-//   opacity: ${({open}) => open ? '90%' : '100%'};
+  opacity: ${({open}) => open ? '90%' : '100%'};
   height: 100%;
   min-height: 100%;
   text-align: left;
@@ -62,43 +62,22 @@ const Searchbox = styled.div`
 
 
 
-const Nav = ({ open }) => {
+const Nav = props => {
 
     const logged = getToken();
 
     return (
         <Fragment>
-            <StyledMenu open={open}>
+            <Menu>
                 <Link to='/'>Home</Link>
                 {logged && <Link to='/myrecipes'>My Recipes</Link>}
                 {!logged && <Link to='/api/login'>Log In</Link>}
                 {logged && <Link to='/logout'>Logout</Link>}
                 {!logged && <Link to='/api/register'>Sign Up</Link>}
                 <Searchbox><Search /></Searchbox>
-            </StyledMenu>
+            </Menu>
         </Fragment>
     )
 }
-
-
-const useOnClickOutside = (ref, handler) => {
-    useEffect(() => {
-      const listener = event => {
-        if (!ref.current || ref.current.contains(event.target)) {
-          return;
-        }
-        handler(event);
-      };
-      document.addEventListener('mousedown', listener);
-  
-      return () => {
-        document.removeEventListener('mousedown', listener);
-      };
-    },
-    [ref, handler],
-    );
-  };
-
-
 
 export default Nav

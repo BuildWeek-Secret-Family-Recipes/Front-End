@@ -1,9 +1,8 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
 function Footer() {
     return (
-        <Fragment>
-        <div class="icon-credit">
+        <div class="footer icon-credit">
             <p>Icons made by
                 <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">
                 Smashicons
@@ -29,7 +28,6 @@ function Footer() {
                 </a>
             </p>
         </div>   
-        </Fragment>
     )
 }
 

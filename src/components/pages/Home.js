@@ -1,6 +1,5 @@
 import React from 'react';
 import Dining from '../../assets/img/dining.png';
-import Footer from './Footer'
 import styled from 'styled-components';
 import Search from '../layout/Search';
 
@@ -12,37 +11,30 @@ import Search from '../layout/Search';
     `
     const Body = styled.div`
     background-color: #EDDFB0;
-    height: 100%;
-   
 
     `
     const Card = styled.div`
     height: 300px;
     width: 250px;
     background-color: #C4C4C4;
+    margin-bottom: 2rem;
     `
-
+    
     const CardHolder = styled.section`
-    height: 700px;
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-around;
     align-content: space-evenly;
     margin: 0 auto;
-    margin-left: 5rem;
+    margin-left: 6rem;
+    margin-right: 6rem;
     `
 
     const Searchbox = styled.div`
     display: flex;
     justify-content: flex-end;
     
-    `
-
-    const Footerblock = styled.div`
-   height: 0;
-   padding-top: -50px;
-   margin-top: -15px;
     `
 
 const Home = () => {
@@ -69,9 +61,7 @@ const Home = () => {
                     <Card>Public Recipe Preview</Card> */}
                 </CardHolder>
             </div>
-          <Footerblock>
-          <Footer />
-          </Footerblock>
+
           
         </Body>
     )
