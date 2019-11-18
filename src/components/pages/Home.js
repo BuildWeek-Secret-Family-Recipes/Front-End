@@ -11,7 +11,7 @@ import Search from '../layout/Search';
     `
     const Body = styled.div`
     background-color: #EDDFB0;
-
+    max-width: 
     `
     const Card = styled.div`
     height: 300px;
@@ -27,8 +27,8 @@ import Search from '../layout/Search';
     justify-content: space-around;
     align-content: space-evenly;
     margin: 0 auto;
-    margin-left: 6rem;
-    margin-right: 6rem;
+    margin-left: 20%;
+    margin-right: 20%;
     `
 
     const Searchbox = styled.div`
