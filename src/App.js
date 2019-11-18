@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { Route } from 'react-router-dom';
 import PrivateRoute from './utils/PrivateRoute';
 
 import Home from './components/pages/Home';
 import Nav from './components/layout/Nav';
+import Burger from './components/layout/Burgerbutton';
 import Login from './components/user/Login';
 import Register from './components/user/Register';
 import Signout from './components/user/Signout';
@@ -13,9 +14,15 @@ import AddRecipe from './components/recipe/AddRecipe'
 import './App.css';
 
 function App() {
+  const [open, setOpen] = useState(false);
+  const node = useRef();
+  
   return (
     <div className="App">
-      <div className="nav">
+      <div ref={node} className="nav">
+        <Burger open={open} setOpen={setOpen} />
+        <Nav open={open} setOpen={setOpen} />
+      </div>
         <Nav />
 
         <Route exact path='/' component={Home} />
@@ -24,8 +31,8 @@ function App() {
         <Route exact path='/addrecipe' component={AddRecipe} />
         <PrivateRoute exact path='/myrecipes' component={UserRecipes} />
 			  <PrivateRoute exact path="/logout" component={Signout} />
+      
       </div>
-    </div>
   );
 }
 

@@ -17,13 +17,14 @@ code {
   align-items: flex-end;
   justify-content: center;
   font-size: 0.65rem;
-  color: lightgrey;
+  color: brown;
+  background-color: #EDDFB0
 }
 
 .icon-credit a {
   margin: 0.4rem;
   text-decoration: none;
-  color: lightgrey;
+  color: brown;
 }
 
 .icon-credit a:hover {

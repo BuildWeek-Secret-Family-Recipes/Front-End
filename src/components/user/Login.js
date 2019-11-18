@@ -1,10 +1,11 @@
 import React, { Fragment, useState } from 'react'
-import api from '../../utils/api';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { authUser } from '../../actions/auth';
 
-export default function Login(props) {
-
-    const [error, setError] = useState()
+function Login(props) {
     const [userData, setUserData] = useState({
+        id: '',
         username: '',
         password: ''
     })
@@ -18,16 +19,7 @@ export default function Login(props) {
 
     const handleSubmit = e => {
         e.preventDefault()
-
-        api()
-			.post('/login', userData)
-			.then(res => {
-				localStorage.setItem('token', res.data.payload)
-				props.history.push('/myrecipes')
-			})
-			.catch(err => {
-				setError(err)
-			})
+        authUser();
     }
 
     return (
@@ -52,6 +44,21 @@ export default function Login(props) {
             
                 <button type='submit'>Sign In</button>
             </form>
+
+            <div className="reg">
+                <p>Don't have an account?</p>
+                <Link to='/api/register'>Sign Up</Link>
+            </div>
         </Fragment>
     )
 }
+
+function mapStateToProps(state) {
+    return {
+        username: state.username,
+        password: state.password,
+        error: state.errorMsg
+    }
+}
+
+export default connect(mapStateToProps, { authUser })(Login);
