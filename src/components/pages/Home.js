@@ -31,6 +31,11 @@ margin: 0 auto;
 margin-left: 20%;
 margin-right: 20%;
 flex-grow: 1;
+
+@media (max-width 1690px) {
+    flex-direction: 
+}
+
 `
 
 const Searchbox = styled.div`
