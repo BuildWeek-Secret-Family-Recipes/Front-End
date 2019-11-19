@@ -26,7 +26,8 @@ background-color: #C4C4C4;
 margin-bottom: 2rem;
 
 @media ${device.mobileS} {
-    width: 45%;
+    width: 50%;
+    margin-left: 5%;
 
 }
 
@@ -40,8 +41,9 @@ margin-bottom: 2rem;
 
 
 @media ${device.laptopL}{
-    width: 24%;
+    width: 22%;
     height: 350px;
+    margin-left: 0;
 }
 
 

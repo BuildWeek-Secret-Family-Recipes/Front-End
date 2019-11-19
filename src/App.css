@@ -91,7 +91,7 @@
 }
 
 .bm-burger-bars {
-  background: #373a47;
+  background: #654F3B;
 }
 
 .bm-cross-button {
@@ -100,14 +100,17 @@
 }
 
 .bm-cross {
-  background: #bdc3c7;
+  background: #654F3B;
 }
 
 .bm-menu {
   background-color: #9C976A;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
- 
+ padding-left: 0;
+ margin-left: 0;
+ padding-right:0;
+ margin-right: 0;
  
  
 }
@@ -131,9 +134,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  margin: 0 auto;
-  
-  
+
 }
 
 .bm-overlay {
@@ -148,7 +149,7 @@ nav a{
     
     text-align: center;
     height: 50px;
-    margin-top: 0rem;
+    margin-top: 7rem;
     border-radius: 4px;
     font-weight: bold;
     letter-spacing: 0.5rem;
@@ -157,6 +158,7 @@ nav a{
     text-decoration: none;
     transition: color 0.3s linear;
     text-shadow: 1px 1px gold;
+    border: solid 0.5px gold;
     
 }
 
