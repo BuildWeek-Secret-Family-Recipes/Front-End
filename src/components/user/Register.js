@@ -39,7 +39,7 @@ function Register(props) {
             <form onSubmit={handleSubmit}>
                 <input 
                     type='text'
-                    className='input' 
+                    className='log-input' 
                     name='email' 
                     placeholder='Email'
                     value={newUser.email}
@@ -47,7 +47,7 @@ function Register(props) {
                 />
                 <input 
                     type='text'
-                    className='input' 
+                    className='log-input' 
                     name='username' 
                     placeholder='Username'
                     value={newUser.username}
@@ -55,7 +55,7 @@ function Register(props) {
                 />
                 <input 
                     type='password' 
-                    className='input'
+                    className='log-input'
                     name='password' 
                     placeholder='Password'
                     value={newUser.password}

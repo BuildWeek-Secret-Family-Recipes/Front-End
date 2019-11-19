@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-form {
+.log-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,7 +13,7 @@ form {
   margin-left: 24rem;
 }
 
-input {
+.log-input {
   margin-bottom: 0.5rem;
   border: 1px solid gray;
   border-radius: 0.2rem;

@@ -36,10 +36,10 @@ function Login(props) {
 
     return (
         <Fragment>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='log-form'>
                 <input 
                     type='text'
-                    className='input' 
+                    className='log-input' 
                     name='username' 
                     placeholder='Username'
                     value={userData.username}
@@ -47,7 +47,7 @@ function Login(props) {
                 />
                 <input 
                     type='password' 
-                    className='input'
+                    className='log-input'
                     name='password' 
                     placeholder='Password'
                     value={userData.password}
