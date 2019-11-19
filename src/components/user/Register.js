@@ -36,7 +36,7 @@ function Register(props) {
 
     return (
         <Fragment>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='log-form'>
                 <input 
                     type='text'
                     className='log-input' 
