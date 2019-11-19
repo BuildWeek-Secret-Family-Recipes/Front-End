@@ -23,7 +23,7 @@ function Register(props) {
 
     const handleSubmit = e => {
         e.preventDefault()
-        props.registerUser();
+        props.registerUser({ setNewUser });
     }
 
     return (

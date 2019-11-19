@@ -4,11 +4,12 @@ export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
-export const authUser = ({ username, password }) => {
+export const authUser = (props) => {
+    const { username, password } = props.user;
     return dispatch => {
         dispatch({ type: LOGIN_REQUEST })
 
-        api().post('/login', {
+        api().post('/auth/user/login', {
             username, password
         })
         .then(res => {
@@ -29,12 +30,12 @@ export const REGISTER_REQUEST = 'REGISTER_REQUEST';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAILURE = 'REGISTER_FAILURE';
 
-export const registerUser = ({ username, password, email, history }) => {
-
+export const registerUser = (props) => {
+    const { username, password, email } = props.user
     return dispatch => {
         dispatch({ type: REGISTER_REQUEST })
 
-        api().post('/register', {
+        api().post('/user/register', {
             username,
             password,
             email
@@ -42,7 +43,7 @@ export const registerUser = ({ username, password, email, history }) => {
         .then(res => {
             localStorage.setItem('token', res.data.payload)
             dispatch({ type: LOGIN_SUCCESS });
-			history.push('/myrecipes')
+			props.history.push('/myrecipes')
         })
         .catch(err => 
             dispatch({

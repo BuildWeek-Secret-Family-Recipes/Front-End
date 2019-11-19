@@ -2,34 +2,100 @@ import React from 'react';
 import Dining from '../../assets/img/dining.png';
 import styled from 'styled-components';
 import Search from '../layout/Search';
+import { device } from'../layout/Breakpoints';
 
-    const Body = styled.div`
-    background-color: #EDDFB0;
-    max-width: 
-    `
-    const Card = styled.div`
-    height: 300px;
-    width: 250px;
-    background-color: #C4C4C4;
-    margin-bottom: 2rem;
-    `
-    
-    const CardHolder = styled.section`
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-around;
-    align-content: space-evenly;
-    margin: 0 auto;
-    margin-left: 20%;
-    margin-right: 20%;
-    `
+const Header = styled.header`
+font-size: 2.8rem;
+font-color: #654F3B
+text-shadow: 2px 2px #654F3B;
 
-    const Searchbox = styled.div`
-    display: flex;
-    justify-content: flex-end;
+@media ${device.mobileS}{
+    font-size: 2rem;
+    text-shadow: 1px 1px #654F3B;
+}
+
+`
+const Body = styled.div`
+background-color: #EDDFB0;
+
+`
+const Card = styled.div`
+height: 300px;
+width: 250px;
+background-color: #C4C4C4;
+margin-bottom: 2rem;
+
+@media ${device.mobileS} {
+    width: 50%;
+    margin-left: 5%;
+
+}
+
+@media ${device.tablet}{
+    width: 45%;
+}
+
+@media ${device.laptop}{
+    width: 35%;
+}
+
+
+@media ${device.laptopL}{
+    width: 22%;
+    height: 350px;
+    margin-left: 0;
+}
+
+
+@media ${device.desktop}{
+    width: 22%;
+    height: 400px;
+}
+
+@media ${device.desktopL}{
+    width: 20%;
+    height: 440px;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+`
+
+const CardHolder = styled.section`
+display: flex;
+flex-wrap: wrap;
+flex-direction: row;
+justify-content: space-around;
+align-content: space-evenly;
+margin: 0 auto;
+margin-left: 10%;
+margin-right: 10%;
+
+
+
+@media ${device.laptopL} {
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
     
-    `
+
+@media ${device.mobileS} {
+    margin-left: 3%;
+    margin-left: 3%;
+}
+
+
+
+`
+
+const Searchbox = styled.div`
+display: flex;
+justify-content: flex-end;
+
+
+`
+
+   
 
 const Home = () => {
     return (
@@ -54,7 +120,7 @@ const Home = () => {
                     <Card>Public Recipe Preview</Card>
                 </CardHolder>
             </div>
-
+         
           
         </Body>
     )

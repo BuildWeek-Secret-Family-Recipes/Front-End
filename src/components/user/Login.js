@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { authUser } from '../../actions/auth';
 
 function Login(props) {
+    const [setError] = useState()
     const [userData, setUserData] = useState({
         username: '',
         password: '',
@@ -19,7 +20,8 @@ function Login(props) {
 
     const handleSubmit = e => {
         e.preventDefault()
-        authUser();
+
+        props.authUser();
     }
 
     return (
