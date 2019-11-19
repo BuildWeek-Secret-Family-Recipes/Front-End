@@ -1,54 +1,34 @@
-import {
-    LOGIN_REQUEST,
-    LOGIN_SUCCESS,
-    LOGIN_FAILURE,
-    REGISTER_REQUEST,
-    REGISTER_SUCCESS,
-    REGISTER_FAILURE
-} from '../actions/auth';
+import { userConstants } from '../actions/types';
 
 
-const initialState = {
+export const initialState = {
     user: {
         username: '',
         password: '',
-        email: ''
+        email: '',
     },
-    errorMsg: null
+    error: null,
+    loggingIn: true
 }
 
-export function reducer(state = initialState, action){
+export function authReducer(state = initialState, action){
     switch(action.type) {
-        case LOGIN_REQUEST:
+        case userConstants.LOGIN_REQUEST:
             return {
-                ...state,
-                errorMsg: null
+                loggingIn: true,
+                user: action.user,
+                error: null                
             };
-        case LOGIN_SUCCESS:
+        case userConstants.LOGIN_SUCCESS:
             return {
-                ...state,
-                errorMsg: null
+                loggingIn: true,
+                user: action.user,
+                error: null
             };
-        case LOGIN_FAILURE:
-            return {
-                ...state,
-                errorMsg: action.error
-            }
-        
-        case REGISTER_REQUEST: 
-            return {
-                ...state,
-                errorMsg: null
-            }
-        case REGISTER_SUCCESS:
-            return {
-                ...state
-            }
-        case REGISTER_FAILURE:
-            return {
-                ...state,
-                errorMsg: action.error
-            }
+        case userConstants.LOGIN_FAILURE:
+            return {};
+        case userConstants.LOGOUT:
+            return {};
         default:
             return state;
     }

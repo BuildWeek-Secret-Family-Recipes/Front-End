@@ -1,54 +1,93 @@
 import api from '../utils/api';
 
-export const LOGIN_REQUEST = 'LOGIN_REQUEST';
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+import { userConstants } from '../actions/types';
 
-export const authUser = (username, password) => {
-    return dispatch => {
-        dispatch({ type: LOGIN_REQUEST })
-
-        api().post('/api/login', {
-            username, password
-        })
-        .then(res => {
-            localStorage.setItem('token', res.data.token)
-
-            dispatch({ type: LOGIN_SUCCESS });
-        })
-        .catch(err => {
-            dispatch({
-                type: LOGIN_FAILURE,
-                error: err.response.data.message
-            })
-        })
-    }
+export const userActions = {
+    login,
+    register,
+    getAll,
+    delete: _delete
 }
 
-export const REGISTER_REQUEST = 'REGISTER_REQUEST';
-export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
-export const REGISTER_FAILURE = 'REGISTER_FAILURE';
+function login(props) {
 
-export const registerUser = (props) => {
+    const { user, username, password, email, error } = props.user;
+        
+        return dispatch => {
+            dispatch(request({ type: userConstants.LOGIN_REQUEST }));
 
-    const { username, password } = props;
+            api().post('/auth/user/login', (username, password, email))
+            .then(res => {
+                localStorage.setItem('token', res.data.token)
+                dispatch(success(user));
+            })
+            .catch(err => {
+                dispatch(failure(error.toString()))
+            })
+    }
+
+
+    function request(user) { return { type: userConstants.LOGIN_REQUEST, user } };
+    function success(user) { return { type: userConstants.LOGIN_SUCCESS, user } };
+    function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } };
+}
+
+function register(props) {
+
+    const { user } = props.user;
 
     return dispatch => {
-        dispatch({ type: REGISTER_REQUEST })
+        dispatch(request(user));
 
-        api().post('/api/register', {
-            username,
-            password
+        api().post('/api/auth/user/register', user)
+        .then(user => {
+            localStorage.setItem('token', user.data.payload)
+            dispatch(success());
+			props.history.push('/login')
         })
-        .then(res => {
-            localStorage.setItem('token', res.data.payload)
-            dispatch({ type: LOGIN_SUCCESS });
-			props.history.push('/myrecipes')
-        })
-        .catch(err => 
-            dispatch({
-            type: REGISTER_FAILURE,
-            error: err.res.data.message   
-        }))
+        .catch(err => { 
+            dispatch(failure(err.toString()));
+        }
+    );
+
+};
+    function request(user) { return { type: userConstants.REGISTER_REQUEST, user } }
+    function success(user) { return { type: userConstants.REGISTER_SUCCESS, user } }
+    function failure(error) { return { type: userConstants.REGISTER_FAILURE, error } }
+}
+
+function getAll() {
+    return dispatch => {
+        dispatch(request());
+
+        api().getAll()
+            .then(
+                users => dispatch(success(users))
+            )
+            .catch(
+                error => dispatch(failure(error.toString()))
+            );
     }
+
+    function request() { return { type: userConstants.GETALL_REQUEST } }
+    function success(users) { return { type: userConstants.GETALL_SUCCESS, users } }
+    function failure(error) { return { type: userConstants.GETALL_FAILURE, error } }
+}
+
+function _delete(id) {
+    return dispatch => {
+        dispatch(request(id));
+
+        api().delete(id)
+            .then(
+                user => dispatch(success(id))
+            )
+            .catch(
+                error => dispatch(failure(id, error.toString()))
+            );
+    };
+
+    function request(id) { return { type: userConstants.DELETE_REQUEST, id } }
+    function success(id) { return { type: userConstants.DELETE_SUCCESS, id } }
+    function failure(id, error) { return { type: userConstants.DELETE_FAILURE, id, error } }
 }

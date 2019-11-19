@@ -1,13 +1,15 @@
 import React, { Fragment, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { authUser } from '../../actions/auth';
+import { userActions } from '../../actions/auth';
+import api from '../../utils/api';
 
 function Login(props) {
+    console.log(props, '<- props in login')
+    const [error, setError] = useState()
     const [userData, setUserData] = useState({
         username: '',
         password: '',
-        email: ''
     })
     
     const handleChange = e => {
@@ -19,23 +21,25 @@ function Login(props) {
 
     const handleSubmit = e => {
         e.preventDefault()
-        authUser();
+
+        api()
+			.post('/auth/user/login', userData)
+			.then(res => {
+                console.log(userData)
+				localStorage.setItem('token', res.data.payload)
+				props.history.push('/')
+			})
+			.catch(err => {
+				setError(err)
+			})
     }
 
     return (
         <Fragment>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='log-form'>
                 <input 
                     type='text'
-                    className='input' 
-                    name='email' 
-                    placeholder='Email'
-                    value={userData.email}
-                    onChange={handleChange} 
-                />
-                <input 
-                    type='text'
-                    className='input' 
+                    className='log-input' 
                     name='username' 
                     placeholder='Username'
                     value={userData.username}
@@ -43,31 +47,33 @@ function Login(props) {
                 />
                 <input 
                     type='password' 
-                    className='input'
+                    className='log-input'
                     name='password' 
                     placeholder='Password'
                     value={userData.password}
-                    onChange={handleChange} 
+                    onChange={handleChange}
                 />
             
-                <button type='submit'>Sign In</button>
+                <button type='submit' className='log-btn'>Sign In</button>
             </form>
 
             <div className="reg">
                 <p>Don't have an account?</p>
-                <Link to='/api/register'>Sign Up</Link>
+                <Link to='/api/auth/user/register'>Sign Up</Link>
             </div>
         </Fragment>
     )
 }
 
 function mapStateToProps(state) {
-    return {
-        username: state.username,
-        password: state.password,
-        email: state.email,
-        error: state.errorMsg
-    }
+    const { loggingIn } = state.user;
+    return { loggingIn };
 }
 
-export default connect(mapStateToProps, { authUser })(Login);
+const mapDispatchToProps = ({
+    login: userActions.login
+  });
+
+  console.log(mapDispatchToProps);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
