@@ -57,7 +57,7 @@ const StyledMenu = styled.nav`
 const Searchbox = styled.div`
     display: flex;
     justify-content: center;
-    
+    margin: 0;
     `
 
 
