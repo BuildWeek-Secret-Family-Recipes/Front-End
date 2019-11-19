@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { getToken } from '../../utils/api';
 import Search from '../layout/Search';
 import styled from 'styled-components';
-import { slide as Menu } from 'react-burger-menu';
+import {slide as Menu} from 'react-burger-menu';
 
-const StyledMenu = styled.div`
+const StyledMenu = styled.nav`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -79,5 +79,9 @@ const Nav = props => {
         </Fragment>
     )
 }
+
+
+
+
 
 export default Nav
