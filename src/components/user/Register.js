@@ -1,18 +1,17 @@
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { Fragment, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { registerUser } from '../../actions/auth';
+import { register } from '../../actions/auth';
+import api from '../../utils/api';
 
 function Register(props) {
+    console.log(props, '<-- Register props');
+    const [error, setError] = useState();
     const [newUser, setNewUser] = useState({
         username: '',
         password: '',
         email: ''
     })
-
-    useEffect(() => {
-        props.registerUser();
-      }, [])
     
     const handleChange = e => {
         setNewUser({
@@ -23,7 +22,16 @@ function Register(props) {
 
     const handleSubmit = e => {
         e.preventDefault()
-        props.registerUser({ setNewUser });
+
+        api()
+			.post('/auth/user/register', newUser)
+			.then(res => {
+				localStorage.setItem('token', res.data.payload)
+				props.history.push('/')
+			})
+			.catch(err => {
+				setError(err)
+			})
     }
 
     return (
@@ -59,23 +67,20 @@ function Register(props) {
 
             <div className="reg">
                 <p>Already have an account?</p>
-                <Link to='/api/login'>Sign In</Link>
+                <Link to='/api/auth/user/login'>Sign In</Link>
             </div>
         </Fragment>
     )
 }
 
 function mapStateToProps(state) {
+    console.log(state, '<- Register state')
     return {
-        username: state.username,
-        password: state.password,
-        email: state.email,
-        error: state.errorMsg
+        user: state.user
     }
 }
 
 const mapDispatchToProps = {
-    registerUser
   };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);

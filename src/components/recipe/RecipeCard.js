@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 export default function RecipeCard() {
     return (
         <div>
-            <h1>Recipe Card</h1>
+            <h3>Recipe Card</h3>
         </div>
     )
 }
