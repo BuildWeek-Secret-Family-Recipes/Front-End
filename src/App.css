@@ -104,10 +104,22 @@
 }
 
 .bm-menu {
-  background: #373a47;
+  background-color: #9C976A;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
+  
+ 
+  @media  (max-width: 320px) {
+    width: 50%;
+  }
+ 
 }
+
+
+
+
+
+
 
 .bm-morph-shape {
   fill: #373a47;
@@ -115,8 +127,34 @@
 
 .bm-item-list {
   color: #b8b7ad;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 0 auto;
+ 
+  
 }
 
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
 }
+
+a{
+ 
+    font-size: 1.7rem;
+    padding: 1rem 0;
+    
+    text-align: center;
+    height: 50px;
+    margin-top: 0rem;
+    border-radius: 4px;
+    font-weight: bold;
+    letter-spacing: 0.5rem;
+    color: #C4C4C4;
+    background-color: #654F3B;
+    text-decoration: none;
+    transition: color 0.3s linear;
+    text-shadow: 1px 1px gold;
+    
+}
+
