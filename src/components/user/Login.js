@@ -70,4 +70,8 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { authUser })(Login);
+const mapDispatchToProps = {
+    authUser
+  };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

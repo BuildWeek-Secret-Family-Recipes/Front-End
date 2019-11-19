@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { registerUser } from '../../actions/auth';
@@ -9,6 +9,10 @@ function Register(props) {
         password: '',
         email: ''
     })
+
+    useEffect(() => {
+        props.registerUser();
+      }, [])
     
     const handleChange = e => {
         setNewUser({
@@ -19,7 +23,7 @@ function Register(props) {
 
     const handleSubmit = e => {
         e.preventDefault()
-        registerUser();
+        props.registerUser();
     }
 
     return (
@@ -70,4 +74,8 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { registerUser })(Register);
+const mapDispatchToProps = {
+    registerUser
+  };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

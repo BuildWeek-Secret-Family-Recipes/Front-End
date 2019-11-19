@@ -34,8 +34,8 @@ function App() {
       <Header>Secret Family Cookbook</Header>
 
       <Route exact path='/' component={Home} />
-      <Route exact path='/api/login' component={Login} />
-      <Route exact path='/api/register' component={Register} />
+      <Route exact path='/auth/user/login' component={Login} />
+      <Route exact path='/auth/user/register' component={Register} />
       <Route exact path='/addrecipe' component={AddRecipe} />
       <PrivateRoute exact path='/myrecipes' component={UserRecipes} />
 			<PrivateRoute exact path="/logout" component={Signout} />

@@ -71,9 +71,9 @@ const Nav = props => {
             <Menu>
                 <Link to='/'>Home</Link>
                 {logged && <Link to='/myrecipes'>My Recipes</Link>}
-                {!logged && <Link to='/api/login'>Log In</Link>}
+                {!logged && <Link to='/auth/user/login'>Log In</Link>}
                 {logged && <Link to='/logout'>Logout</Link>}
-                {!logged && <Link to='/api/register'>Sign Up</Link>}
+                {!logged && <Link to='/auth/user/register'>Sign Up</Link>}
                 <Searchbox><Search /></Searchbox>
             </Menu>
         </Fragment>

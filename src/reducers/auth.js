@@ -12,9 +12,9 @@ const initialState = {
     user: {
         username: '',
         password: '',
-        email: ''
-    },
-    errorMsg: null
+        email: '',
+        error: null
+    }
 }
 
 export function reducer(state = initialState, action){
@@ -22,32 +22,39 @@ export function reducer(state = initialState, action){
         case LOGIN_REQUEST:
             return {
                 ...state,
-                errorMsg: null
+                error: null                
             };
         case LOGIN_SUCCESS:
             return {
                 ...state,
-                errorMsg: null
+                username: action.username,
+                password: action.password,
+                email: action.email,
+                error: null
             };
         case LOGIN_FAILURE:
             return {
                 ...state,
-                errorMsg: action.error
+                error: action.error
             }
         
         case REGISTER_REQUEST: 
             return {
                 ...state,
-                errorMsg: null
+                error: null
             }
         case REGISTER_SUCCESS:
             return {
-                ...state
+                ...state,
+                username: action.username,
+                password: action.password,
+                email: action.email,
+                error: null
             }
         case REGISTER_FAILURE:
             return {
                 ...state,
-                errorMsg: action.error
+                error: action.error
             }
         default:
             return state;
