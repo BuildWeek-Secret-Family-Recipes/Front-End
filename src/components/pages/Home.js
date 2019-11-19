@@ -105,7 +105,6 @@ const Home = () => {
             <Search />
             </Searchbox>
 
-            <Header>Secret Family Cookbook</Header>
             
             <div>
                 <img src={Dining} alt='Family Dining' />

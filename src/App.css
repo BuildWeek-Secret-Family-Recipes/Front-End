@@ -2,6 +2,20 @@
   text-align: center;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  margin-left: 18rem;
+  margin-right: 18rem;
+}
+
+input {
+  margin-bottom: 0.5rem;
+}
+
+.reg {
+  margin-top: 0;
+}
 
 /* Burger Menu */
 
@@ -54,6 +68,29 @@
 
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
+}
+
+.footer {
+  margin-top: 1rem;
+}
+
+.icon-credit {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  justify-content: center;
+  font-size: 0.65rem;
+  color: brown;
+}
+
+.icon-credit a {
+  margin: 0.4rem;
+  text-decoration: none;
+  color: brown;
+}
+
+.icon-credit a:hover {
+  color: darkolivegreen;
 }
 
 :root {

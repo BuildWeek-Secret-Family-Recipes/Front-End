@@ -5,9 +5,9 @@ import { authUser } from '../../actions/auth';
 
 function Login(props) {
     const [userData, setUserData] = useState({
-        id: '',
         username: '',
-        password: ''
+        password: '',
+        email: ''
     })
     
     const handleChange = e => {
@@ -25,6 +25,14 @@ function Login(props) {
     return (
         <Fragment>
             <form onSubmit={handleSubmit}>
+                <input 
+                    type='text'
+                    className='input' 
+                    name='email' 
+                    placeholder='Email'
+                    value={userData.email}
+                    onChange={handleChange} 
+                />
                 <input 
                     type='text'
                     className='input' 
@@ -57,6 +65,7 @@ function mapStateToProps(state) {
     return {
         username: state.username,
         password: state.password,
+        email: state.email,
         error: state.errorMsg
     }
 }
