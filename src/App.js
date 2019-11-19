@@ -39,7 +39,7 @@ function App() {
       <Route exact path='/api/register' component={Register} />
       <Route exact path='/recipe' component={RecipeCard} />
       <Route exact path='/addrecipe' component={AddRecipe} />
-      <Route exact path='/myrecipes' component={UserRecipes} />
+      <PrivateRoute exact path='/myrecipes' component={UserRecipes} />
 			<PrivateRoute exact path="/logout" component={Signout} />
         
       <Footerblock>
