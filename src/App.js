@@ -9,6 +9,7 @@ import Nav from './components/layout/Nav';
 import Login from './components/user/Login';
 import Register from './components/user/Register';
 import Signout from './components/user/Signout';
+import RecipeCard from './components/recipe/RecipeForm';
 import UserRecipes from './components/user/UserRecipes';
 import AddRecipe from './components/recipe/AddRecipe'
 
@@ -36,8 +37,9 @@ function App() {
       <Route exact path='/' component={Home} />
       <Route exact path='/api/login' component={Login} />
       <Route exact path='/api/register' component={Register} />
+      <Route exact path='/recipe' component={RecipeCard} />
       <Route exact path='/addrecipe' component={AddRecipe} />
-      <PrivateRoute exact path='/myrecipes' component={UserRecipes} />
+      <Route exact path='/myrecipes' component={UserRecipes} />
 			<PrivateRoute exact path="/logout" component={Signout} />
         
       <Footerblock>
