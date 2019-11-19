@@ -1,6 +1,5 @@
 import React from 'react';
 import Dining from '../../assets/img/dining.png';
-import Footer from './Footer'
 import styled from 'styled-components';
 import Search from '../layout/Search';
 
@@ -12,23 +11,24 @@ import Search from '../layout/Search';
     `
     const Body = styled.div`
     background-color: #EDDFB0;
-
+    max-width: 
     `
     const Card = styled.div`
     height: 300px;
     width: 250px;
     background-color: #C4C4C4;
+    margin-bottom: 2rem;
     `
-
+    
     const CardHolder = styled.section`
-    height: 700px;
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-around;
     align-content: space-evenly;
     margin: 0 auto;
-    margin-left: 5rem;
+    margin-left: 20%;
+    margin-right: 20%;
     `
 
     const Searchbox = styled.div`
@@ -40,8 +40,9 @@ import Search from '../layout/Search';
 const Home = () => {
     return (
         <Body>
+            
             <Searchbox>
-                <Search />
+            <Search />
             </Searchbox>
 
             <Header>Secret Family Cookbook</Header>
@@ -56,12 +57,12 @@ const Home = () => {
                     <Card>Public Recipe Preview</Card>
                     <Card>Public Recipe Preview</Card>
                     <Card>Public Recipe Preview</Card>
-                    {/* <Card>Public Recipe Preview</Card>
-                    <Card>Public Recipe Preview</Card> */}
+                    <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card>
                 </CardHolder>
             </div>
 
-          <Footer />
+          
         </Body>
     )
 }
