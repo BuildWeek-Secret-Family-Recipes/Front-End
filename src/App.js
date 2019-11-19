@@ -12,9 +12,15 @@ import Signout from './components/user/Signout';
 import UserRecipes from './components/user/UserRecipes';
 import AddRecipe from './components/recipe/AddRecipe'
 
+
 import './App.css';
 
+const Header = styled.header`
+    font-size: 2.8rem;
+    font-color: #654F3B
+    text-shadow: 2px 2px #654F3B;
 
+    `
 const Footerblock = styled.div`
 height: 0;
 padding-top: -50px;
@@ -24,8 +30,8 @@ margin-top: -15px;
 function App() {
   return (
     <div className="App">
-      
       <Nav />
+      <Header>Secret Family Cookbook</Header>
 
       <Route exact path='/' component={Home} />
       <Route exact path='/api/login' component={Login} />
