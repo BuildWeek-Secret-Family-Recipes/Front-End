@@ -2,6 +2,19 @@
   text-align: center;
 }
 
+form {
+  margin: 13rem 20rem;
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin-bottom: 0.5rem;
+}
+
+.reg {
+  margin-top: 0;
+}
 
 /* Burger Menu */
 
@@ -54,6 +67,10 @@
 
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
+}
+
+.footer {
+  margin-top: 1rem;
 }
 
 :root {

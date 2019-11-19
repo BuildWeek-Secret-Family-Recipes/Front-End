@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #EDDFB0;
 }
 
 code {
@@ -14,11 +15,11 @@ code {
 
 .icon-credit {
   display: flex;
+  justify-content: flex-end;
   align-items: flex-end;
   justify-content: center;
   font-size: 0.65rem;
   color: brown;
-  background-color: #EDDFB0
 }
 
 .icon-credit a {

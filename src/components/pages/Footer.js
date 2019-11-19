@@ -2,7 +2,7 @@ import React from 'react'
 
 function Footer() {
     return (
-        <div class="footer icon-credit">
+        <div className="footer icon-credit">
             <p>Icons made by
                 <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">
                 Smashicons
