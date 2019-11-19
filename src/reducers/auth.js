@@ -10,9 +10,9 @@ import {
 
 const initialState = {
     user: {
-        id: null,
         username: '',
         password: '',
+        email: ''
     },
     errorMsg: null
 }

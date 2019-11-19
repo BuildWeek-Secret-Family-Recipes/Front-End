@@ -3,12 +3,6 @@ import Dining from '../../assets/img/dining.png';
 import styled from 'styled-components';
 import Search from '../layout/Search';
 
-    const Header = styled.header`
-    font-size: 2.8rem;
-    font-color: #654F3B
-    text-shadow: 2px 2px #654F3B;
-
-    `
     const Body = styled.div`
     background-color: #EDDFB0;
     max-width: 
@@ -45,7 +39,6 @@ const Home = () => {
             <Search />
             </Searchbox>
 
-            <Header>Secret Family Cookbook</Header>
             
             <div>
                 <img src={Dining} alt='Family Dining' />
