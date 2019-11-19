@@ -62,7 +62,7 @@ function Register(props) {
                     onChange={handleChange} 
                 />
             
-                <button type='submit'>Sign Up</button>
+                <button type='submit' className='log-btn'>Sign Up</button>
             </form>
 
             <div className="reg">

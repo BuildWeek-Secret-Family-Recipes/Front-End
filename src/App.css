@@ -2,19 +2,30 @@
   text-align: center;
 }
 
-/* form {
+form {
   display: flex;
   flex-direction: column;
-  margin-left: 18rem;
-  margin-right: 18rem;
+  justify-content: center;
+  align-content: center;
+  margin-top: 8rem;
+  margin-right: 24rem;
+  margin-bottom: 18rem;
+  margin-left: 24rem;
 }
 
 input {
   margin-bottom: 0.5rem;
-} */
+  border: 1px solid gray;
+  border-radius: 0.2rem;
+  width: 12rem;
+}
 
-.reg {
-  margin-top: 0;
+.log-btn {
+  margin-left: 0.8rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 0.4rem;
+  width: 10.5rem;
+  height: 2rem;
 }
 
 /* Burger Menu */

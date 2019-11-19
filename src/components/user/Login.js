@@ -54,7 +54,7 @@ function Login(props) {
                     onChange={handleChange}
                 />
             
-                <button type='submit'>Sign In</button>
+                <button type='submit' className='log-btn'>Sign In</button>
             </form>
 
             <div className="reg">
