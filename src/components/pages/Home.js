@@ -30,6 +30,32 @@ margin-bottom: 2rem;
 
 }
 
+@media ${device.tablet}{
+    width: 45%;
+}
+
+@media ${device.laptop}{
+    width: 35%;
+}
+
+
+@media ${device.laptopL}{
+    width: 24%;
+    height: 350px;
+}
+
+
+@media ${device.desktop}{
+    width: 22%;
+    height: 400px;
+}
+
+@media ${device.desktopL}{
+    width: 20%;
+    height: 440px;
+    margin-left: 1%;
+    margin-right: 1%;
+}
 
 `
 
@@ -44,15 +70,19 @@ margin-left: 10%;
 margin-right: 10%;
 
 
+
 @media ${device.laptopL} {
-    margin-left: 10%;
-    margin-right: 10%;
-}
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+    
 
 @media ${device.mobileS} {
     margin-left: 3%;
     margin-left: 3%;
 }
+
+
 
 `
 

@@ -107,16 +107,17 @@
   background-color: #9C976A;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
-  
  
-  @media  (max-width: 320px) {
-    width: 50%;
-  }
+ 
  
 }
 
 
-
+/* @media screen and (max-width: 320px){
+  .bm-menu {
+    width: 40%;
+  }
+ } */
 
 
 
@@ -131,15 +132,16 @@
   flex-direction: column;
   justify-content: space-evenly;
   margin: 0 auto;
- 
+  
   
 }
 
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
+  
 }
 
-a{
+nav a{
  
     font-size: 1.7rem;
     padding: 1rem 0;
