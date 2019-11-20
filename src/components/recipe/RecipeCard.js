@@ -11,8 +11,9 @@
 import React, { useState, useEffect} from 'react';
 import axios from 'axios';
 import RecipeCards from './RecipeCards.js';
+import {Container, Row} from 'reactstrap';
 
-export default function Recipe(){
+export default function RecipeCard(){
 
     const [recipe, setRecipe] = useState([]);
 
@@ -27,8 +28,16 @@ export default function Recipe(){
     }, [])
 
     return(
-        <div>
-            
-        </div>
+        <Container>
+            <Row>
+                {
+                    recipe.map(recipeInfo =>{
+                        return(
+                            <RecipeCards/>
+                        )
+                    })
+                }
+            </Row>
+        </Container>
     )
 }
