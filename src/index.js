@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import thunk from 'redux-thunk';
 import { recipeReducer } from './reducers/recipes';
 import { authReducer } from './reducers/auth';
