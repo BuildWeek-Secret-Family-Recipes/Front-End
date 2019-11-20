@@ -20,6 +20,7 @@ export default function RecipeCard(){
     useEffect(() =>{
         axios.get(`https://secret-recipes.herokuapp.com/api/recipes/`)
         .then(response =>{
+            
             setRecipe(response.data);
         })
         .catch(error => {
