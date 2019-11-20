@@ -22,7 +22,7 @@ export const initialState = {
     ]
 }
 
-export function reducer(state = initialState, action) {
+export function recipeReducer(state = initialState, action) {
     switch(action.type) {
       case ADD_RECIPE_START:
         return state;

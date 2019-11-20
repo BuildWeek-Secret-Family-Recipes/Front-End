@@ -3,6 +3,8 @@ import api from '../../utils/api'
 import styled from 'styled-components'
 
 import RecipeForm from './RecipeForm'
+import IngredientsForm from './IngredientsForm'
+import InstructionsForm from './InstructionsForm'
 
 const FormDiv = styled.form`
     margin: 3rem auto;
@@ -33,37 +35,19 @@ const SubmitButton = styled.button`
 
 const AddRecipe = (props) => {
     const [error, setError] = useState()
-    const [ingredients, setIngredients] = useState([{ id: 0, type: '', amount: ''}])
-    const [instructions, setInstructions] = useState([{ id: 0, task: ''}])
-    const [formState, setformState] = useState({
-        title: '',
-        source: '',
-        ingredients: [{ type: '', amount: '' }],
-        instructions: [''],
-        category: '',
-        private: false
+    const [formState, setFormState] = useState({
+        renderRecipeForm: true,
+        renderIngredientsForm: false,
+        renderInstructionsForm: false
     })
 
-    const handleSubmit = e => {
-        e.preventDefault()
-        setRecipe({ ...recipe, instructions, ingredients })
-        api()
-            .post('/', recipe)
-            .then(res => {
-                console.log(res)
-            })
-            .catch(err => {
-                return setError(err.response)
-            })
-    }
-
     return (
-        <FormDiv onSubmit={handleSubmit}>
+        <div>
             <h3>Add A Recipe to Your Cookbook</h3>
-            {!recipeAdded && <RecipeForm />}
-            {!ingredientsAdded && <IngredientsForm />}
-            {!instructionsAdded && <InstructionsForm />}
-        </FormDiv>
+            {formState.renderRecipeForm && <RecipeForm setFormState={setFormState} />}
+            {formState.renderIngredientsForm && <IngredientsForm setFormState={setFormState} />}
+            {formState.renderInstructionsForm && <InstructionsForm setFormState={setFormState} />}
+        </div>
     )
 }
 

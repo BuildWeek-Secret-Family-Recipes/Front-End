@@ -2,6 +2,14 @@ import React, { useState } from 'react'
 import api from '../../utils/api'
 import styled from 'styled-components'
 
+const FormDiv = styled.form`
+    margin: 3rem auto;
+    border: 1px solid black;
+    border-radius: .5rem;
+    padding: 1rem;
+    width: 85%;
+    background: #d2bba0;
+`
 const ColumnWrapper = styled.div`
     display: flex;
     flex-direction: column;
@@ -28,13 +36,25 @@ const AddButton = styled.button`
         color: #f2ffe0;
     }
 `
+const SubmitButton = styled.button`
+    margin-top: 2rem;
+    height: 2rem;
+    width: 10rem;
+    border-radius: .3rem;
+    background: #f2ffe0;
+    :hover {
+        cursor: pointer;
+        background: #9f7e69;
+        color: #f2ffe0;
+    }
+`
 
-const InstructionsForm = () => {
-    const [instructions, setInstructions] = useState({
+const InstructionsForm = ({setFormState}) => {
+    const [instructions, setInstructions] = useState([{
         recipe_id: '',
         step_number: '',
         instruction: ''
-    })
+    }])
 
     const addInstruction = e => {
         e.preventDefault()
@@ -55,18 +75,43 @@ const InstructionsForm = () => {
         setInstructions(newInstructions)
     }
 
+    const handleSubmit = e => {
+        e.preventDefault()
+        setFormState({
+            renderRecipeForm: true,
+            renderIngredientsForm: false,
+            renderInstructionsForm: false
+        })
+        // api()
+        //     .post('/', recipe)
+        //     .then(res => {
+        //         console.log(res)
+        //         setFormState({
+        //             renderRecipeForm: true,
+        //             renderIngredientsForm: false,
+        //             renderInstructionsForm: false
+        //         })
+        //     })
+        //     .catch(err => {
+        //         return setError(err.response)
+        //     })
+    }
+
     return (
-        <Instructions>
-            <h3>Instructions</h3>
-            <AddButton onClick={addInstruction}>+</AddButton> 
-            <ColumnWrapper>
-                {instructions &&
-                    instructions.map((instruction, indx) => {
-                        return <Instruction key={indx} id={instruction.id} type='text' name='task' placeholder='Task' onChange={handleInstructions} />     
-                    })
-                }
-            </ColumnWrapper>
-        </Instructions>
+        <FormDiv onSubmit={handleSubmit}>
+            <Instructions>
+                <h3>Instructions</h3>
+                <AddButton onClick={addInstruction}>+</AddButton> 
+                <ColumnWrapper>
+                    {instructions &&
+                        instructions.map((instruction, indx) => {
+                            return <Instruction key={indx} id={instruction.id} type='text' name='task' placeholder='Task' onChange={handleInstructions} />     
+                        })
+                    }
+                </ColumnWrapper>
+            </Instructions>
+            <SubmitButton type='submit'>Add Instructions</SubmitButton>
+        </FormDiv>
     )
 }
 

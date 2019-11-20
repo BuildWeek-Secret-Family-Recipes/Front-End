@@ -2,6 +2,14 @@ import React, { useState } from 'react'
 import api from '../../utils/api'
 import styled from 'styled-components'
 
+const FormDiv = styled.form`
+    margin: 3rem auto;
+    border: 1px solid black;
+    border-radius: .5rem;
+    padding: 1rem;
+    width: 85%;
+    background: #d2bba0;
+`
 const ColumnWrapper = styled.div`
     display: flex;
     flex-direction: column;
@@ -44,14 +52,26 @@ const AddButton = styled.button`
         color: #f2ffe0;
     }
 `
+const SubmitButton = styled.button`
+    margin-top: 2rem;
+    height: 2rem;
+    width: 10rem;
+    border-radius: .3rem;
+    background: #f2ffe0;
+    :hover {
+        cursor: pointer;
+        background: #9f7e69;
+        color: #f2ffe0;
+    }
+`
 
-const IngredientsForm = () => {
-    const [ingredients, setIngredients] = useState({
+const IngredientsForm = ({setFormState}) => {
+    const [ingredients, setIngredients] = useState([{
         name: '',
         quantity: '',
         measurement: '',
         recipe_id: ''
-    })
+    }])
 
     const handleIngredients = e => {
         let newIngredients = ingredients.map(ingredient => {
@@ -72,24 +92,49 @@ const IngredientsForm = () => {
         ])
     }
 
+    const handleSubmit = e => {
+        e.preventDefault()
+        setFormState({
+            renderRecipeForm: false,
+            renderIngredientsForm: false,
+            renderInstructionsForm: true
+        })
+        // api()
+        //     .post('/', recipe)
+        //     .then(res => {
+        //         console.log(res)
+        //         setFormState({
+        //             renderRecipeForm: false,
+        //             renderIngredientsForm: false,
+        //             renderInstructionsForm: true
+        //         })
+        //     })
+        //     .catch(err => {
+        //         return setError(err.response)
+        //     })
+    }
+
     return (
-        <Ingredients>
-            <h3>Ingredients</h3>
-            <AddButton onClick={addIndgredient}>+</AddButton>
-            <ColumnWrapper>
-                {ingredients &&
-                    ingredients.map((ingredient, indx) => {
-                        return (
-                            <Ingredient key={indx} >
-                                <Name type='text' name='name' placeholder='Name' value={recipe.name} onChange={handleIngredients} />
-                                <Quantity type='text' name='quantity' placeholder='Quantity' value={recipe.quantity} onChange={handleIngredients} />
-                                <Measurement type='text' name='measurement' placeholder='Measurement' value={recipe.measurement} onChange={handleIngredients} />
-                            </Ingredient>
-                        )
-                    })
-                }
-            </ColumnWrapper>
-        </Ingredients>
+        <FormDiv onSubmit={handleSubmit}>
+            <Ingredients>
+                <h3>Add Ingredients to Your Recipe</h3>
+                <AddButton onClick={addIndgredient}>+</AddButton>
+                <ColumnWrapper>
+                    {ingredients &&
+                        ingredients.map((ingredient, indx) => {
+                            return (
+                                <Ingredient key={indx} >
+                                    <Name type='text' name='name' placeholder='Name' value={ingredients.name} onChange={handleIngredients} />
+                                    <Quantity type='text' name='quantity' placeholder='Quantity' value={ingredients.quantity} onChange={handleIngredients} />
+                                    <Measurement type='text' name='measurement' placeholder='Measurement' value={ingredients.measurement} onChange={handleIngredients} />
+                                </Ingredient>
+                            )
+                        })
+                    }
+                </ColumnWrapper>
+            </Ingredients>
+            <SubmitButton type='submit'>Add Ingredients</SubmitButton>
+        </FormDiv>
     )
 }
 
