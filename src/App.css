@@ -206,7 +206,7 @@ nav a{
     text-decoration: none;
     transition: color 0.3s linear;
     text-shadow: 1px 1px gold;
-    border: solid 0.5px gold;
+    border: solid 0.5px #bf8040;
     
 }
 
