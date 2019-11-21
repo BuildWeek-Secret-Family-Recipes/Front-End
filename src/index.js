@@ -1,34 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import thunk from 'redux-thunk';
-import { recipeReducer } from './reducers/recipes';
-import { authReducer } from './reducers/auth';
-import { registerReducer } from './reducers/registerReducer';
-import { userReducer } from './reducers/userReducer';
-import { BrowserRouter as Router } from 'react-router-dom';
-
-import './index.css';
 import App from './App';
+import { BrowserRouter } from 'react-router-dom';
 
-const rootReducer = combineReducers({
-    recipe: recipeReducer, 
-    auth: authReducer,
-    register: registerReducer,
-    user: userReducer
-})
+// Redux & Store
+import { Provider } from 'react-redux';
+import store from './utils/store';
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+// Styles
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
 
-ReactDOM.render(
+
+const AppWithProvider = (
     <Provider store={store}>
-        <Router>
+        <BrowserRouter>
             <App />
-        </Router>
-    </Provider>, 
-    document.getElementById('root')
-);
+        </BrowserRouter>
+    </Provider>
+)
 
-export default rootReducer;
+ReactDOM.render(AppWithProvider, document.getElementById('root'));
