@@ -13,13 +13,15 @@ export const LogForm = styled.form`
 `
 
 export const LogInput = styled.input`
+    margin-left: 8rem;
+    margin-right: 8rem;
     margin-bottom: 0.5rem;
     border: 1px solid var(--primary-color);
     border-radius: 0.5rem;
     height: 2rem;`
 
 export const LogButton = styled.button`
-    margin-left: 2.8rem;
+    margin-left: 11.5rem;
     border: 1px solid var(--primary-color);
     border-radius: 0.4rem;
     width: 12.5rem;
