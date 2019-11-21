@@ -6,8 +6,8 @@ import RecipeCards from '../recipe/RecipeCards';
 export default function MyRecipes() {
     return (
         <div>
-            <Link to='/recipes/addrecipe'>Add Recipe</Link>
-            <Link to='/recipes/editrecipe'>Edit Recipe</Link>
+            <Link to='/api/auth/recipes'>Add Recipe</Link>
+            <Link to='/api/auth/recipes/:id'>Edit Recipe</Link>
 
             <RecipeCards />
         </div>

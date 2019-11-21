@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import { Link } from "react-router-dom";
-import { getToken } from '../../utils/api';
 import { connect } from 'react-redux';
 import Search from '../layout/Search';
 import styled from 'styled-components';
@@ -22,7 +21,7 @@ const Nav = props => {
         <Fragment>
             <Menu>
                 <Link to='/'>Home</Link>
-                {logged && <Link to='/recipes'>My Recipes</Link>}
+                {logged && <Link to='/api/auth/recipes/user'>My Recipes</Link>}
                 {!logged && <Link to='/api/auth/user/login'>Log In</Link>}
                 {logged && <Link to='/logout'>Logout</Link>}
                 {!logged && <Link to='/api/auth/user/register'>Sign Up</Link>}

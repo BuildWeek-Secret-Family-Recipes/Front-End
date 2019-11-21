@@ -11,7 +11,7 @@ export default function Recipe(){
             console.log(res.data)
         })
         .catch(error => {
-            console.log("recipes were not returned", error);
+            console.log("Recipes not Found", error);
         });
     }, [])
     

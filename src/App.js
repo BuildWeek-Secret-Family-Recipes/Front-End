@@ -44,9 +44,9 @@ function App() {
       <Route exact path='/' component={Home} />
       <Route exact path='/api/auth/user/login' component={Login} />
       <Route exact path='/api/auth/user/register' component={Register} />
-      <PrivateRoute exact path='/recipes' component={MyRecipes} />
-      <PrivateRoute exact path='/recipes/addrecipe' component={AddRecipe} />
-      <PrivateRoute exact path='/recipes/editrecipe' component={EditRecipe} />
+      <PrivateRoute exact path='/api/auth/recipes/user' component={MyRecipes} />
+      <PrivateRoute exact path='/api/auth/recipes' component={AddRecipe} />
+      <PrivateRoute exact path='/api/auth/recipes/:id' component={EditRecipe} />
 			<PrivateRoute exact path="/logout" component={Logout} />
       </Switch>
 
