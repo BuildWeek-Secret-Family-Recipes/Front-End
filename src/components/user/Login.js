@@ -1,12 +1,10 @@
 import React, { Fragment, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { userActions } from '../../actions/auth';
-import api from '../../utils/api';
+import { login } from '../../actions/auth';
 
 function Login(props) {
-    console.log(props, '<- props in login')
-    const [error, setError] = useState()
+    console.log(props, '<- Props in Login Page')
     const [userData, setUserData] = useState({
         username: '',
         password: '',
@@ -22,17 +20,13 @@ function Login(props) {
     const handleSubmit = e => {
         e.preventDefault()
 
-        api()
-			.post('/auth/user/login', userData)
-			.then(res => {
-                console.log(userData)
-				localStorage.setItem('token', res.data.payload)
-				props.history.push('/')
-			})
-			.catch(err => {
-				setError(err)
-			})
+        props.login(userData)
+        console.log(userData, '<- userData in handleSubmit')
+        props.history.push('/')
+        
     }
+
+    console.log('login');
 
     return (
         <Fragment>
@@ -43,7 +37,7 @@ function Login(props) {
                     name='username' 
                     placeholder='Username'
                     value={userData.username}
-                    onChange={handleChange} 
+                    onChange={handleChange}
                 />
                 <input 
                     type='password' 
@@ -65,15 +59,14 @@ function Login(props) {
     )
 }
 
-function mapStateToProps(state) {
-    const { loggingIn } = state.user;
-    return { loggingIn };
-}
+const mapStateToProps = ({ authReducer }) => ({
+    user: authReducer.user
+})
 
 const mapDispatchToProps = ({
-    login: userActions.login
-  });
+    login
+})
 
-  console.log(mapDispatchToProps);
+console.log(mapDispatchToProps, '<- Props matched to dispatch')
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, { login })(Login);

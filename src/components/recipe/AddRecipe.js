@@ -34,6 +34,7 @@ const SubmitButton = styled.button`
 `
 
 const AddRecipe = (props) => {
+    // eslint-disable-next-line
     const [error, setError] = useState()
     const [id, setId] = useState()
     const [formState, setFormState] = useState({
