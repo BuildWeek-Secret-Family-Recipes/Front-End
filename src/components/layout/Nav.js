@@ -14,9 +14,10 @@ const Searchbox = styled.div`
 
 
 const Nav = props => {
-  console.log(props, '<--Nav props')
+  console.log(props.isLoggedIn, '<--Nav props')
 
-  const logged = getToken()
+  const logged = props.isLoggedIn;
+
     return (
         <Fragment>
             <Menu>
@@ -33,7 +34,7 @@ const Nav = props => {
 
 
 const mapStateToProps = ({ authReducer }) => ({
-  user: authReducer.user
+  isLoggedIn: authReducer.isLoggedIn
 })
 
 
