@@ -66,12 +66,8 @@ function Login(props) {
         e.preventDefault()
 
         props.login(userData)
-        console.log(userData, '<- userData in handleSubmit')
-        props.history.push('/')
-        
+        props.history.push('/')        
     }
-
-    console.log('login');
 
     return (
         <Fragment>
@@ -112,11 +108,5 @@ function Login(props) {
 const mapStateToProps = ({ authReducer }) => ({
     user: authReducer.user
 })
-
-const mapDispatchToProps = ({
-    login
-})
-
-console.log(mapDispatchToProps, '<- Props matched to dispatch')
 
 export default connect(mapStateToProps, { login })(Login);

@@ -3,7 +3,7 @@ import Dining from '../../assets/img/dining.png';
 import styled from 'styled-components';
 import Search from '../layout/Search';
 import { device } from'../layout/Breakpoints';
-import RecipeCards from '../recipe/RecipeCards';
+import RecipeCard from '../recipe/RecipeCard';
 
 const Body = styled.div`
 background-color: #EDDFB0;`
@@ -97,7 +97,24 @@ const Home = () => {
             
             <div>
                 <img src={Dining} alt='Family Dining' />
-                <RecipeCards />
+                <CardHolder>
+                    {/* <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card> */}
+                    <RecipeCard/>
+                    <RecipeCard/>
+                    <RecipeCard/>
+                    <RecipeCard/>
+                    <RecipeCard/>
+                    <RecipeCard/>
+                    <RecipeCard/>
+                    <RecipeCard/>
+                </CardHolder>
             </div>
          
           
