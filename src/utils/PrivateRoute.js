@@ -12,7 +12,7 @@ const ProtectedRoute = props => {
             if (localStorage.getItem('token')) {
                 return <Component {...renderProps} />
             } else {
-                return <Redirect to='/api/auth/user/login' />
+                return <Redirect to='https://secret-recipes.herokuapp.com/api/auth/user/login' />
             }
         }} />
     )

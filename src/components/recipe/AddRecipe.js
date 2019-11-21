@@ -99,6 +99,7 @@ const AddButton = styled.button`
 `
  
 const AddRecipe = (props) => {
+    // eslint-disable-next-line
     const [error, setError] = useState()
     const [ingredients, setIngredients] = useState([{ id: 0, type: '', amount: ''}])
     const [instructions, setInstructions] = useState([{ id: 0, task: ''}])

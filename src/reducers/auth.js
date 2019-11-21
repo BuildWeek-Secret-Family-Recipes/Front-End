@@ -1,35 +1,43 @@
 import { userConstants } from '../actions/types';
 
-
 export const initialState = {
     user: {
-        username: '',
-        password: '',
-        email: '',
+        id: '',
+        username: 'testUser',
+        password: 'testPass',
+        email: 'testEmail'
     },
-    error: null,
-    loggingIn: true
+    isLoading: false,
+    isLoggedIn: false,
+    error: null
 }
 
-export function authReducer(state = initialState, action){
+export default function authReducer(state = initialState, action){
     switch(action.type) {
         case userConstants.LOGIN_REQUEST:
             return {
-                loggingIn: true,
-                user: action.user,
-                error: null                
+                ...state,
+                isLoading: true,
+                error: null               
             };
         case userConstants.LOGIN_SUCCESS:
+            console.log(action)
             return {
-                loggingIn: true,
-                user: action.user,
+                ...state,
+                user: action.payload,
+                isLoading: false,
+                isLoggedIn: true,
                 error: null
             };
         case userConstants.LOGIN_FAILURE:
-            return {};
-        case userConstants.LOGOUT:
-            return {};
+            return {
+                ...state,
+                isLoading: false,
+                isLoggedIn: false,
+                error: 'Failed to log in'
+            };
         default:
             return state;
     }
 }
+

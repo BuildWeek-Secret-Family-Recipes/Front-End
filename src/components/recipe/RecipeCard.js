@@ -11,7 +11,7 @@
 import React, { useState, useEffect} from 'react';
 import axios from 'axios';
 import RecipeCards from './RecipeCards.js';
-import {Container, Row} from 'reactstrap';
+import { Container, Row } from 'reactstrap';
 
 export default function RecipeCard(){
 
