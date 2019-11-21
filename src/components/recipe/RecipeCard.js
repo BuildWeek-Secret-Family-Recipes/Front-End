@@ -18,7 +18,7 @@ export default function RecipeCard(){
     const [recipe, setRecipe] = useState([]);
 
     useEffect(() =>{
-        axios.get(`https://secret-recipes.herokuapp.com/api/recipes/`)
+        axios.get(`https://secret-recipes.herokuapp.com/api/auth/recipes`)
         .then(response =>{
             setRecipe(response.data);
         })

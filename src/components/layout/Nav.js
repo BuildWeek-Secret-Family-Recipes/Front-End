@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Link } from "react-router-dom";
 import { getToken } from '../../utils/api';
+import { connect } from 'react-redux';
 import Search from '../layout/Search';
 import styled from 'styled-components';
 import { slide as Menu } from 'react-burger-menu';
@@ -11,13 +12,11 @@ const Searchbox = styled.div`
     margin: 0;
     `
 
-const logged = getToken();
-
 
 const Nav = props => {
+  console.log(props, '<--Nav props')
 
-    const logged = getToken();
-
+  const logged = getToken()
     return (
         <Fragment>
             <Menu>
@@ -33,7 +32,9 @@ const Nav = props => {
 }
 
 
+const mapStateToProps = ({ authReducer }) => ({
+  user: authReducer.user
+})
 
 
-
-export default Nav
+export default connect (mapStateToProps)(Nav)

@@ -1,4 +1,4 @@
-import api from '../utils/api';
+import AxiosWithAuth from '../utils/api';
 
 export const ADD_RECIPE_SUCCESS = 'ADD_RECIPE_SUCCESS';
 export const ADD_RECIPE_FAILURE = 'ADD_RECIPE_FAILURE';
@@ -11,7 +11,7 @@ export const ADD_INSTRUCTIONS_FAILURE = 'ADD_INSTRUCTIONS_FAILURE';
 
 const addRecipe = (recipe) => {
     return dispatch => {
-        api().post('/auth/recipes', recipe)
+        AxiosWithAuth().post('/auth/recipes', recipe)
         .then(res => {
             dispatch({ 
                 type: ADD_RECIPE_SUCCESS,

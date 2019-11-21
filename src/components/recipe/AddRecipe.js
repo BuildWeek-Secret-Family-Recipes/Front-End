@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import api from '../../utils/api'
+import AxiosWithAuth from '../../utils/api'
 import styled from 'styled-components'
 
 import RecipeForm from './RecipeForm'
