@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from './utils/PrivateRoute';
 import styled from 'styled-components';
 import { device } from'./components/layout/Breakpoints';
-
 import Home from './components/pages/Home';
 import Footer from './components/pages/Footer';
 import Nav from './components/layout/Nav';
