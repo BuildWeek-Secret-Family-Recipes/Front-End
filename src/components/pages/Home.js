@@ -97,7 +97,18 @@ const Home = () => {
             
             <div>
                 <img src={Dining} alt='Family Dining' />
-                <RecipeCards />
+                {/* <RecipeCards /> */}
+                <CardHolder>
+                <Card>Placeholder Card</Card>
+                <Card>Placeholder Card</Card>
+                <Card>Placeholder Card</Card>
+                <Card>Placeholder Card</Card>
+                <Card>Placeholder Card</Card>
+                <Card>Placeholder Card</Card>
+                <Card>Placeholder Card</Card>
+                <Card>Placeholder Card</Card>
+                </CardHolder>
+                
             </div>
          
           
