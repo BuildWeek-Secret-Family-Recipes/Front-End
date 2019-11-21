@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import RecipeCards from '../recipe/RecipeCards';
+// import RecipeCards from '../recipe/RecipeCards';
 
 
 export default function MyRecipes() {
@@ -9,7 +9,7 @@ export default function MyRecipes() {
             <Link to='/recipes/addrecipe'>Add Recipe</Link>
             <Link to='/recipes/editrecipe'>Edit Recipe</Link>
 
-            <RecipeCards />
+            {/* <RecipeCards /> */}
         </div>
     )
 }
