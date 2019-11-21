@@ -3,6 +3,7 @@ import Dining from '../../assets/img/dining.png';
 import styled from 'styled-components';
 import Search from '../layout/Search';
 import { device } from'../layout/Breakpoints';
+import RecipeCard from '../recipe/RecipeCard.js';
 
 const Body = styled.div`
 background-color: #EDDFB0;`
@@ -98,14 +99,22 @@ const Home = () => {
                 <img src={Dining} alt='Family Dining' />
                 <p>Coming soon!</p>
                 <CardHolder>
+                    {/* <Card>Public Recipe Preview</Card>
                     <Card>Public Recipe Preview</Card>
                     <Card>Public Recipe Preview</Card>
                     <Card>Public Recipe Preview</Card>
                     <Card>Public Recipe Preview</Card>
                     <Card>Public Recipe Preview</Card>
                     <Card>Public Recipe Preview</Card>
-                    <Card>Public Recipe Preview</Card>
-                    <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card> */}
+                    <RecipeCard/>
+                    <RecipeCard/>
+                    <RecipeCard/>
+                    <RecipeCard/>
+                    <RecipeCard/>
+                    <RecipeCard/>
+                    <RecipeCard/>
+                    <RecipeCard/>
                 </CardHolder>
             </div>
          

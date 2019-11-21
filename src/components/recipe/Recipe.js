@@ -1,26 +1,3 @@
-// import React, { Component, useState, useEffect} from 'react';
-// import axios from 'axios';
-// import RecipeCard from './RecipeCard.js';
-
-// export default function Recipe(){
-
-//     const [recipe, setRecipe] = useState([]);
-
-//     useEffect(() =>{
-//         axios.get(`https://secret-recipes.herokuapp.com/api/recipes/`)
-//         .then(response =>{
-//             setRecipe(response.data);
-//         })
-//         .catch(error => {
-//             console.log("recipes were not returned", error);
-//         });
-//     }, [])
-    
-//     return(
-//         <div></div>
-//     )
-// }
-
 
 // Mock recipe data table
 // class Recipes extends Component {
@@ -57,12 +34,38 @@
     //    }
     // }
     
-    // const recipeStyle = {
-    //    display: 'grid',
-    //    gridTemplateColumns: 'repeat(3, 1fr)',
-    //    gridGap: '1rem'
-    
-    // }
-    
+
     // export default Recipes
     
+    import React, { useState, useEffect} from 'react';
+    import axios from 'axios';
+    // import RecipeCards from './RecipeCards.js';
+    import {Container, Row} from 'reactstrap';
+    
+    export default function RecipeCard(){
+    
+        const [recipe, setRecipe] = useState([]);
+    
+        useEffect(() =>{
+            axios.get(`https://secret-recipes.herokuapp.com/api/auth/recipes/`)
+            .then((response) =>{
+                console.log(response.data.results);
+                setRecipe(response.data.results);
+            })
+            .catch(error => {
+                console.log("recipes were not returned", error);
+            });
+        }, []);
+    
+        return(
+            <Container>
+                <Row>
+                   {recipe.map(user =>(
+                       <RecipeCard key={user.id} name={user.name} type={user.type_of_meal} author={user.original_author} />
+                   ))}  
+                </Row>
+            </Container>
+        );
+    }
+    
+
