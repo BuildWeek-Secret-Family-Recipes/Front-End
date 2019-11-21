@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import api from '../../utils/api'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { actionCreators } from '../../actions/recipes'
 import styled from 'styled-components'
 
 const FormDiv = styled.form`
@@ -44,7 +46,7 @@ const SubmitButton = styled.button`
     }
 `
 
-const RecipeForm = ({setFormState}) => {
+const RecipeForm = ({setFormState, actions}) => {
     const [recipe, setRecipe] = useState({
         name: '',
         type_of_meal: '',
@@ -68,24 +70,13 @@ const RecipeForm = ({setFormState}) => {
 
     const handleSubmit = e => {
         e.preventDefault()
+        actions.addRecipe(recipe)
         setFormState({
             renderRecipeForm: false,
             renderIngredientsForm: true,
             renderInstructionsForm: false
         })
-        // api()
-        //     .post('/api/recipes', recipe)
-        //     .then(res => {
-        //         console.log(res.data)
-        //         setFormState({
-        //             renderRecipeForm: false,
-        //             renderIngredientsForm: true,
-        //             renderInstructionsForm: false
-        //         })
-        //     })
-        //     .catch(err => {
-        //         return setError(err.response)
-        //     })
+
     }
 
     return (
@@ -99,4 +90,11 @@ const RecipeForm = ({setFormState}) => {
     )
 }
 
-export default RecipeForm
+  
+const mapDispatchToProps = (dispatch) => {
+    return {
+      actions: bindActionCreators(actionCreators, dispatch)
+    }
+}
+
+export default connect(null, mapDispatchToProps)(RecipeForm);

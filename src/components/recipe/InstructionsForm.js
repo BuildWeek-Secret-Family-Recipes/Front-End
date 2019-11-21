@@ -49,9 +49,9 @@ const SubmitButton = styled.button`
     }
 `
 
-const InstructionsForm = ({setFormState}) => {
+const InstructionsForm = ({setFormState, id}) => {
     const [instructions, setInstructions] = useState([{
-        recipe_id: '',
+        recipe_id: id,
         step_number: '',
         instruction: ''
     }])
@@ -61,7 +61,7 @@ const InstructionsForm = ({setFormState}) => {
         setInstructions([
             ...instructions,
             {
-                recipe_id: '',
+                recipe_id: id,
                 step_number: '',
                 instruction: ''
             }

@@ -65,12 +65,12 @@ const SubmitButton = styled.button`
     }
 `
 
-const IngredientsForm = ({setFormState}) => {
+const IngredientsForm = ({setFormState, id}) => {
     const [ingredients, setIngredients] = useState([{
         name: '',
         quantity: '',
         measurement: '',
-        recipe_id: ''
+        recipe_id: id
     }])
 
     const handleIngredients = e => {
@@ -85,9 +85,10 @@ const IngredientsForm = ({setFormState}) => {
         setIngredients([
             ...ingredients,
             {
-                id: ingredients.length,
-                type: '',
-                amount: '' 
+                name: '',
+                quantity: '',
+                measurement: '',
+                recipe_id: id 
             }
         ])
     }

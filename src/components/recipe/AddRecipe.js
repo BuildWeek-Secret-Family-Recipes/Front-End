@@ -35,6 +35,7 @@ const SubmitButton = styled.button`
 
 const AddRecipe = (props) => {
     const [error, setError] = useState()
+    const [id, setId] = useState()
     const [formState, setFormState] = useState({
         renderRecipeForm: true,
         renderIngredientsForm: false,
@@ -45,8 +46,8 @@ const AddRecipe = (props) => {
         <div>
             <h3>Add A Recipe to Your Cookbook</h3>
             {formState.renderRecipeForm && <RecipeForm setFormState={setFormState} />}
-            {formState.renderIngredientsForm && <IngredientsForm setFormState={setFormState} />}
-            {formState.renderInstructionsForm && <InstructionsForm setFormState={setFormState} />}
+            {formState.renderIngredientsForm && <IngredientsForm setFormState={setFormState} id={id} setId={setId}/>}
+            {formState.renderInstructionsForm && <InstructionsForm setFormState={setFormState} id={id} setId={setId} />}
         </div>
     )
 }
