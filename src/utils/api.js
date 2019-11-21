@@ -2,10 +2,10 @@
 import axios from 'axios'
 
 export function getToken() {
-    return localStorage.getItem('token')
+    return JSON.parse(localStorage.getItem('token'))
 }
 
-export default function() {
+export default function AxiosWithAuth() {
     return axios.create({
         baseURL: 'https://secret-recipes.herokuapp.com/api',
         headers: {
