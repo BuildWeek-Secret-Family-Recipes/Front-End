@@ -5,7 +5,6 @@
 
 //     const [recipe, setRecipe] = useState([]);
 
-    useEffect(() =>{
 //     useEffect(() =>{
 //         axios.get(`https://secret-recipes.herokuapp.com/api/auth/recipes/`)
 //         .then(res =>{
