@@ -57,10 +57,7 @@ font-size: 1.15em;
  padding-right:0px;
  margin-right: 1.6rem;
  text-decoration: none;
- 
- 
 }
-
 
 .bm-menu a{
   text-decoration: none;
@@ -72,9 +69,6 @@ font-size: 1.15em;
   }
  } */
 
-
-
-
 .bm-morph-shape {
   fill: #373a47;
 }
@@ -84,14 +78,10 @@ font-size: 1.15em;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  
-  
-
 }
 
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
-  
 }
 
 nav a{
@@ -110,6 +100,8 @@ nav a{
     transition: color 0.3s linear;
     text-shadow: 1px 1px gold;
     border: solid 0.5px #bf8040;
-    
-    
+}
+
+.reg {
+  margin-bottom: 7rem;
 }

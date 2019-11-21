@@ -12,7 +12,7 @@ import {
 } from './Login';
 
 function Register(props) {
-    console.log(props, '<-- Register props');
+    // console.log(props, '<-- Register props');
     const [newUser, setNewUser] = useState({
         // id: '',
         username: '',
@@ -75,7 +75,7 @@ function Register(props) {
 
             <div className="reg">
                 <p>Already have an account?</p>
-                <Link to='https://secret-recipes.herokuapp.com/api/auth/user/login'>Sign In</Link>
+                <Link to='/api/auth/user/login'>Sign In</Link>
             </div>
         </Fragment>
     )
@@ -84,11 +84,5 @@ function Register(props) {
 const mapStateToProps = ({ registerReducer }) => ({
     user: registerReducer.user
 })
-
-const mapDispatchToProps = ({
-    register
-})
-
-console.log(mapDispatchToProps)
 
 export default connect(mapStateToProps, { register })(Register);

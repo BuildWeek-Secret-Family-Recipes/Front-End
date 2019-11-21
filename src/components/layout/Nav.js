@@ -13,7 +13,7 @@ const Searchbox = styled.div`
 
 
 const Nav = props => {
-  console.log(props.isLoggedIn, '<--Nav props')
+//   console.log(props.isLoggedIn, '<--Nav props')
 
   const logged = props.isLoggedIn;
 
