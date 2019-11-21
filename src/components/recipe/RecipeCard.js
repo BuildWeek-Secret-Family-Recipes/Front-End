@@ -42,3 +42,12 @@ export default function RecipeCard(){
         </Container>
     )
 }
+
+
+
+// recipe = {
+//     name: 'string',
+//     type_of_meal: 'string',
+//     original_author: 'string',
+//     user_id: 4 //integer, will be the same number as the user's ID who is creating the recipe
+// } 
