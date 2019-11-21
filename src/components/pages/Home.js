@@ -99,14 +99,15 @@ const Home = () => {
                 <img src={Dining} alt='Family Dining' />
                 {/* <RecipeCards /> */}
                 <CardHolder>
+                {/* <Card>Placeholder Card</Card>
                 <Card>Placeholder Card</Card>
                 <Card>Placeholder Card</Card>
                 <Card>Placeholder Card</Card>
                 <Card>Placeholder Card</Card>
                 <Card>Placeholder Card</Card>
                 <Card>Placeholder Card</Card>
-                <Card>Placeholder Card</Card>
-                <Card>Placeholder Card</Card>
+                <Card>Placeholder Card</Card> */}
+                <RecipeCards></RecipeCards>
                 </CardHolder>
                 
             </div>
