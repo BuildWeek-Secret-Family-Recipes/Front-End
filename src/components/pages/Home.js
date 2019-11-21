@@ -5,9 +5,6 @@ import Search from '../layout/Search';
 import { device } from'../layout/Breakpoints';
 import RecipeCard from '../recipe/RecipeCard';
 
-const Body = styled.div`
-background-color: #EDDFB0;`
-
 const Card = styled.div`
 height: 300px;
 width: 250px;
@@ -83,13 +80,11 @@ justify-content: flex-end;
 
 
 `
-
    
 
 const Home = () => {
     return (
-        <Body>
-            
+        <div className='home'>
             <Searchbox>
             <Search />
             </Searchbox>
@@ -97,7 +92,7 @@ const Home = () => {
             
             <div>
                 <img src={Dining} alt='Family Dining' />
-                <CardHolder>
+                <CardHolder className='darkMode'>
                     {/* <Card>Public Recipe Preview</Card>
                     <Card>Public Recipe Preview</Card>
                     <Card>Public Recipe Preview</Card>
@@ -118,7 +113,7 @@ const Home = () => {
             </div>
          
           
-        </Body>
+        </div>
     )
 }
 

@@ -13,6 +13,10 @@ import MyRecipes from './components/user/MyRecipes';
 import AddRecipe from './components/recipe/AddRecipe';
 import EditRecipe from './components/recipe/EditRecipe';
 
+// Hooks
+import { useDarkMode } from './components/hooks/useDarkMode';
+
+
 // Styles
 import { device } from'./components/layout/Breakpoints';
 import styled from 'styled-components';
@@ -35,10 +39,24 @@ margin-top: -15px;
  `
 
 function App() {
+
+  const [darkMode, setDarkMode] = useDarkMode(false);
+  const toggleMode = e => {
+      e.preventDefault();
+      setDarkMode(!darkMode);
+  };
+
   return (
     <div className="App">
       <Nav />
       <Header>Secret Family Cookbook</Header>
+      <div className="dark-mode__toggle">
+      
+        <div
+          onClick={toggleMode}
+          className={darkMode ? 'toggle toggled' : 'toggle'}
+          />
+      </div>
 
       <Switch>
       <Route exact path='/' component={Home} />
