@@ -3,8 +3,12 @@ import React, { useState, useEffect} from 'react';
 import RecipeCard from './RecipeCard.js';
 import { CardHolder } from '../pages/Home';
 import AxiosWithAuth from '../../utils/api.js';
+
+
 export default function RecipeCards(){
+
     const [recipes, setRecipes] = useState([]);
+    
     useEffect(() =>{
         AxiosWithAuth()
         .get(`/auth/recipes/`)
@@ -16,6 +20,7 @@ export default function RecipeCards(){
             console.log("recipes were not returned", error);
         });
     }, [])
+    
     return(
         <CardHolder>
                 {
@@ -24,8 +29,8 @@ export default function RecipeCards(){
                             <RecipeCard 
                                 key={recipe.id}
                                 name={recipe.name} 
-                                type={recipe.type_of_meal} 
-                                author={recipe.original_author}/>
+                                type_of_meal={recipe.type_of_meal} 
+                                original_author={recipe.original_author}/>
                         )
                     })
                 }
