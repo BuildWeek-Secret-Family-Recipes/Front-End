@@ -86,9 +86,7 @@ justify-content: flex-end;
 const Home = () => {
     return (
         <div className='home'>
-            <Searchbox>
-            <Search />
-            </Searchbox>
+         
 
             
             <div>
