@@ -143,7 +143,7 @@ export default function SearchForm() {
             .get(`/auth/recipes/`)
             .then(response =>{
                 // console.log(response.data)
-                const Recipe = response.data.filter(ind => RecipeCard.name.toLowerCase().includes(query.toLowerCase())
+                const Recipe = response.data.filter(ind => ind.name.toLowerCase().includes(query.toLowerCase())
     );
     
     setData (Recipe);
