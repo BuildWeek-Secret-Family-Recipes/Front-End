@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Search from '../layout/Search';
 import { device } from'../layout/Breakpoints';
 import RecipeCard from '../recipe/RecipeCard';
+import RecipeCards from'../recipe/RecipeCards';
 
 export const Card = styled.div`
 height: 300px;
@@ -93,22 +94,9 @@ const Home = () => {
             <div>
                 <img src={Dining} alt='Family Dining' />
                 <CardHolder className='darkMode'>
-                    {/* <Card>Public Recipe Preview</Card>
-                    <Card>Public Recipe Preview</Card>
-                    <Card>Public Recipe Preview</Card>
-                    <Card>Public Recipe Preview</Card>
-                    <Card>Public Recipe Preview</Card>
-                    <Card>Public Recipe Preview</Card>
-                    <Card>Public Recipe Preview</Card>
-                    <Card>Public Recipe Preview</Card> */}
-                    <RecipeCard/>
-                    <RecipeCard/>
-                    <RecipeCard/>
-                    <RecipeCard/>
-                    <RecipeCard/>
-                    <RecipeCard/>
-                    <RecipeCard/>
-                    <RecipeCard/>
+                 
+                    <RecipeCards/>
+                  
                 </CardHolder>
             </div>
          
