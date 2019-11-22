@@ -1,8 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from './utils/PrivateRoute';
-
-// Components
 import Home from './components/pages/Home';
 import Footer from './components/pages/Footer';
 import Nav from './components/layout/Nav';

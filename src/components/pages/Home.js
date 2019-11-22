@@ -5,7 +5,7 @@ import Search from '../layout/Search';
 import { device } from'../layout/Breakpoints';
 import RecipeCard from '../recipe/RecipeCard';
 
-const Card = styled.div`
+export const Card = styled.div`
 height: 300px;
 width: 250px;
 background-color: #C4C4C4;
@@ -47,7 +47,7 @@ margin-bottom: 2rem;
 
 `
 
-const CardHolder = styled.section`
+export const CardHolder = styled.section`
 display: flex;
 flex-wrap: wrap;
 flex-direction: row;
@@ -117,4 +117,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default Home;
