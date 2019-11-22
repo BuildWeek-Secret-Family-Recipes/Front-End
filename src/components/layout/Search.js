@@ -42,7 +42,7 @@ export default function SearchForm() {
       </form>
   
       {data.map((ind=> {
-    return(<RecipeCard name={ind.name} type of meal={ind.type_of_meal} original author={ind.original_author}/>)
+    return(<RecipeCard name={ind.name} type={ind.type_of_meal} original author={ind.original_author}/>)
   }
   ))}
   
