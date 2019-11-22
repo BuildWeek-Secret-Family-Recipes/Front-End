@@ -28,7 +28,8 @@ import { Button } from 'reactstrap';
 function SearchForm() {
 
     const [recipe, setRecipe] = useState([]);
-    const [query, setQuery] = useState("");
+    // const [query, setQuery] = useState("");
+    const [data, setData] = useState([])
     const [filteredRecipes, setFilteredRecipes] = useState([]);
 
     useEffect(() =>{
@@ -37,13 +38,13 @@ function SearchForm() {
         .then(response =>{
             console.log(response.data)
             // setRecipes(response.data);
-            const recipe = response.data.filter(ind => RecipeCards.name.toLowerCase().includes(query.toLowerCase()))
+            const recipe = response.data.filter(ind => RecipeCards.name.toLowerCase())
             setRecipe(recipe);
         })
         .catch(error => {
             // console.log("recipes were not returned", error);
         });
-    }, [query])
+    }, [data])
       
 
             function handleChange(e) {
@@ -54,12 +55,12 @@ function SearchForm() {
                 setFilteredRecipes(newRecipes);
               }
               function handleSubmit(props) {
-                console.log(props.data, "HANDLE PROP DATA");
+                      setData (data);
               }
             
-              const handleInputChange = event => {
-                    setQuery(event.target.value);
-                  };
+              // const handleInputChange = event => {
+              //       setQuery(event.target.value);
+              //     };
 
 
 
@@ -80,14 +81,6 @@ function SearchForm() {
                     }
                 }
             })(SearchForm)
-
-  
-
-
-
-
-
-
 
 
 
