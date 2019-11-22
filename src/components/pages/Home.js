@@ -3,12 +3,9 @@ import Dining from '../../assets/img/dining.png';
 import styled from 'styled-components';
 import Search from '../layout/Search';
 import { device } from'../layout/Breakpoints';
-import RecipeCards from '../recipe/RecipeCards';
+import RecipeCard from '../recipe/RecipeCard';
 
-const Body = styled.div`
-background-color: #EDDFB0;`
-
-const Card = styled.div`
+export const Card = styled.div`
 height: 300px;
 width: 250px;
 background-color: #C4C4C4;
@@ -50,7 +47,7 @@ margin-bottom: 2rem;
 
 `
 
-const CardHolder = styled.section`
+export const CardHolder = styled.section`
 display: flex;
 flex-wrap: wrap;
 flex-direction: row;
@@ -83,13 +80,11 @@ justify-content: flex-end;
 
 
 `
-
    
 
 const Home = () => {
     return (
-        <Body>
-            
+        <div className='home'>
             <Searchbox>
             <Search />
             </Searchbox>
@@ -97,24 +92,29 @@ const Home = () => {
             
             <div>
                 <img src={Dining} alt='Family Dining' />
-                {/* <RecipeCards /> */}
-                <CardHolder>
-                {/* <Card>Placeholder Card</Card>
-                <Card>Placeholder Card</Card>
-                <Card>Placeholder Card</Card>
-                <Card>Placeholder Card</Card>
-                <Card>Placeholder Card</Card>
-                <Card>Placeholder Card</Card>
-                <Card>Placeholder Card</Card>
-                <Card>Placeholder Card</Card> */}
-                <RecipeCards></RecipeCards>
+                <CardHolder className='darkMode'>
+                    {/* <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card> */}
+                    <RecipeCard/>
+                    <RecipeCard/>
+                    <RecipeCard/>
+                    <RecipeCard/>
+                    <RecipeCard/>
+                    <RecipeCard/>
+                    <RecipeCard/>
+                    <RecipeCard/>
                 </CardHolder>
-                
             </div>
          
           
-        </Body>
+        </div>
     )
 }
 
-export default Home
+export default Home;
