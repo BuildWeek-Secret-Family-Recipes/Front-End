@@ -102,6 +102,23 @@ nav a{
     border: solid 0.5px #bf8040;
 }
 
+.logout-btn {
+  font-size: 1.7rem;
+    padding: 1rem 0;
+    text-align: center;
+    height: 80px;
+    margin-top: 4rem;
+    border-radius: 4px;
+    font-weight: bold;
+    letter-spacing: 0.5rem;
+    color: #C4C4C4;
+    background-color: #654F3B;
+    text-decoration: none;
+    transition: color 0.3s linear;
+    text-shadow: 1px 1px gold;
+    border: solid 0.5px #bf8040;
+}
+
 .reg {
   margin-bottom: 7rem;
 }

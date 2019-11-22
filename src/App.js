@@ -46,7 +46,9 @@ function App() {
 
   return (
     <div className="App">
-      <Nav />
+      {/* <Nav /> */}
+      <Route path='/' component={Nav} />
+
       <Header>Secret Family Cookbook</Header>
       <div className="dark-mode__toggle">
       

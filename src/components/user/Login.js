@@ -104,13 +104,9 @@ export const FormContainer = styled.div`
         margin-right: 1rem;
         margin-left: 1rem;
     }
-}
-
-
-`
+}`
 
 function Login(props) {
-    console.log(props, '<- Props in Login Page')
     const [userData, setUserData] = useState({
         username: '',
         password: '',
