@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import api from '../../utils/api'
+import AxiosWithAuth from '../../utils/api'
 import styled from 'styled-components'
 
 const FormDiv = styled.form`
@@ -82,7 +82,7 @@ const InstructionsForm = ({setFormState, id}) => {
             renderIngredientsForm: false,
             renderInstructionsForm: false
         })
-        // api()
+        // AxiosWithAuth()
         //     .post('/', recipe)
         //     .then(res => {
         //         console.log(res)

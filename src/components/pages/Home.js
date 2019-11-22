@@ -1,10 +1,8 @@
 import React from 'react';
 import Dining from '../../assets/img/dining.png';
 import styled from 'styled-components';
-import Search from '../layout/Search';
 import { device } from'../layout/Breakpoints';
-import RecipeCard from '../recipe/RecipeCard';
-import RecipeCards from'../recipe/RecipeCards';
+import RecipeCards from '../recipe/RecipeCards.js';
 
 export const Card = styled.div`
 height: 300px;

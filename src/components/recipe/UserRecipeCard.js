@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { getUserRecipe, deleteRecipe } from '../../actions/recipes';
 import styled from "styled-components"
 import { device } from '../layout/Breakpoints.js';
 
-function RecipeCard(props) {
+function UserRecipeCard(props) {
+
+    
 
     const Card = styled.div`
         height: 300px;
@@ -48,13 +53,24 @@ function RecipeCard(props) {
         font-size: 25px;
         // text-shadow: 2px 2px BlueViolet;`
 
+    const handleDelete = (e) => {
+        e.preventDefault();
+        props.deleteRecipe(props.recipe);
+    }
+
   return(
     <Card>
+        <Link to='/api/auth/recipes/:id'>Edit Recipe</Link>
         <Header>{props.name}</Header>
         <p>Type of Meal: {props.type_of_meal}</p>
         <p>Original Author: {props.original_author}</p>
+        <button onClick={handleDelete}>Delete</button>
     </Card>
   )
 }
 
-export default RecipeCard;
+const mapStateToProps = ({ recipeReducer }) => ({
+    recipe: recipeReducer.recipe
+})
+
+export default connect(mapStateToProps, { getUserRecipe, deleteRecipe })(UserRecipeCard);

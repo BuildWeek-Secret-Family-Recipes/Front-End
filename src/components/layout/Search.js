@@ -1,58 +1,4 @@
-import React, { useState, useEffect } from "react";
-// import axios from "axios";
-// import RecipeCards from '../recipe/RecipeCards';
-import AxiosWithAuth from '../../utils/api';
-import RecipeCard from "../recipe/RecipeCard";
-// import styled from "styled-components";
-// import CharacterCard from "./CharacterCard";
-// import {Link} from "react-router-dom";
-
-export default function SearchForm() {
-
-    const [data, setData] = useState([]);
-    const [query, setQuery] = useState("");
-  
-    useEffect(() =>{
-            AxiosWithAuth()
-            .get(`/auth/recipes/`)
-            .then(response =>{
-                // console.log(response.data)
-                const Recipe = response.data.filter(ind => ind.name.toLowerCase().includes(query.toLowerCase())
-    );
-    
-    setData (Recipe);
-  });
-},[query]);
-                
-       
-  
-  
-  const handleInputChange = event => {
-    setQuery(event.target.value);
-  };
-  return (
-    <div >
-      <form > 
-        <input
-        id="name" type="text" name="textfield" placeholder="Search" value={query} onChange={handleInputChange}/>
-  
-  
-        <button type='submit'>Search</button>
-     
-      </form>
-  
-      {data.map((ind=> {
-    return(<RecipeCard name={ind.name} type={ind.type_of_meal} original author={ind.original_author}/>)
-  }
-  ))}
-  
-  </div>
-  )}
-  
-
-
-
-  // import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
 // import RecipeCards from '../recipe/RecipeCards';
 // import AxiosWithAuth from '../../utils/api';
 // import { Form, Field, withFormik } from 'formik';
@@ -175,3 +121,62 @@ export default function SearchForm() {
   
 // //   </div>
 // //   )}
+  
+import React, { useState, useEffect } from "react";
+// import axios from "axios";
+import RecipeCards from '../recipe/RecipeCards';
+import AxiosWithAuth from '../../utils/api';
+import RecipeCard from "../recipe/RecipeCard";
+// import styled from "styled-components";
+// import CharacterCard from "./CharacterCard";
+// import {Link} from "react-router-dom";
+
+
+
+export default function SearchForm() {
+
+    const [data, setData] = useState([]);
+    const [query, setQuery] = useState("");
+  
+    useEffect(() =>{
+            AxiosWithAuth()
+            .get(`/auth/recipes/`)
+            .then(response =>{
+                // console.log(response.data)
+                const Recipe = response.data.filter(
+                    ind => RecipeCard.name.toLowerCase()
+                    .includes(query.toLowerCase())
+    );
+    
+  });
+},[query]);
+                
+       
+  
+  
+  const handleInputChange = event => {
+    setQuery(event.target.value);
+  };
+  return (
+    <div >
+      <form > 
+        <input
+        id="name" type="text" name="textfield" placeholder="Search" value={query} onChange={handleInputChange}/>
+  
+  
+        <button type='submit'>Search</button>
+     
+      </form>
+  
+      {data.map((ind=> {
+        return(<RecipeCard 
+                name={ind.name} 
+                type of meal={ind.type_of_meal} 
+                original author={ind.original_author}
+            />)
+  }
+  ))}
+  
+  </div>
+  )}
+  
