@@ -9,16 +9,18 @@
 // }
 
 import React, { useState, useEffect} from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import RecipeCards from './RecipeCards.js';
 import {Container, Row} from 'reactstrap';
+import AxiosWithAuth from '../../utils/api';
 
 export default function RecipeCard(){
 
     const [recipe, setRecipe] = useState([]);
 
     useEffect(() =>{
-        axios.get(`https://secret-recipes.herokuapp.com/api/recipes/`)
+        AxiosWithAuth()
+        .get(`/auth/recipes/`)
         .then(response =>{
             setRecipe(response.data);
         })
