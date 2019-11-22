@@ -24,7 +24,7 @@ export default function RecipeCards(){
                             <RecipeCard 
                                 key={recipe.id}
                                 name={recipe.name} 
-                                typeOfMeal={recipe.type_of_meal} 
+                                type={recipe.type_of_meal} 
                                 author={recipe.original_author}/>
                         )
                     })
