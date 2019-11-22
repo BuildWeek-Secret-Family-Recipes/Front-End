@@ -33,7 +33,7 @@ const Nav = props => {
                 {!logged && <Link to='/api/auth/user/login'>Log In</Link>}
                 {logged && <button className='logout-btn' onClick={handleLogout}>Logout</button>}
                 {!logged && <Link to='/api/auth/user/register'>Sign Up</Link>}
-                <Searchbox><Search /></Searchbox>
+                <Link to='/Search'>Search</Link>
             </Menu>
         </Fragment>
     )

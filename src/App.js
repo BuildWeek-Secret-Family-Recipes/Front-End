@@ -10,6 +10,7 @@ import Logout from './components/user/Logout';
 import MyRecipes from './components/user/MyRecipes';
 import AddRecipe from './components/recipe/AddRecipe';
 import EditRecipe from './components/recipe/EditRecipe';
+import SearchForm from './components/layout/Search';
 
 // Hooks
 import { useDarkMode } from './components/hooks/useDarkMode';
@@ -60,6 +61,7 @@ function App() {
 
       <Switch>
       <Route exact path='/' component={Home} />
+      <Route exact path="/Search" component={SearchForm}/>
       <Route exact path='/api/auth/user/login' component={Login} />
       <Route exact path='/api/auth/user/register' component={Register} />
       <PrivateRoute exact path='/api/auth/recipes/user' component={MyRecipes} />
