@@ -7,9 +7,7 @@ import { device } from '../layout/Breakpoints.js';
 
 function UserRecipeCard(props) {
 
-    useEffect(() => {
-        props.getUserRecipe(props.recipe)
-    }, [])
+    
 
     const Card = styled.div`
         height: 300px;

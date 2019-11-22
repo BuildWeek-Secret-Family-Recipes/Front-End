@@ -28,13 +28,13 @@ function UserRecipeCards(){
     return(
         <CardHolder>
                 {
-                    userRecipes.map(recipe =>{
+                    userRecipes.map(userRecipe =>{
                         return(
                             <UserRecipeCard 
-                                key={recipe.user_id}
-                                name={recipe.name} 
-                                type_of_meal={recipe.type_of_meal} 
-                                original_author={recipe.original_author}/>
+                                key={userRecipe.user_id}
+                                name={userRecipe.name} 
+                                type_of_meal={userRecipe.type_of_meal} 
+                                original_author={userRecipe.original_author}/>
                         )
                     })
                 }
