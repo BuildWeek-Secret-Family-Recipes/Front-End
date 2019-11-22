@@ -3,11 +3,12 @@ import Dining from '../../assets/img/dining.png';
 import styled from 'styled-components';
 import Search from '../layout/Search';
 import { device } from'../layout/Breakpoints';
+import RecipeCards from '../recipe/RecipeCards';
 
 const Body = styled.div`
 background-color: #EDDFB0;`
 
-const Card = styled.div`
+export const Card = styled.div`
 height: 300px;
 width: 250px;
 background-color: #C4C4C4;
@@ -49,7 +50,7 @@ margin-bottom: 2rem;
 
 `
 
-const CardHolder = styled.section`
+export const CardHolder = styled.section`
 display: flex;
 flex-wrap: wrap;
 flex-direction: row;
@@ -96,17 +97,7 @@ const Home = () => {
             
             <div>
                 <img src={Dining} alt='Family Dining' />
-                <p>Coming soon!</p>
-                <CardHolder>
-                    <Card>Public Recipe Preview</Card>
-                    <Card>Public Recipe Preview</Card>
-                    <Card>Public Recipe Preview</Card>
-                    <Card>Public Recipe Preview</Card>
-                    <Card>Public Recipe Preview</Card>
-                    <Card>Public Recipe Preview</Card>
-                    <Card>Public Recipe Preview</Card>
-                    <Card>Public Recipe Preview</Card>
-                </CardHolder>
+                <RecipeCards />
             </div>
          
           
@@ -114,4 +105,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default Home;

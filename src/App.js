@@ -1,8 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from './utils/PrivateRoute';
-import styled from 'styled-components';
-import { device } from'./components/layout/Breakpoints';
 import Home from './components/pages/Home';
 import Footer from './components/pages/Footer';
 import Nav from './components/layout/Nav';
@@ -13,7 +11,9 @@ import MyRecipes from './components/user/MyRecipes';
 import AddRecipe from './components/recipe/AddRecipe';
 import EditRecipe from './components/recipe/EditRecipe';
 
-
+// Styles
+import { device } from'./components/layout/Breakpoints';
+import styled from 'styled-components';
 import './App.css';
 
 const Header = styled.header`
@@ -42,9 +42,9 @@ function App() {
       <Route exact path='/' component={Home} />
       <Route exact path='/api/auth/user/login' component={Login} />
       <Route exact path='/api/auth/user/register' component={Register} />
-      <PrivateRoute exact path='/user/recipes' component={MyRecipes} />
-      <PrivateRoute exact path='/recipes/addrecipe' component={AddRecipe} />
-      <PrivateRoute exact path='/recipes/editrecipe' component={EditRecipe} />
+      <PrivateRoute exact path='/api/auth/recipes/user' component={MyRecipes} />
+      <PrivateRoute exact path='/api/auth/recipes' component={AddRecipe} />
+      <PrivateRoute exact path='/api/auth/recipes/:id' component={EditRecipe} />
 			<PrivateRoute exact path="/logout" component={Logout} />
       </Switch>
 

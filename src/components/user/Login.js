@@ -1,12 +1,55 @@
 import React, { Fragment, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { userActions } from '../../actions/auth';
-import api from '../../utils/api';
+import { login } from '../../actions/auth';
+import styled from 'styled-components';
+import Dinner_2 from '../../assets/img/dinner_2.png';
+
+export const LogForm = styled.form`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+`
+
+export const LogInput = styled.input`
+    margin-left: 8rem;
+    margin-right: 8rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 0.5rem;
+    height: 2rem;`
+
+export const LogButton = styled.button`
+    margin-left: 11.5rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 0.4rem;
+    width: 12.5rem;
+    height: 2rem;`
+
+export const FormContainer = styled.div`
+    background: #463c34a6;
+    height: 16rem;
+    padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-top: 5rem;
+    margin-right: 18rem;
+    margin-bottom: 10rem;
+    margin-left: 18rem;
+    border-radius: 2.5rem;
+
+    img {
+        padding: 1px;
+        margin-bottom: 8px;
+    }
+}
+
+
+`
 
 function Login(props) {
-    console.log(props, '<- props in login')
-    const [error, setError] = useState()
+    console.log(props, '<- Props in Login Page')
     const [userData, setUserData] = useState({
         username: '',
         password: '',
@@ -22,30 +65,30 @@ function Login(props) {
     const handleSubmit = e => {
         e.preventDefault()
 
-        api()
-			.post('/auth/user/login', userData)
-			.then(res => {
-                console.log(userData)
-				localStorage.setItem('token', res.data.payload)
-				props.history.push('/')
-			})
-			.catch(err => {
-				setError(err)
-			})
+        props.login(userData)
+        console.log(userData, '<- userData in handleSubmit')
+        props.history.push('/')
+        
     }
+
+    console.log('login');
 
     return (
         <Fragment>
-            <form onSubmit={handleSubmit} className='log-form'>
-                <input 
+            <FormContainer>
+
+            <img src={Dinner_2} alt='Its dinner time!' />
+            
+            <LogForm onSubmit={handleSubmit} className='log-form'>
+                <LogInput 
                     type='text'
                     className='log-input' 
                     name='username' 
                     placeholder='Username'
                     value={userData.username}
-                    onChange={handleChange} 
+                    onChange={handleChange}
                 />
-                <input 
+                <LogInput 
                     type='password' 
                     className='log-input'
                     name='password' 
@@ -54,8 +97,9 @@ function Login(props) {
                     onChange={handleChange}
                 />
             
-                <button type='submit' className='log-btn'>Sign In</button>
-            </form>
+                <LogButton type='submit' className='log-btn'>Sign In</LogButton>
+            </LogForm>
+            </FormContainer>
 
             <div className="reg">
                 <p>Don't have an account?</p>
@@ -65,15 +109,14 @@ function Login(props) {
     )
 }
 
-function mapStateToProps(state) {
-    const { loggingIn } = state.user;
-    return { loggingIn };
-}
+const mapStateToProps = ({ authReducer }) => ({
+    user: authReducer.user
+})
 
 const mapDispatchToProps = ({
-    login: userActions.login
-  });
+    login
+})
 
-  console.log(mapDispatchToProps);
+console.log(mapDispatchToProps, '<- Props matched to dispatch')
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, { login })(Login);

@@ -2,12 +2,19 @@ import React, { Fragment, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { register } from '../../actions/auth';
-import api from '../../utils/api';
+import Family from '../../assets/img/family.png'
+
+import { 
+    LogForm, 
+    LogInput, 
+    LogButton, 
+    FormContainer 
+} from './Login';
 
 function Register(props) {
     console.log(props, '<-- Register props');
-    const [error, setError] = useState();
     const [newUser, setNewUser] = useState({
+        // id: '',
         username: '',
         password: '',
         email: ''
@@ -23,64 +30,65 @@ function Register(props) {
     const handleSubmit = e => {
         e.preventDefault()
 
-        api()
-			.post('/auth/user/register', newUser)
-			.then(res => {
-				localStorage.setItem('token', res.data.payload)
-				props.history.push('/')
-			})
-			.catch(err => {
-				setError(err)
-			})
+        props.register(newUser);
+        console.log(props.register)
+        console.log(newUser, '<- newUser in handleSubmit')
+        props.history.push('/api/auth/user/login')
     }
 
     return (
         <Fragment>
-            <form onSubmit={handleSubmit} className='log-form'>
-                <input 
-                    type='text'
-                    className='log-input' 
-                    name='email' 
-                    placeholder='Email'
-                    value={newUser.email}
-                    onChange={handleChange} 
-                />
-                <input 
-                    type='text'
-                    className='log-input' 
-                    name='username' 
-                    placeholder='Username'
-                    value={newUser.username}
-                    onChange={handleChange} 
-                />
-                <input 
-                    type='password' 
-                    className='log-input'
-                    name='password' 
-                    placeholder='Password'
-                    value={newUser.password}
-                    onChange={handleChange} 
-                />
-            
-                <button type='submit' className='log-btn'>Sign Up</button>
-            </form>
+            <FormContainer>
+                <img src={Family} alt='Come join our family!' />
+
+                <LogForm onSubmit={handleSubmit} className='log-form'>
+                    <LogInput 
+                        type='text'
+                        className='log-input' 
+                        name='email' 
+                        placeholder='Email'
+                        value={newUser.email}
+                        onChange={handleChange} 
+                    />
+
+                    <LogInput 
+                        type='text'
+                        className='log-input' 
+                        name='username' 
+                        placeholder='Username'
+                        value={newUser.username}
+                        onChange={handleChange} 
+                    />
+
+                    <LogInput 
+                        type='password' 
+                        className='log-input'
+                        name='password' 
+                        placeholder='Password'
+                        value={newUser.password}
+                        onChange={handleChange} 
+                    />
+                
+                    <LogButton type='submit' className='log-btn'>Sign Up</LogButton>
+                </LogForm>
+            </FormContainer>
 
             <div className="reg">
                 <p>Already have an account?</p>
-                <Link to='/api/auth/user/login'>Sign In</Link>
+                <Link to='https://secret-recipes.herokuapp.com/api/auth/user/login'>Sign In</Link>
             </div>
         </Fragment>
     )
 }
 
-function mapStateToProps(state) {
-    console.log(state, '<- Register state')
-    return {
-        user: state.user
-    }
-}
+const mapStateToProps = ({ registerReducer }) => ({
+    user: registerReducer.user
+})
 
-const mapDispatchToProps = {
-  };
+const mapDispatchToProps = ({
+    register
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+console.log(mapDispatchToProps)
+
+export default connect(mapStateToProps, { register })(Register);
