@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { logout } from '../../actions/auth';
 import Search from '../layout/Search';
@@ -14,17 +14,17 @@ const Searchbox = styled.div`
 
 
 const Nav = props => {
-  console.log(props, '<--Nav props')
 
 
-  const logged = props.isLoggedIn;
+    const logged = props.isLoggedIn;
 
-  const handleLogout = () => {
+    const handleLogout = () => {
       props.logout();
 	  props.history.push('/')
-  }
+    }
 
-    console.log("nav props", props)
+    // console.log("nav props", props)
+
     return (
         <Fragment>
             <Menu>

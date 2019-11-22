@@ -12,9 +12,7 @@ import {
 } from './Login';
 
 function Register(props) {
-    // console.log(props, '<-- Register props');
     const [newUser, setNewUser] = useState({
-        // id: '',
         username: '',
         password: '',
         email: ''
@@ -31,8 +29,6 @@ function Register(props) {
         e.preventDefault()
 
         props.register(newUser);
-        console.log(props.register)
-        console.log(newUser, '<- newUser in handleSubmit')
         props.history.push('/api/auth/user/login')
     }
 
