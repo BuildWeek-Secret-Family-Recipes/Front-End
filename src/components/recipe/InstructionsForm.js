@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import api from '../../utils/api'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { actionCreators } from '../../actions/recipes'
 import styled from 'styled-components'
 
 const FormDiv = styled.form`

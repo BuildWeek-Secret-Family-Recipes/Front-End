@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
-import api from '../../utils/api'
+import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { actionCreators } from '../../actions/recipes'
 import styled from 'styled-components'
 
 const FormDiv = styled.form`
@@ -65,32 +67,52 @@ const SubmitButton = styled.button`
     }
 `
 
-const IngredientsForm = ({setFormState, id}) => {
-    const [ingredients, setIngredients] = useState([{
-        name: '',
-        quantity: '',
-        measurement: '',
-        recipe_id: id
-    }])
+const IngredientsForm = ({setFormState, id, actions}) => {
+    const [added, setAdded] = useState([])
+    const [ingredients, setIngredients] = useState({
+        recipe_id: id,
+        ingredientsArray: [{
+            name: '',
+            quantity: '',
+            measurement: ''
+        }]
+    })
 
-    const handleIngredients = e => {
-        let newIngredients = ingredients.map(ingredient => {
-            return Number(e.target.id) === ingredient.id ? { ...ingredient, [e.target.name]: e.target.value } : ingredient
+    console.log(ingredients)
+
+    useEffect(() => {
+        setIngredients({
+            ...ingredients,
+            recipe_id: id
         })
-        setIngredients(newIngredients)
+    }, [id])
+
+    const handleIngredients = (e, indx) => {
+        let newIngredients = ingredients.ingredientsArray.map((ingredient, indx) => {
+            return Number(e.target.id) === ingredient[indx] ? { ...ingredient, [e.target.name]: e.target.value } : ingredient
+        })
+        console.log(newIngredients)
+        setIngredients({
+            ...ingredients,
+            ingredientsArray: [
+                ...newIngredients
+            ]
+        })
     }
 
     const addIndgredient = e => {
         e.preventDefault()
-        setIngredients([
+        setIngredients({
             ...ingredients,
-            {
-                name: '',
-                quantity: '',
-                measurement: '',
-                recipe_id: id 
-            }
-        ])
+            ingredientsArray: [
+                ...ingredients.ingredientsArray,
+                {
+                    name: '',
+                    quantity: '',
+                    measurement: '',
+                }
+            ]
+        })
     }
 
     const handleSubmit = e => {
@@ -100,19 +122,7 @@ const IngredientsForm = ({setFormState, id}) => {
             renderIngredientsForm: false,
             renderInstructionsForm: true
         })
-        // api()
-        //     .post('/', recipe)
-        //     .then(res => {
-        //         console.log(res)
-        //         setFormState({
-        //             renderRecipeForm: false,
-        //             renderIngredientsForm: false,
-        //             renderInstructionsForm: true
-        //         })
-        //     })
-        //     .catch(err => {
-        //         return setError(err.response)
-        //     })
+        actions.addIngredients(ingredients)
     }
 
     return (
@@ -121,13 +131,13 @@ const IngredientsForm = ({setFormState, id}) => {
                 <h3>Add Ingredients to Your Recipe</h3>
                 <AddButton onClick={addIndgredient}>+</AddButton>
                 <ColumnWrapper>
-                    {ingredients &&
-                        ingredients.map((ingredient, indx) => {
+                    {ingredients.ingredientsArray &&
+                        ingredients.ingredientsArray.map((ingredient, indx) => {
                             return (
                                 <Ingredient key={indx} >
-                                    <Name type='text' name='name' placeholder='Name' value={ingredients.name} onChange={handleIngredients} />
-                                    <Quantity type='text' name='quantity' placeholder='Quantity' value={ingredients.quantity} onChange={handleIngredients} />
-                                    <Measurement type='text' name='measurement' placeholder='Measurement' value={ingredients.measurement} onChange={handleIngredients} />
+                                    <Name id={indx} type='text' name='name' placeholder='Name' value={ingredients.ingredientsArray[indx].name} onChange={(e) => handleIngredients(e, indx)} />
+                                    <Quantity id={indx} type='text' name='quantity' placeholder='Quantity' value={ingredients.ingredientsArray[indx].quantity} onChange={(e) => handleIngredients(e,indx)} />
+                                    <Measurement id={indx} type='text' name='measurement' placeholder='Measurement' value={ingredients.ingredientsArray[indx].measurement} onChange={(e) => handleIngredients(e, indx)} />
                                 </Ingredient>
                             )
                         })
@@ -139,4 +149,10 @@ const IngredientsForm = ({setFormState, id}) => {
     )
 }
 
-export default IngredientsForm
+const mapDispatchToProps = (dispatch) => {
+    return {
+      actions: bindActionCreators(actionCreators, dispatch)
+    }
+}
+
+export default connect(null, mapDispatchToProps)(IngredientsForm);
