@@ -37,7 +37,9 @@ margin-top: -15px;
 function App() {
   return (
     <div className="App">
-      <Nav />
+      {/* <Nav /> */}
+      <Route path='/' component={Nav} />
+
       <Header>Secret Family Cookbook</Header>
 
       <Switch>
