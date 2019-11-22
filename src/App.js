@@ -1,8 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from './utils/PrivateRoute';
-
-// Components
 import Home from './components/pages/Home';
 import Footer from './components/pages/Footer';
 import Nav from './components/layout/Nav';
@@ -12,6 +10,10 @@ import Logout from './components/user/Logout';
 import MyRecipes from './components/user/MyRecipes';
 import AddRecipe from './components/recipe/AddRecipe';
 import EditRecipe from './components/recipe/EditRecipe';
+
+// Hooks
+import { useDarkMode } from './components/hooks/useDarkMode';
+
 
 // Styles
 import { device } from'./components/layout/Breakpoints';
@@ -35,12 +37,26 @@ margin-top: -15px;
  `
 
 function App() {
+
+  const [darkMode, setDarkMode] = useDarkMode(false);
+  const toggleMode = e => {
+      e.preventDefault();
+      setDarkMode(!darkMode);
+  };
+
   return (
     <div className="App">
       {/* <Nav /> */}
       <Route path='/' component={Nav} />
 
       <Header>Secret Family Cookbook</Header>
+      <div className="dark-mode__toggle">
+      
+        <div
+          onClick={toggleMode}
+          className={darkMode ? 'toggle toggled' : 'toggle'}
+          />
+      </div>
 
       <Switch>
       <Route exact path='/' component={Home} />
