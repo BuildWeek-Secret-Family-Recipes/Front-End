@@ -3,10 +3,7 @@ import Dining from '../../assets/img/dining.png';
 import styled from 'styled-components';
 import Search from '../layout/Search';
 import { device } from'../layout/Breakpoints';
-import RecipeCards from '../recipe/RecipeCards';
-
-const Body = styled.div`
-background-color: #EDDFB0;`
+import RecipeCard from '../recipe/RecipeCard';
 
 export const Card = styled.div`
 height: 300px;
@@ -83,13 +80,11 @@ justify-content: flex-end;
 
 
 `
-
    
 
 const Home = () => {
     return (
-        <Body>
-            
+        <div className='home'>
             <Searchbox>
             <Search />
             </Searchbox>
@@ -97,11 +92,28 @@ const Home = () => {
             
             <div>
                 <img src={Dining} alt='Family Dining' />
-                <RecipeCards />
+                <CardHolder className='darkMode'>
+                    {/* <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card>
+                    <Card>Public Recipe Preview</Card> */}
+                    <RecipeCard/>
+                    <RecipeCard/>
+                    <RecipeCard/>
+                    <RecipeCard/>
+                    <RecipeCard/>
+                    <RecipeCard/>
+                    <RecipeCard/>
+                    <RecipeCard/>
+                </CardHolder>
             </div>
          
           
-        </Body>
+        </div>
     )
 }
 
