@@ -14,7 +14,7 @@ function UserRecipeCard(props) {
     const handleDelete = (e) => {
         console.log('Handle Delete')
         e.preventDefault();
-        props.deleteRecipe(props.recipe.user_id);
+        props.deleteRecipe(props.recipe);
     }
 
   return(
@@ -30,7 +30,7 @@ function UserRecipeCard(props) {
             <div className="text">
                 <Link to='/api/auth/recipes/:id'>Edit Recipe</Link>
                 <h4 className="food">
-                Name: {props.name};
+                Name: {props.name}
                 </h4>
         
                 <i className="fa fa-clock-o">15 Mins</i>
