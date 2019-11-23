@@ -68,6 +68,10 @@ font-size: 1.15em;
   text-decoration: none;
 }
 
+.bm-menu a{
+  text-decoration: none;
+}
+
 /* @media screen and (max-width: 320px){
   .bm-menu {
     width: 40%;
@@ -79,7 +83,7 @@ font-size: 1.15em;
 }
 
 .bm-item-list {
-  color: #b8b7ad;
+  color: #b8b7ae;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;

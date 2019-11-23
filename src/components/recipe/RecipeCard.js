@@ -1,4 +1,3 @@
-//Recipe Card
 import React from 'react';
 import styled from 'styled-components';
 import { device } from '../layout/Breakpoints';
@@ -94,8 +93,8 @@ const RecipeCard = (props) => {
          Name: {props.name};
       </h4>
       
-      <i class="fa fa-clock-o"> 15 Mins</i>
-      <i class="fa fa-users"> Serves 2</i>
+      <i class="fa fa-clock-o">15 Mins</i>
+      <i class="fa fa-users">Serves 2</i>
       
       {/* <div class="stars">
          <li>
@@ -118,4 +117,5 @@ const RecipeCard = (props) => {
 
     )
 }
+
 export default RecipeCard;
