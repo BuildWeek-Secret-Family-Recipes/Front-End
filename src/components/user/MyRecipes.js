@@ -5,8 +5,10 @@ import UserRecipeCards from '../recipe/UserRecipeCards';
 function MyRecipes() {
     return (
         <div>
-            <Link to='/api/auth/recipes'>Add Recipe</Link>
-
+            <div className='add-recipe'>
+                <Link to='/api/auth/recipes'>Add Recipe</Link>
+            </div>
+            
             <UserRecipeCards />
         </div>
     )

@@ -77,7 +77,7 @@ export default function recipeReducer(state = initialState, action) {
           ...state,
           recipe: {
             ...state.recipe,
-            recipes: state.recipes.filter(recipe => recipe.user_id !== action.payload.id)
+            recipes: state.recipes.filter(recipe => recipe.id !== action.payload.id)
           },
           deleting: true,
         };
