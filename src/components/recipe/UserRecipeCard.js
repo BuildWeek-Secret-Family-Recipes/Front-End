@@ -7,7 +7,9 @@ import { device } from '../layout/Breakpoints.js';
 
 function UserRecipeCard(props) {
 
-    
+    useEffect(() => {
+        props.getUserRecipe(props.recipe)
+    }, [])
 
     const Card = styled.div`
         height: 300px;
@@ -63,7 +65,7 @@ function UserRecipeCard(props) {
         <Link to='/api/auth/recipes/:id'>Edit Recipe</Link>
         <Header>{props.name}</Header>
         <p>Type of Meal: {props.type_of_meal}</p>
-        <p>Original Author: {props.original_author}</p>
+        <p>Original Author {props.original_author}</p>
         <button onClick={handleDelete}>Delete</button>
     </Card>
   )

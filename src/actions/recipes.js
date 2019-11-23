@@ -7,6 +7,9 @@ export const FETCH_RECIPE_FAILURE = 'FETCH_RECIPE_FAILURE';
 export const ADD_RECIPE_SUCCESS = 'ADD_RECIPE_SUCCESS';
 export const ADD_RECIPE_FAILURE = 'ADD_RECIPE_FAILURE';
 
+export const EDIT_RECIPE_SUCCESS = 'EDIT_RECIPE_SUCCESS';
+export const EDIT_RECIPE_FAILURE = 'EDIT_RECIPE_FAILURE'
+
 export const DELETE_RECIPE_SUCCESS = 'DELETE_RECIPE_SUCCESS';
 export const DELETE_RECIPE_FAILURE = 'DELETE_RECIPE_FAILURE';
 
@@ -49,6 +52,22 @@ export const addRecipe = (recipe) => dispatch => {
                 error: err.response.data.message
             })
         })
+}
+
+export const editRecipe = (recipe) => dispatch => {
+    AxiosWithAuth().put(`/auth/recipes/${recipe.user_id}`, recipe)
+    .then(res => {
+        dispatch({ 
+            type: EDIT_RECIPE_SUCCESS,
+            payload: res.data
+        });
+    })
+    .catch(err => {
+        dispatch({
+            type: EDIT_RECIPE_FAILURE,
+            error: err.response.data.message
+        })
+    })
 }
 
 export const deleteRecipe = (recipe) => dispatch => {

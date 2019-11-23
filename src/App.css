@@ -127,14 +127,6 @@ nav a{
     border: solid 0.5px #bf8040;
 }
 
-.reg {
-  margin-bottom: 7rem;
-}
-
-.footer {
-  margin-top: 1rem;
-}
-
 /* Dark Mode */
 
 .dark-mode__toggle {
@@ -154,7 +146,7 @@ nav a{
   left: 0;
   position: absolute;
   transition: 0.2s;
-  width: 20px;
+  width: 38px;
   margin: 0 auto;
 }
 

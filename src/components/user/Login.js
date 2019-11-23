@@ -82,7 +82,7 @@ export const FormContainer = styled.div`
 
     @media ${device_max.laptopL} {
         margin-right: 30rem;
-        margin-left: 28rem;
+        margin-left: 30rem;
     }
 
     @media ${device_max.laptop} {

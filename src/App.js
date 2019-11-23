@@ -31,12 +31,6 @@ text-shadow: 2px 2px #654F3B;
     text-shadow: 1px 1px #654F3B;
 }`
 
-const Footerblock = styled.div`
-height: 0;
-padding-top: -50px;
-margin-top: -15px;
- `
-
 function App() {
 
   const [darkMode, setDarkMode] = useDarkMode(false);
@@ -69,10 +63,9 @@ function App() {
       <PrivateRoute exact path='/api/auth/recipes/:id' component={EditRecipe} />
 			<PrivateRoute exact path="/logout" component={Logout} />
       </Switch>
+        
+      <Footer />
 
-      <Footerblock>
-        <Footer />
-      </Footerblock>
     </div>
   );
 }
