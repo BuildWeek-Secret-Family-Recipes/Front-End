@@ -105,8 +105,8 @@ const RecipeCard = (props) => {
             <a href="#"><i class="fa fa-star-o"></i></a>
          </li>
       </div> */}
-      <p class="info">Type of Meal: {props.type}</p>
-      <p class="author">Original Author: {props.author}</p>
+      <p class="info">Type of Meal: {props.type_of_meal}</p>
+      <p class="author">Original Author: {props.original_author}</p>
    </div>
    <a href="#" class="btn">Let's Cook!</a>
 </div>
