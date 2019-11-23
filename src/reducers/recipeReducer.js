@@ -2,6 +2,7 @@ import {
   FETCH_RECIPE_REQUEST,
   FETCH_RECIPE_SUCCESS,
   FETCH_RECIPE_FAILURE,
+  SET_LOADING,
   ADD_RECIPE_SUCCESS,
   ADD_RECIPE_FAILURE,
   DELETE_RECIPE_SUCCESS,
@@ -44,6 +45,7 @@ export const initialState = {
       }
     ],
     editing: false,
+    loading: false,
     deleting: false,
     error: ''
 }
@@ -51,15 +53,23 @@ export const initialState = {
 export default function recipeReducer(state = initialState, action) {
     switch(action.type) {
       case FETCH_RECIPE_REQUEST:
-        return state;
+        return {
+          ...state,
+        }
       case FETCH_RECIPE_SUCCESS:
         return {
           ...state,
-          recipe: action.payload
+          recipe: action.payload,
         }
       case FETCH_RECIPE_FAILURE:
         return {
-          error: 'Fetch Recipe Failure'
+          error: 'Fetch Recipe Failure',
+        }
+
+      case SET_LOADING:
+        return {
+          ...state,
+          loading: true
         }
 
       case ADD_RECIPE_SUCCESS:
@@ -71,6 +81,8 @@ export default function recipeReducer(state = initialState, action) {
         return {
           error: 'Add Recipe Failure'
         }
+
+
 
       case DELETE_RECIPE_SUCCESS:
         return {

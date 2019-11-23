@@ -19,6 +19,8 @@ export const ADD_INGREDIENTS_FAILURE = 'ADD_INGREDIENTS_FAILURE';
 export const ADD_INSTRUCTIONS_SUCCESS = 'ADD_INSTRUCTIONS_SUCCESS';
 export const ADD_INSTRUCTIONS_FAILURE = 'ADD_INSTRUCTIONS_FAILURE';
 
+export const SET_LOADING = 'SET_LOADING';
+
 
 export const getUserRecipe = () => dispatch => {
     console.log('dispatch?')
@@ -87,10 +89,16 @@ export const deleteRecipe = (recipe) => dispatch => {
         })
 }
 
+export const setLoading = () => dispatch => {
+    console.log('loading dispatch')
+    dispatch({ type: SET_LOADING })
+}
+
 
 
 export const actionCreators = {
     getUserRecipe,
     addRecipe,
-    deleteRecipe
+    deleteRecipe,
+    setLoading
 }
