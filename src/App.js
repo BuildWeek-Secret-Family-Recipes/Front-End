@@ -25,6 +25,7 @@ const Header = styled.header`
 font-size: 2.8rem;
 font-color: #654F3B
 text-shadow: 2px 2px #654F3B;
+margin-bottom: 1rem;
 
 @media ${device.mobileS}{
     font-size: 2rem;

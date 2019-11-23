@@ -40,8 +40,11 @@
 }
 
 .bm-cross-button {
-  height: 24px;
-  width: 24px;
+  height: 40px;
+  width: 40px;
+  position: relative;
+  margin-right: 50px;
+  
 }
 
 .bm-cross {
@@ -58,6 +61,7 @@ font-size: 1.15em;
  padding-right:0px;
  margin-right: 3.0rem;
  text-decoration: none;
+ box-shadow: 0px 0px 15px 2px var(--dark-color);
 }
 
 .bm-menu a{
@@ -106,6 +110,7 @@ nav a{
     text-shadow: 1px 1px gold;
     border: solid 0.5px #bf8040;
     width: 250px;
+    box-shadow: 0px 0px 1px 1px var(--dark-color);
    
 
 }
@@ -161,4 +166,160 @@ nav a{
 .dark-mode {
   color: #4A3A2B;
   background: #978E71;
+}
+
+
+/* Recipe Card Designs */
+
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+@import url('https://kit.fontawesome.com/79b1fdccc0.js');
+
+:root {
+  --white: white;
+  --black: #212129;
+  --gray: #9B9B9B;
+  --heart: #17BEBB;
+  --star: #FFE500;
+  --button: #EF3E36;
+  --font: 'Roboto', sans-serif;
+  --food: 'http://img.taste.com.au/UZVXAdo7/taste/2016/11/chinese-egg-noodle-and-vegetable-stir-fry-94186-1.jpeg';
+  
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font);
+  list-style-type: none;
+  text-decoration: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.card img {
+  max-width: 100%;
+}
+
+html, body {
+  height: 100%;
+}
+
+/* body {
+  background: var(--bg);
+} */
+
+.card {
+  /* position: relative; */
+  background: var(--white);
+  width: 250px;
+  max-height: 280px;
+  /* margin: 20px auto; */
+  margin-bottom: 2rem;
+  background-color: var(--light-color);
+  box-shadow: 0px 0px 30px 2px #000;
+  
+}
+
+.text{
+  background-color: var(--light-color);
+}
+
+
+.card-header {
+  background: url('http://img.taste.com.au/UZVXAdo7/taste/2016/11/chinese-egg-noodle-and-vegetable-stir-fry-94186-1.jpeg');
+  background-size: cover;
+  /* min-height: 350px; */
+  /* max-height: 20px; */
+     
+}
+.icon a .fa-heart-o {
+  position: absolute;
+  left: 85%;
+  bottom: 30.7%;
+  background: var(--heart);
+  color: var(--white);
+  font-size: 1.3em;
+  font-weight: bold;
+  padding: 15px;
+  border-radius: 50%;
+  box-shadow: 0px 5px 30px 1px var(--heart);
+}
+
+/* .card text {
+  
+  
+  
+} */
+.food {
+  color: var(--black);
+  text-align: center;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 5px 30px;
+  font-size: 1.5rem;
+
+}
+.fa-clock-o {
+  color: var(--gray);
+  margin: 0 30px;
+}
+
+.fa-users {
+  color: var(--gray);
+}
+
+.card-stars {
+  margin: 10px 30px;
+  
+}
+
+.card-stars li a i {
+  color: var(--star);
+}
+
+.info {
+  margin: 5px 25px;
+  background-color: var(--light-color);
+  font-size: .9rem;
+}
+
+
+
+.author{
+  margin-bottom: 2rem;
+  font-size: .9rem
+}
+.card a.btn {
+  display: block;
+  background: var(--primary-color);
+  
+  color: white;
+  /* position: relative; */
+  /* top: 60px; */
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  padding: 10px;
+  transition: 250ms;
+  /* margin-top: 5.3rem; */
+  
+  
+}
+
+.card a:hover {
+  background: var(--secondary-color);
+  transition: 250ms;
+}
+
+
+/* form styles */
+
+.searching{
+  margin-bottom: 3rem;
 }
