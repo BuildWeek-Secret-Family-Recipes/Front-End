@@ -72,9 +72,9 @@ export const editRecipe = (recipe) => dispatch => {
     })
 }
 
-export const deleteRecipe = (recipe) => dispatch => {
+export const deleteRecipe = (user_id) => dispatch => {
     console.log('delete dispatch')
-    AxiosWithAuth().delete('/auth/recipes/:id', recipe)
+    AxiosWithAuth().delete(`/auth/recipes/${user_id}`)
         .then(res => {
             dispatch({ 
                 type: DELETE_RECIPE_SUCCESS,

@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import AxiosWithAuth from '../../utils/api';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { editRecipe } from '../../actions/recipes';
 
@@ -34,7 +33,7 @@ function EditRecipe(props) {
                     type='text'
                     name='title'
                     placeholder='Title'
-                    value={props.recipe.name}
+                    value={recipe.name}
                     onChange={handleChange}
                 />
 
@@ -43,7 +42,7 @@ function EditRecipe(props) {
                     type='text'
                     name='type'
                     placeholder='Meal Type'
-                    value={props.recipe.type_of_meal}
+                    value={recipe.type_of_meal}
                     onChange={handleChange}
                 />
 
@@ -52,7 +51,7 @@ function EditRecipe(props) {
                     type='text'
                     name='source'
                     placeholder='Original Author'
-                    value={props.recipe.original_author}
+                    value={recipe.original_author}
                     onChange={handleChange}
                 />
 
