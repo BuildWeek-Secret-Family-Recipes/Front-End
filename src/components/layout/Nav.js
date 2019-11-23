@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { logout } from '../../actions/auth';
-import Search from '../layout/Search';
+
 import styled from 'styled-components';
 import { slide as Menu } from 'react-burger-menu';
 

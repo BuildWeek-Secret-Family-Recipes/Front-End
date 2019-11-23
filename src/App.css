@@ -210,7 +210,7 @@ html, body {
 } */
 
 .card {
-  position: relative;
+  /* position: relative; */
   background: var(--white);
   width: 250px;
   max-height: 280px;
@@ -311,4 +311,11 @@ html, body {
 .card a:hover {
   background: var(--secondary-color);
   transition: 250ms;
+}
+
+
+/* form styles */
+
+.searching{
+  margin-bottom: 3rem;
 }

@@ -1,6 +1,79 @@
 //Recipe Card
 import React from 'react';
-import { Card } from '../pages/Home';
+import styled from 'styled-components';
+import { device } from '../layout/Breakpoints';
+
+
+//  const CardHolder = styled.section`
+// display: flex;
+// flex-wrap: wrap;
+// flex-direction: row;
+// justify-content: space-around;
+// align-content: space-evenly;
+// margin: 0 auto;
+// margin-left: 10%;
+// margin-right: 10%;
+// height: 300px;
+
+
+
+// @media ${device.laptopL} {
+//     margin-left: 5%;
+//     margin-right: 5%;
+//     width: 90%;
+    
+
+// @media ${device.mobileS} {
+//     margin-left: 3%;
+//     margin-left: 3%;
+// }
+
+
+
+// `
+
+
+// const Card = styled.div `
+
+// @media ${device.mobileS} {
+//     width: 50%;
+//     margin-left: 5%;
+
+// }
+
+// @media ${device.tablet}{
+//     width: 45%;
+// }
+
+// @media ${device.laptop}{
+//     width: 35%;
+// }
+
+
+// @media ${device.laptopL}{
+//     width: 22%;
+//     height: 350px;
+//     margin-left: 0;
+// }
+
+
+// @media ${device.desktop}{
+//     width: 22%;
+//     height: 400px;
+// }
+
+// @media ${device.desktopL}{
+//     width: 20%;
+//     height: 440px;
+//     margin-left: 1%;
+//     margin-right: 1%;
+// }
+
+// `
+
+
+
+
 
 const RecipeCard = (props) => {
     return (
@@ -10,7 +83,7 @@ const RecipeCard = (props) => {
         //     <h5>Source: {props.author}</h5>
         // </Card>
 
-        <div class="card">
+       <div class="card">
    <div class="header">
       <div class="icon">
       <a href="#"><i class="fa fa-heart-o"></i></a>
@@ -38,6 +111,8 @@ const RecipeCard = (props) => {
    </div>
    <a href="#" class="btn">Let's Cook!</a>
 </div>
+
+
 
 
 

@@ -6,6 +6,52 @@ import RecipeCard from "../recipe/RecipeCard";
 // import styled from "styled-components";
 // import CharacterCard from "./CharacterCard";
 // import {Link} from "react-router-dom";
+import { CardHolder } from'../pages/Home';
+import styled from 'styled-components';
+
+
+
+const FormDiv = styled.form`
+    margin: 3rem auto;
+    border: 1px solid black;
+    border-radius: .5rem;
+    padding: 1rem;
+    width: 85%;
+    background: #d2bba0;
+`
+
+const ColumnWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    
+  
+
+    
+`  
+
+const Name = styled.input`
+    margin-top: .5rem;
+    height: 2rem;
+    width: 50%;
+    justify-content: center;
+    align-content: center;
+    margin-left: 210px;
+`
+
+const SubmitButton = styled.button`
+    margin-top: 2rem;
+    height: 2rem;
+    width: 10rem;
+    border-radius: .3rem;
+    background: #f2ffe0;
+    :hover {
+        cursor: pointer;
+        background: #9f7e69;
+        color: #f2ffe0;
+    }
+`
 
 export default function SearchForm() {
 
@@ -31,13 +77,15 @@ export default function SearchForm() {
     setQuery(event.target.value);
   };
   return (
-    <div >
-      <form > 
-        <input
-        id="name" type="text" name="textfield" placeholder="Search" value={query} onChange={handleInputChange}/>
+    <FormDiv>
+
+      <form className="searching"> 
+        <ColumnWrapper>
+        <Name
+        id="name" type="text" name="textfield" placeholder="Looking for something?" value={query} onChange={handleInputChange}/>
+        </ColumnWrapper>
   
-  
-        <button type='submit'>Search</button>
+        <SubmitButton type='submit'>Search</SubmitButton>
      
       </form>
   
@@ -46,7 +94,7 @@ export default function SearchForm() {
   }
   ))}
   
-  </div>
+  </FormDiv>
   )}
   
 
