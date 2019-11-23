@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { actionCreators } from '../../actions/recipes'
 import styled from 'styled-components'
+
+import AddedIngredient from  './AddedIngredient'
 
 const FormDiv = styled.form`
     margin: 3rem auto;
@@ -54,6 +56,11 @@ const AddButton = styled.button`
         color: #f2ffe0;
     }
 `
+const Delete = styled.div`
+    :hover {
+        cursor: pointer;
+    }
+`
 const SubmitButton = styled.button`
     margin-top: 2rem;
     height: 2rem;
@@ -69,50 +76,37 @@ const SubmitButton = styled.button`
 
 const IngredientsForm = ({setFormState, id, actions}) => {
     const [added, setAdded] = useState([])
-    const [ingredients, setIngredients] = useState({
-        recipe_id: id,
-        ingredientsArray: [{
-            name: '',
-            quantity: '',
-            measurement: ''
-        }]
+    const [ingredient, setIngredient] = useState({
+        name: '',
+        quantity: '',
+        measurement: ''
     })
 
-    console.log(ingredients)
-
-    useEffect(() => {
-        setIngredients({
-            ...ingredients,
-            recipe_id: id
-        })
-    }, [id])
-
-    const handleIngredients = (e, indx) => {
-        let newIngredients = ingredients.ingredientsArray.map((ingredient, indx) => {
-            return Number(e.target.id) === ingredient[indx] ? { ...ingredient, [e.target.name]: e.target.value } : ingredient
-        })
-        console.log(newIngredients)
-        setIngredients({
-            ...ingredients,
-            ingredientsArray: [
-                ...newIngredients
-            ]
+    const handleIngredients = e => {
+        setIngredient({
+            ...ingredient,
+            [e.target.name]: e.target.value
         })
     }
 
     const addIndgredient = e => {
         e.preventDefault()
-        setIngredients({
-            ...ingredients,
-            ingredientsArray: [
-                ...ingredients.ingredientsArray,
-                {
-                    name: '',
-                    quantity: '',
-                    measurement: '',
-                }
-            ]
+        let newId = added.length > 0 ? added[added.length-1].id + 1 : 0
+        setAdded([
+            ...added,
+            {
+                ...ingredient,
+                id: newId
+            }
+        ])
+    }
+
+    const deleteIngredient = indx => {
+        let newIngredients = added.filter(ingredient => {
+            if (ingredient.id !== indx) return ingredient
         })
+        console.log(newIngredients)
+        setAdded(newIngredients)
     }
 
     const handleSubmit = e => {
@@ -122,7 +116,7 @@ const IngredientsForm = ({setFormState, id, actions}) => {
             renderIngredientsForm: false,
             renderInstructionsForm: true
         })
-        actions.addIngredients(ingredients)
+        actions.addIngredients(added, id)
     }
 
     return (
@@ -131,18 +125,19 @@ const IngredientsForm = ({setFormState, id, actions}) => {
                 <h3>Add Ingredients to Your Recipe</h3>
                 <AddButton onClick={addIndgredient}>+</AddButton>
                 <ColumnWrapper>
-                    {ingredients.ingredientsArray &&
-                        ingredients.ingredientsArray.map((ingredient, indx) => {
-                            return (
-                                <Ingredient key={indx} >
-                                    <Name id={indx} type='text' name='name' placeholder='Name' value={ingredients.ingredientsArray[indx].name} onChange={(e) => handleIngredients(e, indx)} />
-                                    <Quantity id={indx} type='text' name='quantity' placeholder='Quantity' value={ingredients.ingredientsArray[indx].quantity} onChange={(e) => handleIngredients(e,indx)} />
-                                    <Measurement id={indx} type='text' name='measurement' placeholder='Measurement' value={ingredients.ingredientsArray[indx].measurement} onChange={(e) => handleIngredients(e, indx)} />
-                                </Ingredient>
-                            )
-                        })
-                    }
+                    <Ingredient>
+                        <Name type='text' name='name' placeholder='Name' value={ingredient.name} onChange={handleIngredients} />
+                        <Quantity type='text' name='quantity' placeholder='Quantity' value={ingredient.quantity} onChange={handleIngredients} />
+                        <Measurement type='text' name='measurement' placeholder='Measurement' value={ingredient.measurement} onChange={handleIngredients} />
+                    </Ingredient>
                 </ColumnWrapper>
+            </Ingredients>
+            <Ingredients>
+                {added &&
+                    added.map((ingredient, indx) => {
+                        return <AddedIngredient key={indx} ingredient={ingredient} deleteIngredient={deleteIngredient} />
+                    })
+                }
             </Ingredients>
             <SubmitButton type='submit'>Add Ingredients</SubmitButton>
         </FormDiv>
