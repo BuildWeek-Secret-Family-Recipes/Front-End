@@ -1,19 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const RecipeCard = (props) => {
     return (
         <div className="card">
             <div className="header">
                 <div className="icon">
-                    <a href="#">
+                    <Link to='/'>
                         <i class="fa fa-heart-o"></i>
-                    </a>
+                    </Link>
                 </div>
             </div>
             
             <div class="text">
                 <h4 class="food">
-                Name: {props.name};
+                Name: {props.name}
                 </h4>
         
                 <i class="fa fa-clock-o">15 Mins</i>
@@ -32,7 +33,7 @@ const RecipeCard = (props) => {
                 <p class="author">Original Author: {props.original_author}</p>
         </div>
 
-        <a href="#" class="btn">Let's Cook!</a>
+        <Link to='/' class="btn">Let's Cook!</Link>
         </div>
     )
 }
