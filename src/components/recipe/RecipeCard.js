@@ -14,7 +14,7 @@ const RecipeCard = (props) => {
             
             <div class="text">
                 <h4 class="food">
-                Name: {props.name};
+                Name: {props.name}
                 </h4>
         
                 <i class="fa fa-clock-o">15 Mins</i>
