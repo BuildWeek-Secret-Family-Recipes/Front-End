@@ -87,8 +87,8 @@ function UserRecipeCard(props) {
                         <a href="#"><i class="fa fa-star-o"></i></a>
                     </li>
                 </div> */}
-                <p className="info">Type of Meal: {props.type}</p>
-                <p className="author">Original Author: {props.author}</p>
+                <p className="info">Type of Meal: {props.type_of_meal}</p>
+                <p className="author">Original Author: {props.original_author}</p>
         <a href="#" className="btn">Let's Cook!</a>
         </div>
 
