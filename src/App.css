@@ -132,6 +132,11 @@ nav a{
     border: solid 0.5px #bf8040;
 }
 
+.add-recipe {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
 /* Dark Mode */
 
 .dark-mode__toggle {

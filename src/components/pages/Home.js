@@ -61,6 +61,10 @@ export const CardHolder = styled.section`
         }
 `
 
+const StyledImg = styled.img`
+margin: 2rem 2rem;
+`
+
 const Home = () => {
     return (
         <div className='home'>
@@ -68,11 +72,9 @@ const Home = () => {
 
             
             <div>
-                <img src={Dining} alt='Family Dining' />
+                <StyledImg src={Dining} alt='Family Dining' />
                 <CardHolder>
-                    <Card>
-                        <RecipeCards/>
-                    </Card>
+                    <RecipeCards/>
                 </CardHolder>
             </div>
          
