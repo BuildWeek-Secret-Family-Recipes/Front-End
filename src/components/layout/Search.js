@@ -37,7 +37,7 @@ const Name = styled.input`
     width: 50%;
     justify-content: center;
     align-content: center;
-    margin-left: 280px;
+    margin-left: 200px;
     text-align: center;
 `
 
