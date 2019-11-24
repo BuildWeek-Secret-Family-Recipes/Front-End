@@ -8,57 +8,58 @@ import AddedIngredient from  './AddedIngredient'
 
 const FormDiv = styled.form`
     margin: 3rem auto;
-    border: 1px solid black;
-    border-radius: .5rem;
     padding: 1rem;
     width: 85%;
-    background: #d2bba0;
 `
-const ColumnWrapper = styled.div`
+const RowWrapper = styled.div`
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    
-`  
+    justify-content: space-between;
+`
 const Ingredients = styled.div`
     display: flex;
     flex-direction: column;
+    width: 80%;
+    padding: 1.5rem;
+    border-radius: .3rem;
+    `
+    const Ingredient = styled.div`
+    background: #d2bba0;
+    display: flex;
+    flex-direction: column;
     border: 1px solid black;
-    width: 40%;
+    width: 70%;
     padding: 1.5rem;
     border-radius: .3rem;
 `
-const Ingredient = styled.div`
-
+const Added = styled.div`
+    border: 1px solid black;
+    width: 50%;
+    border-radius: .3rem;
+    background: #d2bba0;
 `
 const Name = styled.input`
     margin-top: .5rem;
     height: 2rem;
-    width: 45%;
+    width: 90%;
 `
 const Quantity = styled.input`
-    margin: .5rem 0 0 1rem;
+    margin-top: .5rem;
     height: 2rem;
-    width: 45%;
+    width: 90%;
 `
 const Measurement = styled.input`
-    margin: .5rem 0 0 1rem;
+    margin-top: .5rem;
     height: 2rem;
-    width: 45%;
+    width: 90%;
 `
 const AddButton = styled.button`
-    float: right;
-    width: 2rem;
+    margin-top: .5rem;
+    width: 70%;
     background: #f2ffe0;
     :hover {
         cursor: pointer;
         background: #9f7e69;
         color: #f2ffe0;
-    }
-`
-const Delete = styled.div`
-    :hover {
-        cursor: pointer;
     }
 `
 const SubmitButton = styled.button`
@@ -121,25 +122,25 @@ const IngredientsForm = ({setFormState, id, actions}) => {
 
     return (
         <FormDiv onSubmit={handleSubmit}>
-            <Ingredients>
-                <h3>Add Ingredients to Your Recipe</h3>
-                <AddButton onClick={addIndgredient}>+</AddButton>
-                <ColumnWrapper>
+            <h3>Add Ingredients to Your Recipe</h3>
+            <RowWrapper>
+                <Ingredients>
                     <Ingredient>
                         <Name type='text' name='name' placeholder='Name' value={ingredient.name} onChange={handleIngredients} />
                         <Quantity type='text' name='quantity' placeholder='Quantity' value={ingredient.quantity} onChange={handleIngredients} />
                         <Measurement type='text' name='measurement' placeholder='Measurement' value={ingredient.measurement} onChange={handleIngredients} />
+                        <AddButton onClick={addIndgredient}>Add Ingredient</AddButton>
                     </Ingredient>
-                </ColumnWrapper>
-            </Ingredients>
-            <Ingredients>
-                {added &&
-                    added.map((ingredient, indx) => {
-                        return <AddedIngredient key={indx} ingredient={ingredient} deleteIngredient={deleteIngredient} />
-                    })
-                }
-            </Ingredients>
-            <SubmitButton type='submit'>Add Ingredients</SubmitButton>
+                    <SubmitButton type='submit'>Submit Ingredients</SubmitButton>
+                </Ingredients>
+                <Added>
+                    {added &&
+                        added.map((ingredient, indx) => {
+                            return <AddedIngredient key={indx} ingredient={ingredient} deleteIngredient={deleteIngredient} />
+                        })
+                    }
+                </Added>
+            </RowWrapper>
         </FormDiv>
     )
 }

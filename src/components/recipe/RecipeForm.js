@@ -70,7 +70,7 @@ const RecipeForm = ({setFormState, setId, actions}) => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        actions.addRecipe(recipe, setId)
+        // actions.addRecipe(recipe, setId)
         setFormState({
             renderRecipeForm: false,
             renderIngredientsForm: true,

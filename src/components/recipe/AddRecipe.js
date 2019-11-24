@@ -38,8 +38,8 @@ const AddRecipe = (props) => {
     const [error, setError] = useState()
     const [id, setId] = useState()
     const [formState, setFormState] = useState({
-        renderRecipeForm: true,
-        renderIngredientsForm: false,
+        renderRecipeForm: false,
+        renderIngredientsForm: true,
         renderInstructionsForm: false
     })
 
