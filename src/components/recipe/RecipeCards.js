@@ -16,7 +16,7 @@ function RecipeCards(props){
     
     useEffect(() =>{
         AxiosWithAuth()
-        .get(`/auth/recipes/`)
+        .get(`/api/auth/recipes/`)
         .then(response =>{
             console.log(response.data)
             setRecipes(response.data);

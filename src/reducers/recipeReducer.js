@@ -12,18 +12,18 @@ import {
 export const initialState = {
     recipes: [
       {
-        name: '',
-        type_of_meal: '',
-        original_author: '',
+        name: 'initName',
+        type_of_meal: 'initMealType',
+        original_author: 'initAuthor',
         user_id: 0,
         private: null
       }
     ],
 
     recipe: {
-        name: '',
-        type_of_meal: '',
-        original_author: '',
+        name: 'initName',
+        type_of_meal: 'initMealType',
+        original_author: 'initAuthor',
         user_id: 0,
         private: null
     },
@@ -32,15 +32,15 @@ export const initialState = {
       {
         recipe_id: 0,
         step_number: 0,
-        instruction: ''
+        instruction: 'init Instruction'
       }
     ],
 
     ingredients: [
       {
-        name: 'test Ingredient',
-        quantity: 'test Quant',
-        measurement: 'test Measure',
+        name: 'init Ingredient',
+        quantity: 'init Quant',
+        measurement: 'init Measure',
         recipe_id: 0,
       }
     ],
@@ -59,7 +59,7 @@ export default function recipeReducer(state = initialState, action) {
       case FETCH_RECIPE_SUCCESS:
         return {
           ...state,
-          recipe: action.payload,
+          recipes: action.payload,
         }
       case FETCH_RECIPE_FAILURE:
         return {
@@ -87,7 +87,7 @@ export default function recipeReducer(state = initialState, action) {
       case DELETE_RECIPE_SUCCESS:
         return {
           ...state,
-          recipe: state.recipes.filter(recipe => recipe.id !== action.payload),
+          recipes: state.recipes.filter(recipe => recipe.id !== action.payload.id),
           deleting: true,
         };
       case DELETE_RECIPE_FAILURE:

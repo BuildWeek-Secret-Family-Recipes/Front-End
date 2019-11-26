@@ -28,7 +28,8 @@ function Register(props) {
     const handleSubmit = e => {
         e.preventDefault()
 
-        props.register(newUser);
+        props.register(props.user);
+        setNewUser(props.user);
         props.history.push('/api/auth/user/login')
     }
 
@@ -77,8 +78,8 @@ function Register(props) {
     )
 }
 
-const mapStateToProps = ({ registerReducer }) => ({
-    user: registerReducer.user
+const mapStateToProps = ({ authReducer }) => ({
+    user: authReducer.user
 })
 
 export default connect(mapStateToProps, { register })(Register);

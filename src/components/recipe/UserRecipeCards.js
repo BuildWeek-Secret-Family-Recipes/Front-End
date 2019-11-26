@@ -1,34 +1,43 @@
-//Recipe Cards
 import React, { useState, useEffect } from 'react';
 import UserRecipeCard from './UserRecipeCard.js';
 import { CardHolder } from '../pages/Home';
 import { connect } from 'react-redux';
-import { getUserRecipes, deleteRecipe } from '../../actions/recipes';
+import { getUserRecipes } from '../../actions/recipes';
+import AxiosWithAuth from '../../utils/api';
 
 
 function UserRecipeCards(props){
-    const [userRecipes, setUserRecipes] = useState([{}]);
+    console.log(props.recipes, '<- UserRecipeCards Props')
     
+    const [userRecipes, setUserRecipes] = useState([])
+
+    // useEffect(() => {
+    //     AxiosWithAuth().get(`/api/auth/recipes/user`)
+    //     .then(res =>{
+    //         console.log(res.data, '<-Server response')
+    //         setUserRecipes(res.data)
+    //     })
+    //     .catch(err => {
+    //         console.log(err)
+    //     })
+    // }, [])
+
     useEffect(() =>{
-        props.getUserRecipes(props.recipe);
+        props.getUserRecipes(props.recipes)
+        setUserRecipes(props.recipes);
+        // eslint-disable-next-line
     }, [])
 
-    const handleDelete = () => {
-        console.log('Delete')
-        props.deleteRecipe(props.recipe)
-    }
-    
     return(
         <CardHolder>
                 {
                     userRecipes.map(userRecipe =>{
                         return(
                             <UserRecipeCard 
-                                key={userRecipe.user_id}
+                                key={userRecipe.id}
                                 name={userRecipe.name} 
                                 type_of_meal={userRecipe.type_of_meal} 
-                                original_author={userRecipe.original_author}
-                                handleDelete={handleDelete} />
+                                original_author={userRecipe.original_author}/>
                         )
                     })
                 }
@@ -37,8 +46,7 @@ function UserRecipeCards(props){
 }
 
 const mapStateToProps = ({ recipeReducer }) => ({
-    recipes: recipeReducer.recipes,
-    recipe: recipeReducer.recipe
+    recipes: recipeReducer.recipes
 })
 
-export default connect(mapStateToProps, { getUserRecipes, deleteRecipe })(UserRecipeCards);
+export default connect(mapStateToProps, { getUserRecipes })(UserRecipeCards);

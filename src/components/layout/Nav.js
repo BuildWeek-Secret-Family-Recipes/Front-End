@@ -18,7 +18,7 @@ const Nav = props => {
         <Fragment>
             <Menu>
                 <Link to='/'>Home</Link>
-                {logged && <Link to='/api/auth/recipes/user'>My Recipes</Link>}
+                <Link to='/api/auth/recipes/user'>My Recipes</Link>
                 {!logged && <Link to='/api/auth/user/login'>Log In</Link>}
                 {logged && <button className='logout-btn' onClick={handleLogout}>Logout</button>}
                 {!logged && <Link to='/api/auth/user/register'>Sign Up</Link>}
