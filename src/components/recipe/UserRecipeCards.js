@@ -2,28 +2,21 @@
 import React, { useState, useEffect } from 'react';
 import UserRecipeCard from './UserRecipeCard.js';
 import { CardHolder } from '../pages/Home';
-import AxiosWithAuth from '../../utils/api';
+import { connect } from 'react-redux';
+import { getUserRecipes, deleteRecipe } from '../../actions/recipes';
 
 
-function UserRecipeCards(){
-    const [userRecipes, setUserRecipes] = useState([{
-        name: '',
-        type_of_meal: '',
-        original_author: '',
-        user_id: 0,
-    }]);
+function UserRecipeCards(props){
+    const [userRecipes, setUserRecipes] = useState([{}]);
     
     useEffect(() =>{
-        setUserRecipes([])
-        AxiosWithAuth().get(`/auth/recipes/user`)
-            .then(res => {
-                console.log(res.data, '<- Data in UserRecipeCards')
-                setUserRecipes(res.data)
-            })
-            .catch(err => {
-                console.log('Error:', err)
-            })
+        props.getUserRecipes(props.recipe);
     }, [])
+
+    const handleDelete = () => {
+        console.log('Delete')
+        props.deleteRecipe(props.recipe)
+    }
     
     return(
         <CardHolder>
@@ -34,7 +27,8 @@ function UserRecipeCards(){
                                 key={userRecipe.user_id}
                                 name={userRecipe.name} 
                                 type_of_meal={userRecipe.type_of_meal} 
-                                original_author={userRecipe.original_author}/>
+                                original_author={userRecipe.original_author}
+                                handleDelete={handleDelete} />
                         )
                     })
                 }
@@ -42,4 +36,9 @@ function UserRecipeCards(){
     )
 }
 
-export default UserRecipeCards;
+const mapStateToProps = ({ recipeReducer }) => ({
+    recipes: recipeReducer.recipes,
+    recipe: recipeReducer.recipe
+})
+
+export default connect(mapStateToProps, { getUserRecipes, deleteRecipe })(UserRecipeCards);

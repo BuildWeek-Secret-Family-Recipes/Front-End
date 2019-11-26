@@ -87,7 +87,7 @@ export default function recipeReducer(state = initialState, action) {
       case DELETE_RECIPE_SUCCESS:
         return {
           ...state,
-          recipes: state.recipes.filter(recipe => recipe.id !== action.payload.id),
+          recipe: state.recipes.filter(recipe => recipe.id !== action.payload),
           deleting: true,
         };
       case DELETE_RECIPE_FAILURE:

@@ -1,4 +1,5 @@
 import AxiosWithAuth from '../utils/api';
+import axios from 'axios';
 
 export const FETCH_RECIPE_REQUEST = 'FETCH_RECIPE_REQUEST'
 export const FETCH_RECIPE_SUCCESS = 'FETCH_RECIPE_SUCCESS';
@@ -22,7 +23,7 @@ export const ADD_INSTRUCTIONS_FAILURE = 'ADD_INSTRUCTIONS_FAILURE';
 export const SET_LOADING = 'SET_LOADING';
 
 
-export const getUserRecipe = () => dispatch => {
+export const getUserRecipes = () => dispatch => {
     console.log('dispatch?')
     dispatch({ type: FETCH_RECIPE_REQUEST })
         AxiosWithAuth().get(`/auth/recipes/user`)
@@ -72,11 +73,12 @@ export const editRecipe = (recipe) => dispatch => {
     })
 }
 
-export const deleteRecipe = () => dispatch => {
+export const deleteRecipe = (id) => dispatch => {
     console.log('delete dispatch')
     AxiosWithAuth().delete(`/auth/recipes/:id`)
         .then(res => {
             console.log(res.data)
+            console.log(id)
             dispatch({ 
                 type: DELETE_RECIPE_SUCCESS,
                 payload: res.data
@@ -85,7 +87,7 @@ export const deleteRecipe = () => dispatch => {
         .catch(err => {
             dispatch({
                 type: DELETE_RECIPE_FAILURE,
-                error: err.response.data.message
+                error: err
             })
         })
 }
@@ -98,7 +100,7 @@ export const setLoading = () => dispatch => {
 
 
 export const actionCreators = {
-    getUserRecipe,
+    getUserRecipes,
     addRecipe,
     deleteRecipe,
     setLoading
