@@ -27,7 +27,7 @@ function RecipeCards(props){
     //     });
     // }, [])
     if(loading) {
-    return <div class="loader">Loading...</div>
+    return <Spinner />
     } else {
     return(
             <CardHolder>

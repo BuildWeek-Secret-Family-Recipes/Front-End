@@ -83,7 +83,7 @@ export default function recipeReducer(state = initialState, action) {
         return {
           ...state,
           allRecipes: action.payload,
-          loading: true,
+          loading: false,
         }
       case FETCH_ALL_FAILURE: 
         return {
