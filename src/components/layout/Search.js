@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from "react";
-// import axios from "axios";
-// import RecipeCards from '../recipe/RecipeCards';
 import AxiosWithAuth from '../../utils/api';
 import RecipeCard from "../recipe/RecipeCard";
-// import styled from "styled-components";
-// import CharacterCard from "./CharacterCard";
-// import {Link} from "react-router-dom";
 import { CardHolder } from'../pages/Home';
 import styled from 'styled-components';
 
@@ -89,11 +84,11 @@ export default function SearchForm() {
         <SubmitButton type='submit'>Search</SubmitButton>
      
       </form>
-  
+      <CardHolder>
       {data.map((ind=> {
-    return(<RecipeCard name={ind.name} type={ind.type_of_meal} original author={ind.original_author}/>)
+    return(<RecipeCard name={ind.name} type_of_meal={ind.type_of_meal} original_author={ind.original_author}/>)
   }
   ))}
-  
+      </CardHolder>
   </FormDiv>
   )}
