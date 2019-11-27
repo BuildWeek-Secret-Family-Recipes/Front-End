@@ -1,7 +1,5 @@
 import { userConstants } from '../actions/types';
-import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-// import AxiosWithAuth from '../utils/api';
 
 
 export const login = userInfo => dispatch => {

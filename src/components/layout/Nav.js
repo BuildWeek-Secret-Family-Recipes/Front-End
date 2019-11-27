@@ -2,28 +2,16 @@ import React, { Fragment } from 'react';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { logout } from '../../actions/auth';
-
-import styled from 'styled-components';
 import { slide as Menu } from 'react-burger-menu';
-
-const Searchbox = styled.div`
-    display: flex;
-    justify-content: center;
-    margin: 0;
-    `
-
 
 const Nav = props => {
 
-
-    const logged = props.isLoggedIn;
+    const logged = localStorage.getItem('token');
 
     const handleLogout = () => {
       props.logout();
 	  props.history.push('/')
     }
-
-    // console.log("nav props", props)
 
     return (
         <Fragment>
