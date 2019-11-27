@@ -7,20 +7,18 @@ function EditRecipe(props) {
         name: '',
         type_of_meal: '',
         original_author: '',
-        user_id: 0,
-        private: null
     })
 
-    const handleChange = (event) => {
+    const handleChange = (e) => {
         setRecipe({
             ...recipe,
-            [event.target.name]: event.target.value,
+            [e.target.name]: e.target.value,
         })
     }
 
-    const handleSubmit = event => {
-        event.preventDefault()
-        props.editRecipe(recipe)    
+    const handleSubmit = e => {
+        e.preventDefault()
+        props.editRecipe(props.recipe)    
         props.history.push(`/api/auth/recipes/user`)
     }
 

@@ -7,7 +7,7 @@ import AxiosWithAuth from '../../utils/api';
 
 
 function UserRecipeCards(props){
-    console.log(props.recipes, '<- UserRecipeCards Props')
+    console.log(props.userRecipes, '<- UserRecipeCards Props')
     
     const [userRecipes, setUserRecipes] = useState([])
 
@@ -23,14 +23,14 @@ function UserRecipeCards(props){
     // }, [])
 
     useEffect(() =>{
-        props.getUserRecipes(props.recipes)
-        setUserRecipes(props.recipes);
+        props.getUserRecipes()
+        setUserRecipes(props.userRecipes);
         // eslint-disable-next-line
     }, [])
 
     return(
         <CardHolder>
-                {
+                {userRecipes &&
                     userRecipes.map(userRecipe =>{
                         return(
                             <UserRecipeCard 
@@ -46,7 +46,7 @@ function UserRecipeCards(props){
 }
 
 const mapStateToProps = ({ recipeReducer }) => ({
-    recipes: recipeReducer.recipes
+    userRecipes: recipeReducer.userRecipes
 })
 
 export default connect(mapStateToProps, { getUserRecipes })(UserRecipeCards);

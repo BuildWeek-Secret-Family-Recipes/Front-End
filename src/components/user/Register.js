@@ -28,8 +28,7 @@ function Register(props) {
     const handleSubmit = e => {
         e.preventDefault()
 
-        props.register(props.user);
-        setNewUser(props.user);
+        props.register(newUser);
         props.history.push('/api/auth/user/login')
     }
 

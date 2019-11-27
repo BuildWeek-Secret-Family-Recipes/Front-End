@@ -5,6 +5,10 @@ export const FETCH_RECIPE_REQUEST = 'FETCH_RECIPE_REQUEST'
 export const FETCH_RECIPE_SUCCESS = 'FETCH_RECIPE_SUCCESS';
 export const FETCH_RECIPE_FAILURE = 'FETCH_RECIPE_FAILURE';
 
+export const FETCH_ALL_REQUEST = 'FETCH_ALL_RECIPES_REQUEST';
+export const FETCH_ALL_SUCCESS = 'FETCH_ALL_RECIPES_SUCCESS';
+export const FETCH_ALL_FAILURE = 'FETCH_ALL_RECIPES_FAILURE';
+
 export const ADD_RECIPE_SUCCESS = 'ADD_RECIPE_SUCCESS';
 export const ADD_RECIPE_FAILURE = 'ADD_RECIPE_FAILURE';
 
@@ -22,6 +26,22 @@ export const ADD_INSTRUCTIONS_FAILURE = 'ADD_INSTRUCTIONS_FAILURE';
 
 export const SET_LOADING = 'SET_LOADING';
 
+
+export const getAllRecipes = () => dispatch => {
+    console.log('dispatch?')
+    dispatch({ type: FETCH_ALL_REQUEST })
+
+        AxiosWithAuth().get(`/api/auth/recipes/`)
+            .then(res =>{
+            console.log(res.data)
+        dispatch({ type: FETCH_ALL_SUCCESS,
+                    payload: res.data
+        })
+    })
+    .catch(error => {
+        dispatch({ type: FETCH_ALL_FAILURE })
+    });
+}
 
 export const getUserRecipes = () => dispatch => {
     console.log('dispatch?')
@@ -60,7 +80,7 @@ export const addRecipe = (recipe) => dispatch => {
 }
 
 export const editRecipe = (recipe) => dispatch => {
-    AxiosWithAuth().put(`/api/auth/recipes/${recipe.user_id}`, recipe)
+    AxiosWithAuth().put(`/api/auth/recipes/${recipe.id}`, recipe)
     .then(res => {
         dispatch({ 
             type: EDIT_RECIPE_SUCCESS,

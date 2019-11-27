@@ -4,10 +4,9 @@ import { connect } from 'react-redux';
 import { logout } from '../../actions/auth';
 import { slide as Menu } from 'react-burger-menu';
 
-
 const Nav = props => {
 
-    const logged = props.isLoggedIn;
+    const logged = localStorage.getItem('token');
 
     const handleLogout = () => {
       props.logout();
@@ -18,7 +17,7 @@ const Nav = props => {
         <Fragment>
             <Menu>
                 <Link to='/'>Home</Link>
-                <Link to='/api/auth/recipes/user'>My Recipes</Link>
+                {logged && <Link to='/api/auth/recipes/user'>My Recipes</Link>}
                 {!logged && <Link to='/api/auth/user/login'>Log In</Link>}
                 {logged && <button className='logout-btn' onClick={handleLogout}>Logout</button>}
                 {!logged && <Link to='/api/auth/user/register'>Sign Up</Link>}

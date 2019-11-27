@@ -2,9 +2,9 @@ import { userConstants } from '../actions/types';
 
 export const initialState = {
     user: {
-        username: 'testUser',
-        password: 'testPass',
-        email: 'testEmail'
+        username: '',
+        password: '',
+        email: ''
     },
     isLoading: false,
     isLoggedIn: false,

@@ -2,38 +2,37 @@
 import React, { useState, useEffect} from 'react';
 import RecipeCard from './RecipeCard.js';
 import { CardHolder } from '../pages/Home';
-import AxiosWithAuth from '../../utils/api.js';
+// import AxiosWithAuth from '../../utils/api.js';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
-import { setLoading } from '../../actions/recipes';
-
+import { setLoading, getAllRecipes } from '../../actions/recipes';
 
 function RecipeCards(props){
 
     const loading = props.isLoading;
 
-    const [recipes, setRecipes] = useState([]);
-    
-    useEffect(() =>{
-        AxiosWithAuth()
-        .get(`/api/auth/recipes/`)
-        .then(response =>{
-            console.log(response.data)
-            setRecipes(response.data);
-        })
-        .catch(error => {
-            console.log("recipes were not returned", error);
-        });
-    }, [])
-    
+    // const [recipes, setRecipes] = useState([]);
 
-    if (loading) {
-        return <Spinner />
-    } else {
+    useEffect(() => {
+        props.getAllRecipes()
+    }, [])
+
+    // useEffect(() =>{
+    //     AxiosWithAuth()
+    //     .get(`/api/auth/recipes/`)
+    //     .then(response =>{
+    //         console.log(response.data)
+    //         setRecipes(response.data);
+    //     })
+    //     .catch(error => {
+    //         console.log("recipes were not returned", error);
+    //     });
+    // }, [])
+    
     return(
             <CardHolder>
-                    {
-                        recipes.map(recipe =>{
+                    {props.allRecipes &&
+                        props.allRecipes.map(recipe =>{
                             return(
                                 <RecipeCard 
                                     key={recipe.id}
@@ -46,10 +45,10 @@ function RecipeCards(props){
             </CardHolder>
         )
     }
-}
 
 const mapStateToProps = ({ recipeReducer }) => ({
-    loading: recipeReducer.loading
+    loading: recipeReducer.loading,
+    allRecipes: recipeReducer.allRecipes
 })
 
-export default connect(mapStateToProps, { setLoading })(RecipeCards);
+export default connect(mapStateToProps, { setLoading, getAllRecipes })(RecipeCards);
