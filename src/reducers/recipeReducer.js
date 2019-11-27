@@ -105,7 +105,6 @@ export default function recipeReducer(state = initialState, action) {
       case EDIT_RECIPE_SUCCESS:
         return {
           ...state,
-          recipe: action.payload,
           editing: true
         }
 

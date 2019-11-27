@@ -18,7 +18,7 @@ function EditRecipe(props) {
 
     const handleSubmit = e => {
         e.preventDefault()
-        props.editRecipe(recipe)    
+        props.editRecipe(props.recipe)    
         props.history.push(`/api/auth/recipes/user`)
     }
 
