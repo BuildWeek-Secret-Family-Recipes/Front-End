@@ -77,8 +77,8 @@ function Register(props) {
     )
 }
 
-const mapStateToProps = ({ authReducer }) => ({
-    user: authReducer.user
+const mapStateToProps = ({ registerReducer }) => ({
+    user: registerReducer.user
 })
 
 export default connect(mapStateToProps, { register })(Register);

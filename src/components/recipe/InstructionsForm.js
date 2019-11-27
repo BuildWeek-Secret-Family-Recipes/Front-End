@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { actionCreators } from '../../actions/recipes'
+import AxiosWithAuth from '../../utils/api'
 import styled from 'styled-components'
 
 const FormDiv = styled.form`
@@ -52,31 +50,30 @@ const SubmitButton = styled.button`
 `
 
 const InstructionsForm = ({setFormState, id}) => {
-    const [added, setAdded] = useState([])
-    const [instructions, setInstructions] = useState({
+    const [instructions, setInstructions] = useState([{
+        recipe_id: id,
         step_number: '',
         instruction: ''
-    })
-
-    const handleInstructions = e => {
-        setInstructions({
-            ...instructions,
-            [e.target.name]: e.target.value
-        })
-    }
+    }])
 
     const addInstruction = e => {
         e.preventDefault()
-        let newId = added.length > 0 ? added[added.length-1].id + 1 : 0
-        setAdded([
-            ...added,
+        setInstructions([
+            ...instructions,
             {
-                ...instructions,
-                id: newId
+                recipe_id: id,
+                step_number: '',
+                instruction: ''
             }
         ])
     }
 
+    const handleInstructions = e => {
+        let newInstructions = instructions.map(instruction => {
+            return Number(e.target.id) === instruction.id ? { ...instruction, [e.target.name]: e.target.value } : instruction
+        })
+        setInstructions(newInstructions)
+    }
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -85,20 +82,32 @@ const InstructionsForm = ({setFormState, id}) => {
             renderIngredientsForm: false,
             renderInstructionsForm: false
         })
+        // AxiosWithAuth()
+        //     .post('/', recipe)
+        //     .then(res => {
+        //         console.log(res)
+        //         setFormState({
+        //             renderRecipeForm: true,
+        //             renderIngredientsForm: false,
+        //             renderInstructionsForm: false
+        //         })
+        //     })
+        //     .catch(err => {
+        //         return setError(err.response)
+        //     })
     }
 
     return (
         <FormDiv onSubmit={handleSubmit}>
-            <h3>Add Instructions</h3>
             <Instructions>
+                <h3>Instructions</h3>
                 <AddButton onClick={addInstruction}>+</AddButton> 
-                <Instruction type='text' name='task' placeholder='Task' onChange={handleInstructions} />
                 <ColumnWrapper>
-                    {/* {instructions &&
+                    {instructions &&
                         instructions.map((instruction, indx) => {
                             return <Instruction key={indx} id={instruction.id} type='text' name='task' placeholder='Task' onChange={handleInstructions} />     
                         })
-                    } */}
+                    }
                 </ColumnWrapper>
             </Instructions>
             <SubmitButton type='submit'>Add Instructions</SubmitButton>

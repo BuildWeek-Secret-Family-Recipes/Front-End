@@ -46,7 +46,7 @@ const SubmitButton = styled.button`
     }
 `
 
-const RecipeForm = ({setFormState, setId, actions}) => {
+const RecipeForm = ({setFormState, actions}) => {
     const [recipe, setRecipe] = useState({
         name: '',
         type_of_meal: '',
@@ -70,7 +70,7 @@ const RecipeForm = ({setFormState, setId, actions}) => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        actions.addRecipe(recipe, setId)
+        actions.addRecipe(recipe)
         setFormState({
             renderRecipeForm: false,
             renderIngredientsForm: true,

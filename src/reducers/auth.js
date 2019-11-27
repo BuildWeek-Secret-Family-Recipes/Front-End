@@ -2,9 +2,10 @@ import { userConstants } from '../actions/types';
 
 export const initialState = {
     user: {
-        username: '',
-        password: '',
-        email: ''
+        id: '',
+        username: 'testUser',
+        password: 'testPass',
+        email: 'testEmail'
     },
     isLoading: false,
     isLoggedIn: false,
@@ -42,22 +43,6 @@ export default function authReducer(state = initialState, action){
                 isLoading: false,
                 isLoggedIn: false,
                 error: ''
-            };
-
-        case userConstants.REGISTER_REQUEST: 
-            return { 
-            ...state,
-            isLoading: true
-            };
-        case userConstants.REGISTER_SUCCESS:
-            return { 
-            ...state,
-            isLoading: false
-            };
-        case userConstants.REGISTER_FAILURE:
-            return { 
-            ...state,
-            error: 'Failed to Register'
             };
         default:
             return state;

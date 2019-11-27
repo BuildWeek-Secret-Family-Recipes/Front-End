@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import AxiosWithAuth from '../../utils/api';
 import { connect } from 'react-redux';
 import { editRecipe } from '../../actions/recipes';
 
@@ -7,18 +8,20 @@ function EditRecipe(props) {
         name: '',
         type_of_meal: '',
         original_author: '',
+        user_id: 0,
+        private: null
     })
 
-    const handleChange = (e) => {
+    const handleChange = (event) => {
         setRecipe({
             ...recipe,
-            [e.target.name]: e.target.value,
+            [event.target.name]: event.target.value,
         })
     }
 
-    const handleSubmit = e => {
-        e.preventDefault()
-        props.editRecipe(props.recipe)    
+    const handleSubmit = event => {
+        event.preventDefault()
+        props.editRecipe(recipe)    
         props.history.push(`/api/auth/recipes/user`)
     }
 
@@ -31,7 +34,7 @@ function EditRecipe(props) {
                     type='text'
                     name='title'
                     placeholder='Title'
-                    value={recipe.name}
+                    value={props.recipe.name}
                     onChange={handleChange}
                 />
 
@@ -40,7 +43,7 @@ function EditRecipe(props) {
                     type='text'
                     name='type'
                     placeholder='Meal Type'
-                    value={recipe.type_of_meal}
+                    value={props.recipe.type_of_meal}
                     onChange={handleChange}
                 />
 
@@ -49,7 +52,7 @@ function EditRecipe(props) {
                     type='text'
                     name='source'
                     placeholder='Original Author'
-                    value={recipe.original_author}
+                    value={props.recipe.original_author}
                     onChange={handleChange}
                 />
 
