@@ -55,17 +55,14 @@ export default function SearchForm() {
     const [query, setQuery] = useState("");
   
     useEffect(() =>{
-            AxiosWithAuth()
-            .get(`/auth/recipes/`)
-            .then(response =>{
-                // console.log(response.data)
-                const Recipe = response.data.filter(ind => ind.name.toLowerCase().includes(query.toLowerCase())
-    );
-    
-    setData (Recipe);
-  });
-},[query]);
-                
+      AxiosWithAuth()
+      .get(`/api/auth/recipes/`)
+      .then(response =>{
+          // console.log(response.data)
+         setData(response.data.filter(ind => ind.name.toLowerCase().includes(query.toLowerCase())
+         ))
+});
+}, [query]);
        
   
   
