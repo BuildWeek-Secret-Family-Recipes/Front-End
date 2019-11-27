@@ -4,10 +4,9 @@ import { connect } from 'react-redux';
 import { logout } from '../../actions/auth';
 import { slide as Menu } from 'react-burger-menu';
 
-
 const Nav = props => {
 
-    const logged = props.isLoggedIn;
+    const logged = localStorage.getItem('token');
 
     const handleLogout = () => {
       props.logout();

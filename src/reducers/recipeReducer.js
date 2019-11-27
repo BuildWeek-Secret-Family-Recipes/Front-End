@@ -2,9 +2,14 @@ import {
   FETCH_RECIPE_REQUEST,
   FETCH_RECIPE_SUCCESS,
   FETCH_RECIPE_FAILURE,
+  FETCH_ALL_REQUEST,
+  FETCH_ALL_SUCCESS,
+  FETCH_ALL_FAILURE,
   SET_LOADING,
   ADD_RECIPE_SUCCESS,
   ADD_RECIPE_FAILURE,
+  EDIT_RECIPE_SUCCESS,
+  EDIT_RECIPE_FAILURE,
   DELETE_RECIPE_SUCCESS,
   DELETE_RECIPE_FAILURE
 } from "../actions/recipes";
@@ -32,15 +37,15 @@ export const initialState = {
       {
         recipe_id: 0,
         step_number: 0,
-        instruction: ''
+        instruction: 'init Instruction'
       }
     ],
 
     ingredients: [
       {
-        name: 'test Ingredient',
-        quantity: 'test Quant',
-        measurement: 'test Measure',
+        name: 'init Ingredient',
+        quantity: 'init Quant',
+        measurement: 'init Measure',
         recipe_id: 0,
       }
     ],
@@ -59,11 +64,26 @@ export default function recipeReducer(state = initialState, action) {
       case FETCH_RECIPE_SUCCESS:
         return {
           ...state,
-          recipe: action.payload,
+          userRecipes: action.payload,
         }
       case FETCH_RECIPE_FAILURE:
         return {
           error: 'Fetch Recipe Failure',
+        }
+
+      case FETCH_ALL_REQUEST: 
+        return {
+          ...state,
+        }
+      case FETCH_ALL_SUCCESS: 
+        return {
+          ...state,
+          allRecipes: action.payload,
+          loading: true,
+        }
+      case FETCH_ALL_FAILURE: 
+        return {
+          error: 'Fetch all failed'
         }
 
       case SET_LOADING:
@@ -82,6 +102,12 @@ export default function recipeReducer(state = initialState, action) {
           error: 'Add Recipe Failure'
         }
 
+      case EDIT_RECIPE_SUCCESS:
+        return {
+          ...state,
+          recipe: action.payload,
+          editing: true
+        }
 
 
       case DELETE_RECIPE_SUCCESS:

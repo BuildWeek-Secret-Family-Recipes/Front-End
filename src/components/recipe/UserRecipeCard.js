@@ -1,15 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getUserRecipe, deleteRecipe } from '../../actions/recipes';
+import { deleteRecipe } from '../../actions/recipes';
 
 function UserRecipeCard(props) {
-
-    useEffect(() => {
-        props.getUserRecipe(props.recipe)
-    },
-        // eslint-disable-next-line
-     [])
+    console.log(props, '<-- UserRecipeCard Props')
 
     const handleDelete = (e) => {
         console.log('Handle Delete')
@@ -49,14 +44,11 @@ function UserRecipeCard(props) {
                 <p className="author">Original Author: {props.original_author}</p>
         <Link to='/' className="btn">Let's Cook!</Link>
         </div>
-
         <button className="btn" onClick={handleDelete}>Delete</button>
         </div>
   )
 }
-
 const mapStateToProps = ({ recipeReducer }) => ({
     recipe: recipeReducer.recipe
 })
-
-export default connect(mapStateToProps, { getUserRecipe, deleteRecipe })(UserRecipeCard);
+export default connect(mapStateToProps, { deleteRecipe })(UserRecipeCard);

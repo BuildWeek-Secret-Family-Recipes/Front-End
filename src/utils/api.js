@@ -7,7 +7,7 @@ export function getToken() {
 
 export default function AxiosWithAuth() {
     return axios.create({
-        baseURL: 'https://secret-recipes.herokuapp.com/api',
+        baseURL: 'https://secret-recipes.herokuapp.com',
         headers: {
             Authorization: getToken()
         }

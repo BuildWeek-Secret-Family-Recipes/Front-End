@@ -7,18 +7,18 @@ const RecipeCard = (props) => {
             <div className="header">
                 <div className="icon">
                     <Link to='/'>
-                        <i class="fa fa-heart-o"></i>
+                        <i className="fa fa-heart-o"></i>
                     </Link>
                 </div>
             </div>
             
-            <div class="text">
-                <h4 class="food">
+            <div className="text">
+                <h4 className="food">
                 Name: {props.name}
                 </h4>
         
-                <i class="fa fa-clock-o">15 Mins</i>
-                <i class="fa fa-users">Serves 2</i>
+                <i className="fa fa-clock-o">15 Mins</i>
+                <i className="fa fa-users">Serves 2</i>
         
             {/* <div class="stars">
                     <li>
@@ -29,11 +29,11 @@ const RecipeCard = (props) => {
                         <a href="#"><i class="fa fa-star-o"></i></a>
                     </li>
                 </div> */}
-                <p class="info">Type of Meal: {props.type_of_meal}</p>
-                <p class="author">Original Author: {props.original_author}</p>
+                <p className="info">Type of Meal: {props.type_of_meal}</p>
+                <p className="author">Original Author: {props.original_author}</p>
         </div>
 
-        <Link to='/' class="btn">Let's Cook!</Link>
+        <Link to='/' className="btn">Let's Cook!</Link>
         </div>
     )
 }
