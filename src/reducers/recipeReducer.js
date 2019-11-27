@@ -60,20 +60,24 @@ export default function recipeReducer(state = initialState, action) {
       case FETCH_RECIPE_REQUEST:
         return {
           ...state,
+          loading: true
         }
       case FETCH_RECIPE_SUCCESS:
         return {
           ...state,
           userRecipes: action.payload,
+          loading: false
         }
       case FETCH_RECIPE_FAILURE:
         return {
           error: 'Fetch Recipe Failure',
+          loading: false
         }
 
       case FETCH_ALL_REQUEST: 
         return {
           ...state,
+          loading: true
         }
       case FETCH_ALL_SUCCESS: 
         return {
@@ -83,13 +87,14 @@ export default function recipeReducer(state = initialState, action) {
         }
       case FETCH_ALL_FAILURE: 
         return {
-          error: 'Fetch all failed'
+          error: 'Fetch all failed',
+          loading: false
         }
 
       case SET_LOADING:
         return {
           ...state,
-          loading: true
+          loading: false
         }
 
       case ADD_RECIPE_SUCCESS:
