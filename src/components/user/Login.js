@@ -119,16 +119,16 @@ function Login(props) {
         })
     }
 
-    // async function asyncLogin() {
-    //     await props.login(userData)
-    // }
+    async function asyncLogin() {
+        await props.login(userData)
+    }
 
     const handleSubmit = e => {
         e.preventDefault()
-
-        // asyncLogin();
-        props.login(userData)
-        props.history.push('/')        
+        asyncLogin()
+        props.history.push('/')
+        // props.login(userData)
+        // props.history.push('/')        
     }
 
     return (

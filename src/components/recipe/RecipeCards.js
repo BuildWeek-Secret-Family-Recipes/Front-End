@@ -1,20 +1,18 @@
-//Recipe Cards
-import React, { useState, useEffect} from 'react';
+import React, { useEffect } from 'react';
 import RecipeCard from './RecipeCard.js';
 import { CardHolder } from '../pages/Home';
-// import AxiosWithAuth from '../../utils/api.js';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { setLoading, getAllRecipes } from '../../actions/recipes';
 
 function RecipeCards(props){
 
-    const loading = props.isLoading;
-
-    // const [recipes, setRecipes] = useState([]);
+    const loading = props.loading;
 
     useEffect(() => {
-        props.getAllRecipes()
+        setTimeout(() => {
+            props.getAllRecipes()
+         }, 1000)
     }, [])
 
     // useEffect(() =>{
@@ -28,7 +26,9 @@ function RecipeCards(props){
     //         console.log("recipes were not returned", error);
     //     });
     // }, [])
-    
+    if(loading) {
+    return <Spinner />
+    } else {
     return(
             <CardHolder>
                     {props.allRecipes &&
@@ -45,6 +45,7 @@ function RecipeCards(props){
             </CardHolder>
         )
     }
+}
 
 const mapStateToProps = ({ recipeReducer }) => ({
     loading: recipeReducer.loading,
