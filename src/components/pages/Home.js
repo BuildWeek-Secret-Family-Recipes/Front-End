@@ -1,7 +1,7 @@
 import React from 'react';
 import Dining from '../../assets/img/dining.png';
 import styled from 'styled-components';
-import { device } from'../layout/Breakpoints';
+import { device, device_max } from'../layout/Breakpoints';
 import RecipeCards from '../recipe/RecipeCards.js';
 
 export const Card = styled.div`
@@ -10,37 +10,41 @@ export const Card = styled.div`
     background-color: #C4C4C4;
     margin-bottom: 2rem;
 
-        @media ${device.mobileS} {
+        @media ${device_max.mobileS} {
             width: 50%;
         }
 
-        @media ${device.tablet}{
+        @media ${device_max.tablet}{
             width: 45%;
         }
 
-        @media ${device.laptop}{
+        @media ${device_max.laptop}{
             width: 35%;
         }
 
 
-        @media ${device.laptopL}{
+        @media ${device_max.laptopL}{
+            width: 20%;
+            height: 300px;
+            margin-left: 1%;
+            margin-bottom: 1rem;
+        }
+
+
+        @media ${device_max.desktop}{
             width: 22%;
             height: 350px;
-            margin-left: 0;
+            margin-left: 2%;
         }
 
-
-        @media ${device.desktop}{
-            width: 22%;
-            height: 400px;
-        }
-
-        @media ${device.desktopL}{
+        @media ${device_max.desktopL}{
             width: 20%;
             height: 440px;
             margin-left: 1%;
             margin-right: 1%;
         }
+
+        
 
 `
 
@@ -54,11 +58,31 @@ export const CardHolder = styled.section`
     margin-left: 10%;
     margin-right: 10%;
 
-        @media ${device.laptopL} {
-            margin-left: 5%;
-            margin-right: 5%;
-            width: 90%;
+        @media ${device_max.laptopL} {
+            margin-left: 7%;
+            margin-right: 0%;
+            width: 80%;
         }
+
+        @media ${device.desktopS}{
+            width: 75%;
+        }
+
+        @media ${device.desktop}{
+            width: 70%;
+            margin-left: 14%;
+        }
+
+        @media ${device.desktopL}{
+            width: 65%;
+            margin-left: 16%;
+        }
+
+        @media ${device.desktopXL}{
+            margin-left: 18%;
+            width: 60%;
+        }
+        
 `
 
 const StyledImg = styled.img`
