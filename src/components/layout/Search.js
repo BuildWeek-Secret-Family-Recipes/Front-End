@@ -3,7 +3,7 @@ import AxiosWithAuth from '../../utils/api';
 import RecipeCard from "../recipe/RecipeCard";
 import { CardHolder } from'../pages/Home';
 import styled from 'styled-components';
-
+import { device, device_max } from'../layout/Breakpoints';
 
 
 const FormDiv = styled.form`
@@ -13,6 +13,23 @@ const FormDiv = styled.form`
     padding: 1rem;
     width: 85%;
     background: #d2bba0;
+
+    @media ${device.mobileS}{
+      width: 90%;
+    }
+
+    @media ${device.tablet}{
+      width: 80%;
+    }
+
+    @media ${device.desktopS}{
+      width: 70%;
+    }
+
+    @media ${device.desktop}{
+      width: 60%;
+    }
+
 `
 
 const ColumnWrapper = styled.div`
@@ -32,8 +49,54 @@ const Name = styled.input`
     width: 50%;
     justify-content: center;
     align-content: center;
-    margin-left: 280px;
+    margin-left: 200px;
     text-align: center;
+
+
+    @media ${device.mobileS}{
+      width: 90%;
+      margin-left: 15px;
+    }
+
+    @media ${device.tablet}{
+      width: 80%;
+      margin-left: 70px;
+    }
+
+    
+    @media ${device.laptop}{
+      width: 65%;
+      margin-left: 155px;
+    }
+
+    @media ${device.laptopL}{
+      width: 55%;
+      margin-left: 250px;
+    }
+
+    
+    @media ${device.desktopS}{
+      width: 50%;
+      margin-left: 275px;
+    }
+
+    @media ${device.desktop}{
+      width: 50%;
+      margin-left: 275px;
+    }
+
+
+    @media ${device.desktopL}{
+      width: 55%;
+      margin-left: 365x;
+    }
+
+
+    @media ${device.desktopXL}{
+      width: 55%;
+      margin-left: 335px;
+    }
+
 `
 
 const SubmitButton = styled.button`
@@ -55,17 +118,14 @@ export default function SearchForm() {
     const [query, setQuery] = useState("");
   
     useEffect(() =>{
-            AxiosWithAuth()
-            .get(`/auth/recipes/`)
-            .then(response =>{
-                // console.log(response.data)
-                const Recipe = response.data.filter(ind => ind.name.toLowerCase().includes(query.toLowerCase())
-    );
-    
-    setData (Recipe);
-  });
-},[query]);
-                
+      AxiosWithAuth()
+      .get(`/api/auth/recipes/`)
+      .then(response =>{
+          // console.log(response.data)
+         setData(response.data.filter(ind => ind.name.toLowerCase().includes(query.toLowerCase())
+         ))
+});
+}, [query]);
        
   
   
