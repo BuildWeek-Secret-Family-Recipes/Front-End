@@ -80,7 +80,7 @@ export const addRecipe = (recipe) => dispatch => {
 }
 
 export const editRecipe = (recipe) => dispatch => {
-    AxiosWithAuth().put(`/api/auth/recipes/:id`, recipe)
+    AxiosWithAuth().put(`/api/auth/recipes/${recipe.id}`, recipe)
     .then(res => {
         dispatch({ 
             type: EDIT_RECIPE_SUCCESS,

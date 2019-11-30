@@ -7,7 +7,7 @@ import { getUserRecipes } from '../../actions/recipes';
 
 function UserRecipeCards(props){
     
-    const [userRecipes, setUserRecipes] = useState([])
+    const [recipes, setUserRecipes] = useState([])
     const loading = props.loading;
 
     // async function asyncLoad() {
@@ -31,14 +31,14 @@ function UserRecipeCards(props){
     } else {
         return(
             <CardHolder>
-                    {userRecipes &&
-                        userRecipes.map(userRecipe =>{
+                    {recipes &&
+                        recipes.map(recipe =>{
                             return(
                                 <UserRecipeCard 
-                                    key={userRecipe.id}
-                                    name={userRecipe.name} 
-                                    type_of_meal={userRecipe.type_of_meal} 
-                                    original_author={userRecipe.original_author}/>
+                                    key={recipe.id}
+                                    name={recipe.name} 
+                                    type_of_meal={recipe.type_of_meal} 
+                                    original_author={recipe.original_author}/>
                             )
                         })
                     }

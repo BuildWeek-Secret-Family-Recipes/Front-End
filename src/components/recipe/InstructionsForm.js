@@ -12,10 +12,20 @@ const FormDiv = styled.form`
     width: 85%;
     background: #d2bba0;
 `
+const RowWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
 const ColumnWrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+`
+const Added = styled.div`
+    border: 1px solid black;
+    width: 50%;
+    border-radius: .3rem;
+    background: #d2bba0;
 `
 const Instructions = styled.div`
     border: 1px solid black;
@@ -27,6 +37,17 @@ const Instruction = styled.input`
     width: 90%;
     height: 2rem;
     margin-top: .5rem;
+`
+const AddedInstruction = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    height: 2.5rem;
+    border: 1px solid black;
+    border-radius: .5rem;
+    padding: .5rem;
+    margin: 1rem auto;
+    background: #ffeee2;
 `
 const AddButton = styled.button`
     float: right;
@@ -48,6 +69,11 @@ const SubmitButton = styled.button`
         cursor: pointer;
         background: #9f7e69;
         color: #f2ffe0;
+    }
+`
+const Delete = styled.div`
+    :hover {
+        cursor: pointer;
     }
 `
 
@@ -77,6 +103,13 @@ const InstructionsForm = ({setFormState, id}) => {
         ])
     }
 
+    const deleteInstruction = indx => {
+        let newInstructions = added.filter(instruction => {
+            if (instruction.id !== indx) return instruction
+        })
+        console.log(newInstructions)
+        setAdded(newInstructions)
+    }
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -90,18 +123,22 @@ const InstructionsForm = ({setFormState, id}) => {
     return (
         <FormDiv onSubmit={handleSubmit}>
             <h3>Add Instructions</h3>
-            <Instructions>
-                <AddButton onClick={addInstruction}>+</AddButton> 
-                <Instruction type='text' name='task' placeholder='Task' onChange={handleInstructions} />
-                <ColumnWrapper>
-                    {/* {instructions &&
-                        instructions.map((instruction, indx) => {
-                            return <Instruction key={indx} id={instruction.id} type='text' name='task' placeholder='Task' onChange={handleInstructions} />     
+            <RowWrapper>
+                <Instructions>
+                    <AddButton onClick={addInstruction}>+</AddButton> 
+                    <Instruction type='text' name='instruction' placeholder='Task' onChange={handleInstructions} />
+                    <ColumnWrapper>
+                    </ColumnWrapper>
+                <SubmitButton type='submit'>Add Instructions</SubmitButton>
+                </Instructions>
+                <Added>
+                    {added &&
+                        added.map((instruction, indx) => {
+                            return <AddedInstruction key={indx}>{instruction.instruction}<Delete onClick={() => deleteInstruction(instruction.id)}>X</Delete></AddedInstruction>     
                         })
-                    } */}
-                </ColumnWrapper>
-            </Instructions>
-            <SubmitButton type='submit'>Add Instructions</SubmitButton>
+                    }
+                </Added>
+            </RowWrapper>
         </FormDiv>
     )
 }
