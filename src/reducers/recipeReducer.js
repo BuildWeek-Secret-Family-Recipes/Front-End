@@ -113,8 +113,7 @@ export default function recipeReducer(state = initialState, action) {
           recipe: action.payload,
           editing: true
         }
-
-
+        
       case DELETE_RECIPE_SUCCESS:
         return {
           ...state,

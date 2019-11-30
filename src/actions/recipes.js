@@ -1,5 +1,4 @@
 import AxiosWithAuth from '../utils/api';
-import axios from 'axios';
 
 export const FETCH_RECIPE_REQUEST = 'FETCH_RECIPE_REQUEST'
 export const FETCH_RECIPE_SUCCESS = 'FETCH_RECIPE_SUCCESS';
@@ -63,6 +62,7 @@ export const getUserRecipes = () => dispatch => {
             })
 }
 
+
 export const addRecipe = (recipe) => dispatch => {
         AxiosWithAuth().post('/api/auth/recipes', recipe)
         .then(res => {
@@ -80,7 +80,7 @@ export const addRecipe = (recipe) => dispatch => {
 }
 
 export const editRecipe = (recipe) => dispatch => {
-    AxiosWithAuth().put(`/api/auth/recipes/${recipe.id}`, recipe)
+    AxiosWithAuth().put(`/api/auth/recipes/:id`, recipe)
     .then(res => {
         dispatch({ 
             type: EDIT_RECIPE_SUCCESS,

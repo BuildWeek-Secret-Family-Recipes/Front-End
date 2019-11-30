@@ -17,7 +17,7 @@ function UserRecipeCards(props){
     useEffect(() =>{
         setTimeout(() => {
             props.getUserRecipes()
-        }, 2000)
+        }, 500)
         
         // asyncLoad();
         

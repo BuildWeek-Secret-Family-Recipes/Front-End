@@ -12,7 +12,7 @@ function RecipeCards(props){
     useEffect(() => {
         setTimeout(() => {
             props.getAllRecipes()
-         }, 1000)
+         }, 500)
     }, [])
 
     // useEffect(() =>{
