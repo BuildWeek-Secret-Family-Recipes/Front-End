@@ -1,6 +1,10 @@
 import { 
   ADD_RECIPE_SUCCESS,
-  ADD_RECIPE_FAILURE
+  ADD_RECIPE_FAILURE,
+  ADD_INGREDIENTS_SUCCESS,
+  ADD_INGREDIENTS_FAILURE,
+  ADD_INSTRUCTIONS_SUCCESS,
+  ADD_INSTRUCTIONS_FAILURE
 } from "../actions/recipes";
 
 export const initialState = {
@@ -22,6 +26,16 @@ export default function recipeReducer(state = initialState, action) {
           recipes: action.payload
         };
       case ADD_RECIPE_FAILURE:
+        return state;
+
+      case ADD_INGREDIENTS_SUCCESS:
+        return state;
+      case ADD_INGREDIENTS_FAILURE:
+        return state;
+      
+      case ADD_INSTRUCTIONS_SUCCESS:
+        return state;
+      case ADD_INGREDIENTS_FAILURE:
         return state;
       default:
         return state;

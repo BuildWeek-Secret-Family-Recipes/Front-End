@@ -21,8 +21,8 @@ const Ingredients = styled.div`
     width: 80%;
     padding: 1.5rem;
     border-radius: .3rem;
-    `
-    const Ingredient = styled.div`
+`
+const Ingredient = styled.div`
     background: #d2bba0;
     display: flex;
     flex-direction: column;

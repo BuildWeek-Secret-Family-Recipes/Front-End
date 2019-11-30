@@ -28,7 +28,7 @@ const addRecipe = (recipe, setId) => {
     }
 }
 
-const addIngredients = (ingredients) => {
+const addIngredients = (ingredients, id) => {
     return dispatch => {
         console.log(ingredients)
         AxiosWithAuth().post('/auth/ingredients', ingredients)
