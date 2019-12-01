@@ -35,7 +35,7 @@ export default function recipeReducer(state = initialState, action) {
       
       case ADD_INSTRUCTIONS_SUCCESS:
         return state;
-      case ADD_INGREDIENTS_FAILURE:
+      case ADD_INSTRUCTIONS_FAILURE:
         return state;
       default:
         return state;

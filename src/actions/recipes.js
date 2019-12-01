@@ -30,24 +30,57 @@ const addRecipe = (recipe, setId) => {
 
 const addIngredients = (ingredients, id) => {
     return dispatch => {
-        console.log(ingredients)
-        AxiosWithAuth().post('/auth/ingredients', ingredients)
-        .then(res => {
-            dispatch({
-                type: ADD_INGREDIENTS_SUCCESS,
-                payload: res.data
-            })
+        ingredients.forEach(ingredient => {
+            AxiosWithAuth()
+                .post('/auth/ingredients', { 
+                    name: ingredient.name,
+                    quantity: ingredient.quantity,
+                    measurement: ingredient.measurement,
+                    recipe_id: id
+                 })
+                .then(res => {
+                    dispatch({
+                        type: ADD_INGREDIENTS_SUCCESS,
+                        payload: res.data
+                    })
+                })
+                .catch(err => {
+                    dispatch({
+                        type: ADD_INGREDIENTS_FAILURE,
+                        error: err.response.data.message
+                    })
+                })
         })
-        .catch(err => {
-            dispatch({
-                type: ADD_INGREDIENTS_FAILURE,
-                error: err.response.data.message
-            })
+    }
+}
+
+const addInstructions = (instructions, id) => {
+    return dispatch => {
+        instructions.forEach(instruction => {
+            AxiosWithAuth()
+                .post('/auth/instructions', { 
+                    recipe_id: id,
+                    step_number: instruction.step_number,
+                    instruction: instruction.instruction
+                 })
+                .then(res => {
+                    dispatch({
+                        type: ADD_INSTRUCTIONS_SUCCESS,
+                        payload: res.data
+                    })
+                })
+                .catch(err => {
+                    dispatch({
+                        type: ADD_INSTRUCTIONS_FAILURE,
+                        error: err.response.data.message
+                    })
+                })
         })
     }
 }
 
 export const actionCreators = {
     addRecipe,
-    addIngredients
+    addIngredients,
+    addInstructions
 }

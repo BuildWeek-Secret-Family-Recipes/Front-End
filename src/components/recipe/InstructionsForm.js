@@ -77,7 +77,7 @@ const Delete = styled.div`
     }
 `
 
-const InstructionsForm = ({setFormState, id}) => {
+const InstructionsForm = ({setFormState, id, actions}) => {
     const [added, setAdded] = useState([])
     const [instructions, setInstructions] = useState({
         step_number: '',
@@ -107,12 +107,12 @@ const InstructionsForm = ({setFormState, id}) => {
         let newInstructions = added.filter(instruction => {
             if (instruction.id !== indx) return instruction
         })
-        console.log(newInstructions)
         setAdded(newInstructions)
     }
 
     const handleSubmit = e => {
         e.preventDefault()
+        actions.addInstructions(added, id)
         setFormState({
             renderRecipeForm: true,
             renderIngredientsForm: false,
@@ -129,7 +129,7 @@ const InstructionsForm = ({setFormState, id}) => {
                     <Instruction type='text' name='instruction' placeholder='Task' onChange={handleInstructions} />
                     <ColumnWrapper>
                     </ColumnWrapper>
-                <SubmitButton type='submit'>Add Instructions</SubmitButton>
+                <SubmitButton type='submit'>Submit Instructions</SubmitButton>
                 </Instructions>
                 <Added>
                     {added &&
@@ -143,4 +143,10 @@ const InstructionsForm = ({setFormState, id}) => {
     )
 }
 
-export default InstructionsForm
+const mapDispatchToProps = (dispatch) => {
+    return {
+      actions: bindActionCreators(actionCreators, dispatch)
+    }
+}
+
+export default connect(null, mapDispatchToProps)(InstructionsForm);

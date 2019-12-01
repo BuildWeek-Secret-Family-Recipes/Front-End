@@ -112,12 +112,12 @@ const IngredientsForm = ({setFormState, id, actions}) => {
 
     const handleSubmit = e => {
         e.preventDefault()
+        actions.addIngredients(added, id)
         setFormState({
             renderRecipeForm: false,
             renderIngredientsForm: false,
             renderInstructionsForm: true
         })
-        actions.addIngredients(added, id)
     }
 
     return (
