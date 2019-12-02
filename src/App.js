@@ -30,7 +30,26 @@ margin-bottom: 1rem;
 @media ${device.mobileS}{
     font-size: 2rem;
     text-shadow: 1px 1px #654F3B;
-}`
+}
+
+@media ${device.mobileM}{
+  font-size: 2.2rem;
+  text-shadow: 1px 1px #654F3B;
+}
+
+@media ${device.mobileL}{
+  font-size: 2.5rem;
+  text-shadow: 1px 1px #654F3B;
+}
+
+
+
+`
+
+
+
+
+
 
 function App() {
 
