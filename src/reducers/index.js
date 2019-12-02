@@ -1,29 +1,12 @@
-export const initialState = {
-  title: 'Hello World'
-}
+import { combineReducers } from 'redux';
+import registerReducer from './registerReducer';
+import userReducer from './userReducer';
+import authReducer from './auth';
+import recipeReducer from './recipes';
 
-const state = {
-  user: 'username',
-  recipies: [
-    {
-      title: '',
-      source: '',
-      ingredients: [
-        {
-          type: '',
-          amount: ''
-        }
-      ],
-      instructions: '',
-      category: '',
-      private: null
-    }
-  ]
-}
-
-export function reducer(state = initialState, action) {
-  switch(action.type) {
-    default:
-      return state;
-  }
-}
+export default combineReducers({
+    userReducer,
+    authReducer,
+    registerReducer,
+    recipeReducer
+})
