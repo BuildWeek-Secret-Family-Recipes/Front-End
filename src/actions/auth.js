@@ -1,6 +1,5 @@
 import { userConstants } from '../actions/types';
 import axios from 'axios';
-// import AxiosWithAuth from '../utils/api';
 
 
 export const login = userInfo => dispatch => {
@@ -17,6 +16,13 @@ export const login = userInfo => dispatch => {
             console.log(err.response)
             dispatch({ type: userConstants.LOGIN_FAILURE })
         })
+}
+
+export const logout = () => dispatch => {
+    console.log('something')
+    localStorage.removeItem('token')
+    dispatch({ type: userConstants.LOGOUT })
+	// return <Redirect to='/api/auth/user/login' />
 }
 
 export const register = newUser => dispatch => {

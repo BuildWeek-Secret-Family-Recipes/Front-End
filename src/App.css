@@ -1,109 +1,3 @@
-.App {
-  text-align: center;
-}
-
-.log-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  margin-top: 8rem;
-  margin-right: 24rem;
-  margin-bottom: 18rem;
-  margin-left: 35rem;
-}
-
-.log-input {
-  margin-bottom: 0.5rem;
-  border: 1px solid gray;
-  border-radius: 0.2rem;
-  width: 12rem;
-}
-
-.log-btn {
-  margin-left: 0.8rem;
-  border: 1px solid var(--primary-color);
-  border-radius: 0.4rem;
-  width: 10.5rem;
-  height: 2rem;
-}
-
-/* Burger Menu */
-
-.bm-item {
-  display: inline-block;
-  text-decoration: none;
-  margin-bottom: 10px;
-  color: #d1d1d1;
-  transition: color 0.2s;
-}
-
-.bm-item:hover {
-  color: white;
-}
-
-.bm-burger-button {
-  position: fixed;
-  width: 36px;
-  height: 30px;
-  left: 36px;
-  top: 36px;
-}
-
-.bm-burger-bars {
-  background: #373a47;
-}
-
-.bm-cross-button {
-  height: 24px;
-  width: 24px;
-}
-
-.bm-cross {
-  background: #bdc3c7;
-}
-
-.bm-menu {
-  background: #373a47;
-  padding: 2.5em 1.5em 0;
-  font-size: 1.15em;
-}
-
-.bm-morph-shape {
-  fill: #373a47;
-}
-
-.bm-item-list {
-  color: #b8b7ad;
-}
-
-.bm-overlay {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.footer {
-  margin-top: 1rem;
-}
-
-.icon-credit {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  justify-content: center;
-  font-size: 0.65rem;
-  color: brown;
-}
-
-.icon-credit a {
-  margin: 0.4rem;
-  text-decoration: none;
-  color: brown;
-}
-
-.icon-credit a:hover {
-  color: darkolivegreen;
-}
-
 :root {
   --primary-color: #654F3B;
   --secondary-color: #9C976A;
@@ -114,7 +8,9 @@
   --success-color: #28a745;
 }
 
-
+.App {
+  text-align: center;
+}
 
 /* Burger Menu */
 
@@ -128,6 +24,7 @@
 
 .bm-item:hover {
   color: white;
+  text-decoration: none;
 }
 
 .bm-burger-button {
@@ -143,8 +40,11 @@
 }
 
 .bm-cross-button {
-  height: 24px;
-  width: 24px;
+  height: 40px;
+  width: 40px;
+  position: relative;
+  margin-right: 50px;
+  
 }
 
 .bm-cross {
@@ -152,17 +52,25 @@
 }
 
 .bm-menu {
-  background-color: #9C976A;
-  padding: 2.5em 1.5em 0;
-  font-size: 1.15em;
+display: flex;
+background-color: #9C976A;
+padding: 2.5em 1.5em 0;
+font-size: 1.15em;
  padding-left: 0;
  margin-left: 0;
- padding-right:0;
- margin-right: 0;
- 
- 
+ padding-right:0px;
+ margin-right: 3.0rem;
+ text-decoration: none;
+ box-shadow: 0px 0px 15px 2px var(--dark-color);
 }
 
+.bm-menu a{
+  text-decoration: none;
+}
+
+.bm-menu a{
+  text-decoration: none;
+}
 
 /* @media screen and (max-width: 320px){
   .bm-menu {
@@ -170,33 +78,48 @@
   }
  } */
 
-
-
-
 .bm-morph-shape {
   fill: #373a47;
 }
 
 .bm-item-list {
-  color: #b8b7ad;
+  color: #b8b7ae;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-
 }
 
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
-  
 }
 
 nav a{
  
     font-size: 1.7rem;
     padding: 1rem 0;
-    
     text-align: center;
-    height: 50px;
+    height: 80px;
+    margin-top: 0rem;
+    border-radius: 4px;
+    font-weight: bold;
+    letter-spacing: 0.5rem;
+    color: #C4C4C4;
+    background-color: #654F3B;
+    text-decoration: none;
+    transition: color 0.3s linear;
+    text-shadow: 1px 1px gold;
+    border: solid 0.5px #bf8040;
+    width: 250px;
+    box-shadow: 0px 0px 1px 1px var(--dark-color);
+   
+
+}
+
+.logout-btn {
+  font-size: 1.7rem;
+    padding: 1rem 0;
+    text-align: center;
+    height: 80px;
     margin-top: 4rem;
     border-radius: 4px;
     font-weight: bold;
@@ -206,7 +129,194 @@ nav a{
     text-decoration: none;
     transition: color 0.3s linear;
     text-shadow: 1px 1px gold;
-    border: solid 0.5px gold;
-    
+    border: solid 0.5px #bf8040;
 }
 
+.add-recipe {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Dark Mode */
+
+.dark-mode__toggle {
+  background: papayawhip;
+  border-radius: 50px;
+  border: 1px solid black;
+  height: 20px;
+  position: relative;
+  width: 40px;
+  margin: 0 auto;
+}
+
+.toggle {
+  background: #f68819;
+  border-radius: 50px;
+  height: 18px;
+  left: 0;
+  position: absolute;
+  transition: 0.2s;
+  width: 38px;
+  margin: 0 auto;
+}
+
+.dark-mode {
+  color: #4A3A2B;
+  background: #978E71;
+}
+
+
+/* Recipe Card Designs */
+
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+@import url('https://kit.fontawesome.com/79b1fdccc0.js');
+
+:root {
+  --white: white;
+  --black: #212129;
+  --gray: #9B9B9B;
+  --heart: #17BEBB;
+  --star: #FFE500;
+  --button: #EF3E36;
+  --font: 'Roboto', sans-serif;
+  --food: 'http://img.taste.com.au/UZVXAdo7/taste/2016/11/chinese-egg-noodle-and-vegetable-stir-fry-94186-1.jpeg';
+  
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font);
+  list-style-type: none;
+  text-decoration: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.card img {
+  max-width: 100%;
+}
+
+html, body {
+  height: 100%;
+}
+
+/* body {
+  background: var(--bg);
+} */
+
+.card {
+  /* position: relative; */
+  background: var(--white);
+  width: 250px;
+  max-height: 280px;
+  /* margin: 20px auto; */
+  margin-bottom: 2rem;
+  background-color: var(--light-color);
+  box-shadow: 0px 0px 30px 2px #000;
+  
+}
+
+.text{
+  background-color: var(--light-color);
+}
+
+
+.card-header {
+  background: url('http://img.taste.com.au/UZVXAdo7/taste/2016/11/chinese-egg-noodle-and-vegetable-stir-fry-94186-1.jpeg');
+  background-size: cover;
+  /* min-height: 350px; */
+  /* max-height: 20px; */
+     
+}
+.icon a .fa-heart-o {
+  position: absolute;
+  left: 85%;
+  bottom: 30.7%;
+  background: var(--heart);
+  color: var(--white);
+  font-size: 1.3em;
+  font-weight: bold;
+  padding: 15px;
+  border-radius: 50%;
+  box-shadow: 0px 5px 30px 1px var(--heart);
+}
+
+/* .card text {
+  
+  
+  
+} */
+.food {
+  color: var(--black);
+  text-align: center;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 5px 30px;
+  font-size: 1.5rem;
+
+}
+.fa-clock-o {
+  color: var(--gray);
+  margin: 0 30px;
+}
+
+.fa-users {
+  color: var(--gray);
+}
+
+.card-stars {
+  margin: 10px 30px;
+  
+}
+
+.card-stars li a i {
+  color: var(--star);
+}
+
+.info {
+  margin: 5px 25px;
+  background-color: var(--light-color);
+  font-size: .9rem;
+}
+
+
+
+.author{
+  margin-bottom: 2rem;
+  font-size: .9rem
+}
+.card a.btn {
+  display: block;
+  background: var(--primary-color);
+  
+  color: white;
+  /* position: relative; */
+  /* top: 60px; */
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  padding: 10px;
+  transition: 250ms;
+  /* margin-top: 5.3rem; */
+  
+  
+}
+
+.card a:hover {
+  background: var(--secondary-color);
+  transition: 250ms;
+}
+
+
+/* form styles */
+
+.searching{
+  margin-bottom: 3rem;
+}

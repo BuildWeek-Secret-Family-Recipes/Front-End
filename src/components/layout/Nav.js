@@ -1,39 +1,36 @@
 import React, { Fragment } from 'react';
 import { Link } from "react-router-dom";
-import { getToken } from '../../utils/api';
-import Search from '../layout/Search';
-import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { logout } from '../../actions/auth';
 import { slide as Menu } from 'react-burger-menu';
-
-const Searchbox = styled.div`
-    display: flex;
-    justify-content: center;
-    margin: 0;
-    `
-
-const logged = getToken();
-
 
 const Nav = props => {
 
-    const logged = getToken();
+    const logged = localStorage.getItem('token');
+
+    const handleLogout = () => {
+      props.logout();
+	  props.history.push('/')
+    }
 
     return (
         <Fragment>
             <Menu>
                 <Link to='/'>Home</Link>
-                {logged && <Link to='/recipes'>My Recipes</Link>}
+                {logged && <Link to='/api/auth/recipes/user'>My Recipes</Link>}
                 {!logged && <Link to='/api/auth/user/login'>Log In</Link>}
-                {logged && <Link to='/logout'>Logout</Link>}
+                {logged && <button className='logout-btn' onClick={handleLogout}>Logout</button>}
                 {!logged && <Link to='/api/auth/user/register'>Sign Up</Link>}
-                <Searchbox><Search /></Searchbox>
+                <Link to='/Search'>Search</Link>
             </Menu>
         </Fragment>
     )
 }
 
 
+const mapStateToProps = ({ authReducer }) => ({
+  isLoggedIn: authReducer.isLoggedIn
+})
 
 
-
-export default Nav
+export default connect(mapStateToProps, { logout })(Nav)
