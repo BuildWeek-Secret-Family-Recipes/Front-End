@@ -6,11 +6,8 @@ import styled from 'styled-components'
 
 const FormDiv = styled.form`
     margin: 3rem auto;
-    border: 1px solid black;
-    border-radius: .5rem;
     padding: 1rem;
     width: 85%;
-    background: #d2bba0;
 `
 const RowWrapper = styled.div`
     display: flex;
@@ -28,9 +25,13 @@ const Added = styled.div`
     background: #d2bba0;
 `
 const Instructions = styled.div`
+    background: #d2bba0;
+    display: flex;
+    flex-direction: column;
     border: 1px solid black;
     border-radius: .3rem;
     width: 40%;
+    height: 10rem;
     padding: 1.5rem;
 `
 const Instruction = styled.input`
@@ -41,7 +42,7 @@ const Instruction = styled.input`
 const AddedInstruction = styled.div`
     display: flex;
     justify-content: space-between;
-    width: 90%;
+    width: 80%;
     height: 2.5rem;
     border: 1px solid black;
     border-radius: .5rem;
@@ -77,7 +78,7 @@ const Delete = styled.div`
     }
 `
 
-const InstructionsForm = ({setFormState, id, actions}) => {
+const InstructionsForm = ({setFormState, id, actions, history}) => {
     const [added, setAdded] = useState([])
     const [instructions, setInstructions] = useState({
         step_number: '',
@@ -113,6 +114,7 @@ const InstructionsForm = ({setFormState, id, actions}) => {
     const handleSubmit = e => {
         e.preventDefault()
         actions.addInstructions(added, id)
+        history.push('/recipes')
         setFormState({
             renderRecipeForm: true,
             renderIngredientsForm: false,
@@ -125,11 +127,11 @@ const InstructionsForm = ({setFormState, id, actions}) => {
             <h3>Add Instructions</h3>
             <RowWrapper>
                 <Instructions>
-                    <AddButton onClick={addInstruction}>+</AddButton> 
-                    <Instruction type='text' name='instruction' placeholder='Task' onChange={handleInstructions} />
                     <ColumnWrapper>
+                        <Instruction type='text' name='instruction' placeholder='Task' onChange={handleInstructions} />
+                        <AddButton onClick={addInstruction}>+</AddButton> 
                     </ColumnWrapper>
-                <SubmitButton type='submit'>Submit Instructions</SubmitButton>
+                    <SubmitButton type='submit'>Submit Instructions</SubmitButton>
                 </Instructions>
                 <Added>
                     {added &&

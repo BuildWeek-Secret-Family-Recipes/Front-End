@@ -48,7 +48,7 @@ const AddRecipe = (props) => {
             <h3>Add A Recipe to Your Cookbook</h3>
             {formState.renderRecipeForm && <RecipeForm setFormState={setFormState} setId={setId} />}
             {formState.renderIngredientsForm && <IngredientsForm setFormState={setFormState} id={id} setId={setId}/>}
-            {formState.renderInstructionsForm && <InstructionsForm setFormState={setFormState} id={id} setId={setId} />}
+            {formState.renderInstructionsForm && <InstructionsForm setFormState={setFormState} id={id} setId={setId} history={props.history} />}
         </div>
     )
 }
